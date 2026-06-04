@@ -5,8 +5,6 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Contact form uses Next.js app/api/submit-lead (Google Sheets). Do not redirect to a Netlify function.
-
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
@@ -16,6 +14,3 @@
   for = "/robots.txt"
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
-
-[functions]
-  directory = "netlify/functions"
