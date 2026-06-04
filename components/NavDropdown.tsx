@@ -42,14 +42,18 @@ export function NavDropdown({
     align === "right" ? "right-0 left-auto" : "left-0 right-auto";
 
   return (
-    <div ref={ref} className="relative">
+    <div
+      ref={ref}
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
       <button
         type="button"
         className="inline-flex min-h-touch max-w-[11rem] items-center gap-1 rounded px-2 py-2 text-sm text-body transition hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-gold xl:max-w-none"
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen(!open)}
-        onMouseEnter={() => setOpen(true)}
       >
         <Link
           href={href}
@@ -65,8 +69,7 @@ export function NavDropdown({
       {open && (
         <ul
           role="menu"
-          className={`absolute top-full z-50 mt-1 max-h-[min(70vh,24rem)] min-w-[min(100vw-2rem,16rem)] overflow-y-auto rounded-card border border-line bg-white py-2 shadow-card sm:min-w-[240px] ${menuPosition}`}
-          onMouseLeave={() => setOpen(false)}
+          className={`absolute top-full z-50 max-h-[min(70vh,24rem)] min-w-[min(100vw-2rem,16rem)] overflow-y-auto rounded-card border border-line bg-white py-2 shadow-card before:absolute before:-top-2 before:left-0 before:right-0 before:h-2 before:content-[''] sm:min-w-[240px] ${menuPosition}`}
         >
           <li role="none">
             <Link
