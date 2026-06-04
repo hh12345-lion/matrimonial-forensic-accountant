@@ -8,9 +8,9 @@ import { CTASection } from "@/components/CTASection";
 import { practiceAreas } from "@/lib/data/practice-areas";
 
 export const metadata = buildMetadata({
-  title: "Practice Areas | Lawson Forensic UK Forensic Accounting",
+  title: "Practice Areas | Matrimonial Forensic Accountant UK",
   description:
-    "Lawson Forensic's practice areas: commercial disputes, fraud, family law, personal injury, insolvency, and regulatory matters. Specialist forensic accounting across all major litigation types.",
+    "Matrimonial Forensic Accountant practice areas: financial remedy, business valuation, hidden assets, Schedule 1, TOLATA, and high net worth matrimonial proceedings.",
   path: "/practice-areas",
 });
 
@@ -37,7 +37,7 @@ export default function PracticeAreasPage() {
             <Link
               key={area.slug}
               href={`/practice-areas/${area.slug}`}
-              className="group rounded-card border border-border bg-white p-8 shadow-card transition hover:border-gold focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              className="card-elevated group block p-8 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             >
               <h2 className="font-serif text-xl font-semibold text-navy group-hover:text-gold">
                 {area.title}

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props) {
   const area = getPracticeArea(slug);
   if (!area) return {};
   return buildMetadata({
-    title: `${area.title} | Lawson Forensic UK`,
+    title: `${area.title} | Matrimonial Forensic Accountant UK`,
     description: area.shortDescription,
     path: `/practice-areas/${slug}`,
   });

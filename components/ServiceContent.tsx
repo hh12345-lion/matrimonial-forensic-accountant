@@ -3,49 +3,50 @@ import { ResponsiveTable } from "@/components/ui/ResponsiveTable";
 
 export function ServiceContent({ blocks }: { blocks: ServiceContentBlock[] }) {
   return (
-    <div className="prose-lawson max-w-none space-y-8">
-      {blocks.map((block, i) => {
+    <div className="prose-mfa min-w-0 max-w-none space-y-8 break-words">
+      {blocks.map((block, index) => {
         if (block.type === "prose") {
           return (
-            <div key={i}>
+            <div key={index}>
               {block.heading && (
                 <h2 className="font-serif text-xl font-semibold text-navy sm:text-2xl">
                   {block.heading}
                 </h2>
               )}
-              <div className={block.heading ? "mt-4 space-y-4" : "space-y-4"}>
-                {block.paragraphs.map((p, j) => (
-                  <p key={j} className="text-base leading-relaxed text-body">
-                    {p}
-                  </p>
-                ))}
-              </div>
+              {block.paragraphs.map((p) => (
+                <p
+                  key={p.slice(0, 48)}
+                  className={`text-body leading-relaxed ${block.heading ? "mt-4" : ""}`}
+                >
+                  {p}
+                </p>
+              ))}
             </div>
           );
         }
         if (block.type === "list") {
           return (
-            <div key={i}>
+            <div key={index}>
               <h2 className="font-serif text-xl font-semibold text-navy sm:text-2xl">
                 {block.heading}
               </h2>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-base text-body sm:pl-6">
+              <ul className="mt-4 list-disc space-y-2 pl-6 text-body">
                 {block.items.map((item) => (
-                  <li key={item} className="break-words">
-                    {item}
-                  </li>
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
           );
         }
         return (
-          <ResponsiveTable
-            key={i}
-            heading={block.heading}
-            columns={block.columns}
-            rows={block.rows}
-          />
+          <div key={index}>
+            <h2 className="font-serif text-xl font-semibold text-navy sm:text-2xl">
+              {block.heading}
+            </h2>
+            <div className="mt-4">
+              <ResponsiveTable columns={block.columns} rows={block.rows} />
+            </div>
+          </div>
         );
       })}
     </div>

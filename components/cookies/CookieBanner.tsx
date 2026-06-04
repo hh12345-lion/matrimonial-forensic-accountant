@@ -19,7 +19,7 @@ export function CookieBanner() {
       aria-labelledby="cookie-banner-title"
       aria-describedby="cookie-banner-desc"
       aria-modal="false"
-      className="fixed inset-x-0 bottom-0 z-[100] animate-slide-up border-t-2 border-gold bg-navy p-4 pb-safe shadow-2xl sm:p-6"
+      className="fixed inset-x-0 bottom-0 z-[100] animate-slide-up border-t-2 border-gold bg-hero-gradient p-4 pb-safe shadow-2xl sm:p-6"
     >
       <div className="container-page">
         <h2
@@ -32,7 +32,7 @@ export function CookieBanner() {
           id="cookie-banner-desc"
           className="mt-2 max-w-3xl text-sm leading-relaxed text-white/80"
         >
-          Lawson Forensic uses cookies to ensure the site works correctly and,
+          We use cookies to ensure the site works correctly and,
           with your consent, to understand how visitors use our website. You can
           accept all cookies, reject non-essential cookies, or customise your
           preferences. See our{" "}

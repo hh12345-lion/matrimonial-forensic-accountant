@@ -8,9 +8,9 @@ import { CTASection } from "@/components/CTASection";
 import { insights } from "@/lib/data/insights";
 
 export const metadata = buildMetadata({
-  title: "Insights | Lawson Forensic UK Forensic Accounting",
+  title: "Insights | Matrimonial Forensic Accountant UK Forensic Accounting",
   description:
-    "Forensic accounting insights and expert commentary from Lawson Forensic on fraud, disputes, expert witness practice, and financial investigations.",
+    "Forensic accounting insights and expert commentary from Matrimonial Forensic Accountant on fraud, disputes, expert witness practice, and financial investigations.",
   path: "/insights",
 });
 
@@ -25,7 +25,7 @@ export default function InsightsPage() {
       />
       <PageHero
         title="Insights"
-        subtitle="Commentary and analysis from Lawson Forensic on forensic accounting, expert witness practice, and financial disputes."
+        subtitle="Commentary and analysis from Matrimonial Forensic Accountant on forensic accounting, expert witness practice, and financial disputes."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Insights" },
@@ -37,7 +37,7 @@ export default function InsightsPage() {
           {insights.map((article) => (
             <article
               key={article.slug}
-              className="rounded-card border border-border bg-white p-8 shadow-card"
+              className="rounded-card border border-line bg-white p-8 shadow-card"
             >
               <time
                 dateTime={article.datePublished}

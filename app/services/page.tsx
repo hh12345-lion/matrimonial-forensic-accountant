@@ -8,9 +8,9 @@ import { CTASection } from "@/components/CTASection";
 import { services, servicePath } from "@/lib/data/services";
 
 export const metadata = buildMetadata({
-  title: "Forensic Accounting Services | Lawson Forensic UK",
+  title: "Matrimonial Forensic Accounting Services | Matrimonial Forensic Accountant UK",
   description:
-    "Lawson Forensic provides forensic accounting services across expert witness, fraud investigation, asset tracing, business valuation, loss quantification, and dispute support for UK solicitors.",
+    "Matrimonial forensic accounting services: FPR Part 25 expert witness reports, business valuation, Form E review, hidden asset investigation, and income analysis for UK family proceedings.",
   path: "/services",
 });
 
@@ -25,8 +25,8 @@ export default function ServicesPage() {
         ])}
       />
       <PageHero
-        title="Forensic Accounting Services"
-        subtitle="Senior-led forensic accounting and expert witness services for solicitors, businesses, and insurers across the UK."
+        title="Matrimonial Forensic Accounting Services"
+        subtitle="Senior-led forensic accounting and FPR Part 25 expert witness services for family law solicitors across the UK."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Services" },
@@ -36,11 +36,7 @@ export default function ServicesPage() {
       <Section>
         <div className="grid gap-8 md:grid-cols-2">
           {services.map((service) => (
-            <article
-              key={service.id}
-              id={service.id}
-              className="scroll-mt-24 rounded-card border border-border bg-white p-8 shadow-card"
-            >
+            <article key={service.id} className="card-elevated p-8">
               <h2 className="font-serif text-xl font-semibold text-navy">
                 {service.title}
               </h2>
@@ -51,7 +47,7 @@ export default function ServicesPage() {
                 href={servicePath(service.id)}
                 className="mt-4 inline-flex min-h-touch items-center text-sm font-semibold text-gold hover:underline"
               >
-                Learn more
+                View service details
               </Link>
             </article>
           ))}

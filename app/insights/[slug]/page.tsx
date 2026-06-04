@@ -53,7 +53,7 @@ export default async function InsightArticlePage({ params }: Props) {
 
       <Section>
         <p className="text-sm text-charcoal">
-          By <span className="font-semibold">Lawson Forensic</span>
+          By <span className="font-semibold">Matrimonial Forensic Accountant</span>
           {" · "}
           <time dateTime={article.datePublished}>
             {new Date(article.datePublished).toLocaleDateString("en-GB", {
@@ -80,7 +80,7 @@ export default async function InsightArticlePage({ params }: Props) {
         <p className="mt-10 text-body">
           To discuss an instruction,{" "}
           <Link href="/contact" className="font-semibold text-gold hover:underline">
-            contact Lawson Forensic
+            contact Matrimonial Forensic Accountant
           </Link>
           .
         </p>

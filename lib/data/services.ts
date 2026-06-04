@@ -17,6 +17,7 @@ export type Service = {
   metaTitle: string;
   metaDescription: string;
   blocks: ServiceContentBlock[];
+  faqs: FAQ[];
 };
 
 export const services: Service[] = [
@@ -24,131 +25,55 @@ export const services: Service[] = [
     id: "expert-witness",
     title: "Expert Witness Reports",
     description:
-      "CPR Part 35, FPR Part 25, and CrPR Part 33 compliant reports for civil, family, and criminal proceedings.",
-    metaTitle: "Expert Witness Reports | Lawson Forensic UK",
+      "FPR Part 25 compliant expert reports for financial remedy, Schedule 1, and TOLATA proceedings.",
+    metaTitle: "Expert Witness Reports | Matrimonial Forensic Accountant UK",
     metaDescription:
-      "CPR Part 35 and FPR Part 25 compliant expert witness reports for civil, family, and criminal proceedings. SJE appointments available nationwide.",
+      "FPR Part 25 compliant expert witness reports for financial remedy and family proceedings. Single joint expert appointments available.",
     blocks: [
       {
         type: "prose",
-        heading: "CPR Part 35 & FPR Part 25 Compliant Expert Reports",
+        heading: "FPR Part 25 Compliant Expert Reports",
         paragraphs: [
-          "All Lawson Forensic expert reports comply with the relevant procedural framework: CPR Part 35 for civil proceedings, FPR Part 25 for family proceedings, CrPR Part 33 for criminal matters. Our reports include a statement of truth and reflect our primary duty to the court.",
+          "All Matrimonial Forensic Accountant expert reports comply with FPR Part 25 and Practice Direction 25A for family proceedings. Our reports include a statement of truth where required and reflect our primary duty to the court.",
         ],
       },
       {
         type: "prose",
         heading: "Single Joint Expert (SJE) Appointments",
         paragraphs: [
-          "We are available for SJE appointments in appropriate cases, jointly instructed by both parties under CPR 35.7 or FPR 25.11. We understand the particular importance of demonstrating independence in SJE roles and the different dynamic of joint instruction letters.",
+          "We are available for SJE appointments under FPR 25.11, jointly instructed by both parties. We understand the joint letter of instruction format and the written questions process in financial remedy proceedings.",
         ],
       },
       {
         type: "list",
         heading: "What Our Expert Reports Cover",
         items: [
-          "Loss of profits and consequential loss",
-          "Business and share valuation",
-          "Forensic accounting opinions (GAAP, IFRS, accounting standards compliance)",
-          "Fraud loss quantification",
-          "POCA benefit and available assets analysis",
-          "Family financial proceedings (Form E review, business valuation, income analysis, add-backs)",
-          "Loss of earnings (personal injury, ET)",
-          "Insolvency analysis (solvency, transactions, misfeasance)",
-        ],
-      },
-      {
-        type: "table",
-        heading: "The Expert Report Process",
-        columns: ["Stage", "Lawson Forensic Action", "Typical Timeline"],
-        rows: [
-          ["Initial enquiry", "Assess scope, check conflicts, confirm availability", "Same day"],
-          ["Letter of instruction", "Review, raise queries if needed", "Within 2 days"],
-          ["Document review", "Analyse financial records and supporting materials", "1 to 4 weeks"],
-          ["Draft report", "Prepare CPR/FPR compliant draft", "2 to 4 weeks"],
-          ["Finalise", "Incorporate comments (factual only), finalise", "1 to 2 weeks"],
-          ["Written questions", "Respond to CPR Part 35.6 questions", "Within directed timetable"],
-          ["Oral evidence", "Attend hearing, give evidence", "As directed"],
+          "Matrimonial business and share valuation",
+          "Form E review and financial disclosure analysis",
+          "Income analysis, add-backs, and lifestyle benchmarking",
+          "Hidden asset and undisclosed income findings",
+          "Schedule 1 income and capital assessments",
+          "TOLATA contribution and financial history analysis",
         ],
       },
       {
         type: "prose",
-        heading: "Ikarian Reefer & Our Duty to the Court",
+        heading: "Our Duty to the Court",
         paragraphs: [
-          "Our duty is to the court, not to the party instructing us. This shapes every opinion we give and every report we write. We will advise instructing solicitors promptly if our preliminary view may be adverse to the instructing party.",
+          "Our duty is to the court, not to the party instructing us. We advise instructing solicitors promptly if our preliminary view may be adverse, because early advice is more useful than a late surprise.",
         ],
       },
     ],
-  },
-  {
-    id: "fraud-investigation",
-    title: "Fraud Investigation",
-    description:
-      "Independent forensic investigations into suspected fraud and financial misconduct.",
-    metaTitle: "Fraud Investigation | Lawson Forensic UK",
-    metaDescription:
-      "Independent forensic fraud investigations for solicitors and businesses, with evidence-quality reporting and LPP where instructed via solicitors.",
-    blocks: [
+    faqs: [
       {
-        type: "prose",
-        heading: "Independent Forensic Investigations",
-        paragraphs: [
-          "Lawson Forensic conducts independent financial investigations for solicitors, businesses, and insurers, working under legal professional privilege where required to protect findings from premature disclosure.",
-        ],
+        question: "Are your family court expert reports FPR Part 25 compliant?",
+        answer:
+          "Yes. All family court expert reports comply with FPR Part 25 and Practice Direction 25A, including a statement of truth where required. Our primary duty is to the court.",
       },
       {
-        type: "list",
-        heading: "What We Investigate",
-        items: [
-          "Suspected employee fraud or financial misconduct",
-          "Unexplained financial transactions or irregularities",
-          "Business disputes where financial records are contested",
-          "Pre-litigation fact-finding to assess claim strength",
-          "Insurance claim investigation (fraud or quantum)",
-          "Internal investigations prior to self-reporting or regulatory engagement",
-        ],
-      },
-      {
-        type: "prose",
-        heading: "Legal Professional Privilege",
-        paragraphs: [
-          "Where instructed via a solicitor, investigation reports attract legal professional privilege until the client decides to disclose, protecting the ability to assess position before committing to a course of action.",
-        ],
-      },
-      {
-        type: "prose",
-        heading: "Preliminary Assessments",
-        paragraphs: [
-          "In urgent situations, particularly where a freezing injunction is being considered, we can provide a rapid preliminary assessment of the financial evidence to support the application.",
-        ],
-      },
-    ],
-  },
-  {
-    id: "asset-tracing",
-    title: "Asset Tracing",
-    description:
-      "Tracing diverted funds and reconstructing financial flows to support recovery proceedings.",
-    metaTitle: "Asset Tracing | Lawson Forensic UK",
-    metaDescription:
-      "Forensic asset tracing and fund flow reconstruction for civil fraud recovery, insolvency, and dispute support.",
-    blocks: [
-      {
-        type: "prose",
-        paragraphs: [
-          "Lawson Forensic traces diverted funds and reconstructs financial flows from primary records, supporting freezing injunction applications, civil recovery, and insolvency claims.",
-          "Our work includes bank statement analysis, identification of connected-party transfers, and chronologies linking transactions to alleged misconduct.",
-        ],
-      },
-      {
-        type: "list",
-        heading: "Typical instructions",
-        items: [
-          "Tracing corporate funds diverted to connected accounts",
-          "Identifying assets acquired with misappropriated funds",
-          "Supporting civil fraud and recovery proceedings",
-          "Insolvency preference and transaction claims",
-        ],
+        question: "Do you accept single joint expert appointments?",
+        answer:
+          "Yes. We accept SJE appointments under FPR 25.11 in financial remedy and related family proceedings, jointly instructed by both parties.",
       },
     ],
   },
@@ -156,83 +81,208 @@ export const services: Service[] = [
     id: "business-valuation",
     title: "Business Valuation",
     description:
-      "Contentious and matrimonial valuations with clear, court-ready methodology.",
-    metaTitle: "Business Valuation | Lawson Forensic UK",
+      "Matrimonial business valuations with personal and transferable goodwill analysis and liquidity assessment.",
+    metaTitle: "Business Valuation in Divorce | Matrimonial Forensic Accountant UK",
     metaDescription:
-      "Contentious and matrimonial business and share valuations with transparent, court-ready methodology.",
+      "Matrimonial business valuations for financial remedy proceedings. Personal and transferable goodwill, liquidity analysis, and FPR Part 25 compliant reports.",
     blocks: [
       {
         type: "prose",
+        heading: "Matrimonial Business Valuation",
         paragraphs: [
-          "We provide business and share valuations for commercial disputes, shareholder claims, and family financial remedy proceedings.",
-          "Methodology is selected for the specific proceedings and business type: maintainable earnings, DCF, or NAV as appropriate, with clear explanation for the court.",
+          "Business valuation in divorce requires adjustments that do not arise in commercial valuations. We address personal versus transferable goodwill, maintainable earnings, and whether the business can fund a lump sum or maintenance order.",
         ],
       },
       {
         type: "list",
-        heading: "Matters we value",
+        heading: "Our Valuation Approach",
         items: [
-          "Owner-managed and SME trading businesses",
-          "Shareholder and unfair prejudice disputes",
-          "Matrimonial business interests (FPR Part 25)",
-          "Completion accounts and breach of warranty disputes",
+          "Maintainable earnings for trading businesses",
+          "Net asset value for property or investment vehicles",
+          "Discounted cash flow where appropriate to growth companies",
+          "Liquidity analysis for lump sum orders",
+          "Clear explanation of methodology for the Family Court",
         ],
+      },
+    ],
+    faqs: [
+      {
+        question: "How do you approach goodwill in matrimonial valuations?",
+        answer:
+          "We distinguish personal goodwill from transferable goodwill and explain the impact on the matrimonial valuation conclusion in terms the court can follow.",
+      },
+      {
+        question: "Can you value multiple businesses in one instruction?",
+        answer:
+          "Yes. We value multiple entities where required, addressing cross-guarantees, shared overheads, and the appropriate methodology for each business.",
       },
     ],
   },
   {
-    id: "loss-quantification",
-    title: "Loss Quantification",
+    id: "form-e-review",
+    title: "Form E Review & Analysis",
     description:
-      "Loss of profits, consequential loss, and commercial dispute quantum analysis.",
-    metaTitle: "Loss Quantification | Lawson Forensic UK",
+      "Forensic review of Form E financial disclosure, identifying inconsistencies and matters requiring clarification.",
+    metaTitle: "Form E Review & Analysis | Matrimonial Forensic Accountant UK",
     metaDescription:
-      "Loss of profits and consequential loss quantification for commercial disputes and insurance claims.",
+      "Forensic Form E review for family proceedings. Identify inconsistencies, undisclosed matters, and issues requiring further disclosure.",
     blocks: [
       {
         type: "prose",
+        heading: "Forensic Form E Review",
         paragraphs: [
-          "Lawson Forensic quantifies financial loss in commercial disputes, including loss of profits, consequential loss, and additional costs arising from breach of contract or tort.",
-          "Analysis is based on financial records, counterfactual scenarios, and assumptions stated transparently so the court can follow the reasoning.",
+          "We conduct detailed forensic review of Form E financial disclosure and supporting documents, identifying inconsistencies between declared assets, income, and expenditure and the underlying financial records.",
         ],
       },
       {
         type: "list",
-        heading: "Common instructions",
+        heading: "What We Review",
         items: [
-          "Loss of profits following breach of contract",
-          "Business interruption and consequential loss",
-          "Shareholder and partnership dispute quantum",
-          "Professional negligence loss quantification",
+          "Form E sections and supporting documents",
+          "Bank statements and credit card records",
+          "Business accounts and tax returns",
+          "Property and investment holdings",
+          "Matters requiring clarification or further disclosure",
         ],
+      },
+    ],
+    faqs: [
+      {
+        question: "When is a Form E forensic review appropriate?",
+        answer:
+          "A forensic review is appropriate where disclosure appears incomplete, inconsistent, or where specific assets or income require expert analysis before FDR or final hearing.",
+      },
+      {
+        question: "Can Form E review support a non-disclosure application?",
+        answer:
+          "Yes. Our analysis can identify matters supporting requests for further disclosure or specific issue directions, subject to the court's case management decisions.",
       },
     ],
   },
   {
-    id: "family-matrimonial",
-    title: "Family & Matrimonial Accounting",
+    id: "hidden-assets",
+    title: "Hidden Asset Investigation",
     description:
-      "Financial remedy, Form E review, business valuation, and income analysis.",
-    metaTitle: "Family & Matrimonial Accounting | Lawson Forensic UK",
+      "Independent investigation of undisclosed assets, income, and lifestyle inconsistencies in family proceedings.",
+    metaTitle: "Hidden Asset Investigation | Matrimonial Forensic Accountant UK",
     metaDescription:
-      "FPR Part 25 forensic accounting for financial remedy: Form E review, business valuation, income analysis, and add-backs.",
+      "Forensic investigation of hidden assets and undisclosed income in divorce and financial remedy proceedings. LPP when instructed via solicitors.",
     blocks: [
       {
         type: "prose",
+        heading: "Independent Matrimonial Investigations",
         paragraphs: [
-          "We provide forensic accounting in financial remedy proceedings, including Form E review, business valuation, hidden asset and income investigation, add-backs, and liquidity analysis.",
-          "We accept party-appointed and single joint expert appointments under FPR Part 25.",
+          "We conduct proportionate forensic investigations for family law solicitors, working under legal professional privilege where required to protect findings from premature disclosure.",
         ],
       },
       {
         type: "list",
-        heading: "Services in family proceedings",
+        heading: "What We Investigate",
         items: [
-          "Matrimonial business valuation",
-          "Income analysis and add-backs",
-          "Form E review",
-          "Schedule 1 and TOLATA matters",
+          "Suspected undisclosed bank accounts and investments",
+          "Income inconsistent with declared Form E position",
+          "Related-party transactions and unexplained transfers",
+          "Offshore structures and trust holdings",
+          "Lifestyle expenditure inconsistent with declared resources",
+          "Pre-FDR fact-finding before specific issue directions",
         ],
+      },
+      {
+        type: "prose",
+        heading: "Legal Professional Privilege",
+        paragraphs: [
+          "When instructed via a solicitor, investigation reports attract legal professional privilege until the client decides to deploy them in proceedings.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "Can investigation findings be protected from disclosure?",
+        answer:
+          "When instructed via solicitors, reports attract legal professional privilege until the client decides to disclose, allowing informed assessment before committing to a course of action.",
+      },
+      {
+        question: "How long does a preliminary hidden asset investigation take?",
+        answer:
+          "Preliminary assessments typically take one to two weeks depending on document volume. We agree scope at the outset to keep the investigation proportionate.",
+      },
+    ],
+  },
+  {
+    id: "income-lifestyle",
+    title: "Income & Lifestyle Analysis",
+    description:
+      "Income reconstruction, add-backs, and lifestyle benchmarking for maintenance and financial remedy claims.",
+    metaTitle: "Income & Lifestyle Analysis | Matrimonial Forensic Accountant UK",
+    metaDescription:
+      "Income reconstruction and lifestyle analysis for financial remedy and maintenance claims in UK family proceedings.",
+    blocks: [
+      {
+        type: "prose",
+        heading: "Income Reconstruction",
+        paragraphs: [
+          "We reconstruct maintainable income from business accounts, tax returns, and bank records, addressing director remuneration, dividends, trust distributions, and complex remuneration structures.",
+        ],
+      },
+      {
+        type: "prose",
+        heading: "Lifestyle Analysis",
+        paragraphs: [
+          "Where declared income is inconsistent with identified expenditure, we benchmark lifestyle against financial records to identify matters requiring explanation or add-back.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What is lifestyle analysis in financial remedy proceedings?",
+        answer:
+          "Lifestyle analysis compares declared income and resources against identified expenditure and asset acquisition, highlighting inconsistencies that may indicate undisclosed income or assets.",
+      },
+      {
+        question: "Can you analyse self-employed income for maintenance claims?",
+        answer:
+          "Yes. We establish maintainable income from business records, addressing add-backs and the distinction between business and personal resources.",
+      },
+    ],
+  },
+  {
+    id: "add-backs",
+    title: "Add-backs & Financial Reconstruction",
+    description:
+      "Forensic reconstruction of maintainable income and identification of discretionary expenditure add-backs.",
+    metaTitle: "Add-backs & Financial Reconstruction | Matrimonial Forensic Accountant UK",
+    metaDescription:
+      "Forensic add-backs and income reconstruction for matrimonial proceedings. Identify discretionary expenditure and establish maintainable income.",
+    blocks: [
+      {
+        type: "prose",
+        heading: "Add-backs and Income Reconstruction",
+        paragraphs: [
+          "We identify discretionary expenditure and accounting adjustments that should be added back to establish maintainable income for periodical payments and financial remedy claims.",
+        ],
+      },
+      {
+        type: "list",
+        heading: "Common Add-back Categories",
+        items: [
+          "Excessive director remuneration",
+          "Personal expenses through the business",
+          "Related-party transactions",
+          "Unexplained cash withdrawals",
+          "Non-commercial expenditure",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        question: "What are add-backs in matrimonial income analysis?",
+        answer:
+          "Add-backs adjust declared income for expenditure that is personal or discretionary rather than genuinely required for the business, establishing a maintainable income figure for the court.",
+      },
+      {
+        question: "Do add-backs require a full expert report?",
+        answer:
+          "Depending on the case, add-backs may be addressed in a dedicated income report or as part of a wider FPR Part 25 expert report. We advise on proportionate scope at the outset.",
       },
     ],
   },
@@ -244,4 +294,9 @@ export function getService(id: string): Service | undefined {
 
 export function servicePath(id: string): string {
   return `/services/${id}`;
+}
+
+/** Nav and footer links */
+export function getServiceHref(service: Service): string {
+  return servicePath(service.id);
 }

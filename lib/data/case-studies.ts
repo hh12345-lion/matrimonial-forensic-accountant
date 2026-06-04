@@ -9,49 +9,48 @@ export type CaseStudy = {
 export const caseStudies: CaseStudy[] = [
   {
     title:
-      "Shareholder Dispute: Quantifying Unfair Prejudice in an Owner-Managed Business",
-    background:
-      "A minority shareholder in an SME retailing business alleged unfair prejudice, claiming the majority had diverted profits and undervalued the company for a buyout.",
-    instruction:
-      "Appointed single joint expert to value the business at fair value under Companies Act 2006 s994, and to assess whether the alleged financial misconduct affected the valuation.",
-    approach:
-      "Analysed five years of accounts and management information; investigated the contested director remuneration and related-party transactions; applied maintainable earnings methodology with adjustments for the identified add-backs.",
-    outcome:
-      "The SJE report produced a higher valuation than the majority's own expert had suggested, and identified significant unjustified director remuneration that the tribunal treated as an add-back. The matter settled at the joint expert meeting stage.",
-  },
-  {
-    title:
       "Financial Remedy: Business Valuation and Hidden Income in Divorce Proceedings",
     background:
       "High-value financial remedy proceedings involving a spouse who owned several businesses in the hospitality sector. The other party suspected significant undisclosed income.",
     instruction:
-      "FPR Part 25 SJE appointment to value the businesses and assess the income available for maintenance purposes.",
+      "FPR Part 25 single joint expert appointment to value the businesses and assess the income available for maintenance purposes.",
     approach:
       "Reviewed four years of business accounts, management information, and bank statements; conducted lifestyle analysis benchmarking declared income against identified expenditure; identified multiple add-backs and adjusted the income figure.",
     outcome:
       "The adjusted income figure was substantially higher than the declared position. The valuation and income analysis formed the basis for the consent order reached at the FDR hearing.",
   },
   {
-    title: "Civil Fraud Recovery: Tracing Diverted Corporate Funds",
+    title:
+      "Matrimonial Business Valuation: Personal Goodwill in a Professional Practice",
     background:
-      "A company suspected its former financial controller had systematically diverted funds to connected accounts over a three-year period.",
+      "Financial remedy proceedings concerning a partner in a medical practice. The parties disputed the matrimonial value of the practice and the extent of personal goodwill.",
     instruction:
-      "Instructed via solicitors under legal professional privilege to investigate the financial records and produce an evidence-quality report quantifying the alleged loss.",
+      "Party-appointed expert to value the practice and address the personal versus transferable goodwill issue for the court.",
     approach:
-      "Analysed bank statements, accounting records, and payment approval workflows; traced the fund flows from company accounts to connected third-party accounts; reconstructed the fraud chronology and quantified the total loss.",
+      "Analysed practice accounts, partner drawings, and comparable transactions; applied maintainable earnings methodology with a clear split between personal and transferable goodwill; assessed liquidity for any lump sum order.",
     outcome:
-      "The investigation identified a total loss significantly larger than initially suspected. The expert report supported a successful freezing injunction application and formed the basis for civil recovery proceedings.",
+      "The report's goodwill analysis was accepted by both parties' counsel. The matter settled before final hearing with a consent order reflecting the expert's matrimonial valuation range.",
   },
   {
-    title:
-      "POCA Confiscation: Challenging the Prosecution's Benefit Calculation",
+    title: "Hidden Assets: Lifestyle Analysis and Undisclosed Bank Accounts",
     background:
-      "A defendant convicted of a series of fraudulent investment scheme offences faced a POCA confiscation hearing. The prosecution alleged a benefit figure substantially higher than the defendant's counsel considered accurate.",
+      "Financial remedy proceedings where the respondent declared modest income but maintained a lifestyle inconsistent with disclosed resources.",
     instruction:
-      "Instructed by defence solicitors to review and challenge the prosecution's POCA benefit calculation and available assets assessment.",
+      "Instructed via solicitors under legal professional privilege to investigate financial records and identify undisclosed assets and income.",
     approach:
-      "Reviewed the prosecution's financial analysis in detail; identified legitimate business receipts incorrectly categorised as criminal benefit; traced the source of key assets to legitimate income; produced a CrPR Part 33 compliant expert report.",
+      "Conducted lifestyle analysis against declared income; traced bank and credit card transactions; identified offshore account activity and undeclared rental income from a property not disclosed on Form E.",
     outcome:
-      "The Lawson Forensic report identified a materially lower benefit figure. The Newton hearing concluded with a confiscation order significantly below the prosecution's initial calculation.",
+      "The investigation supported an application for further disclosure. Following specific issue directions, the respondent's revised disclosure led to a revised open offer and settlement at FDR.",
+  },
+  {
+    title: "Schedule 1: Income Analysis for High Earner with Complex Remuneration",
+    background:
+      "Schedule 1 proceedings where the paying parent was a senior executive with equity incentives, deferred bonuses, and trust distributions.",
+    instruction:
+      "Expert report on the paying parent's maintainable income and capital resources for housing and maintenance claims.",
+    approach:
+      "Reconstructed maintainable income from employment contracts, bonus history, and trust distributions; analysed the liquidity of equity holdings; addressed the treatment of deferred remuneration in periodical payments calculations.",
+    outcome:
+      "The court accepted the expert's income analysis for the purposes of the interim maintenance order. The final Schedule 1 order reflected the capital and income conclusions in the report.",
   },
 ];

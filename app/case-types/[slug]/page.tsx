@@ -3,36 +3,34 @@ import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbSchema, faqPageSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/PageHero";
-import { Section } from "@/components/Section";
+import { Section, Prose } from "@/components/Section";
 import { CTASection } from "@/components/CTASection";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { ServiceContent } from "@/components/ServiceContent";
-import { services, getService, servicePath } from "@/lib/data/services";
-import { SITE_NAME } from "@/lib/site";
+import { caseTypes, getCaseType, caseTypePath } from "@/lib/data/case-types";
 
 type Props = { params: Promise<{ slug: string }> };
 
 export async function generateStaticParams() {
-  return services.map((s) => ({ slug: s.id }));
+  return caseTypes.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const service = getService(slug);
-  if (!service) return {};
+  const item = getCaseType(slug);
+  if (!item) return {};
   return buildMetadata({
-    title: service.metaTitle,
-    description: service.metaDescription,
-    path: servicePath(slug),
+    title: item.metaTitle,
+    description: item.metaDescription,
+    path: caseTypePath(slug),
   });
 }
 
-export default async function ServicePage({ params }: Props) {
+export default async function CaseTypePage({ params }: Props) {
   const { slug } = await params;
-  const service = getService(slug);
-  if (!service) notFound();
+  const item = getCaseType(slug);
+  if (!item) notFound();
 
-  const path = servicePath(slug);
+  const path = caseTypePath(slug);
 
   return (
     <>
@@ -42,37 +40,37 @@ export default async function ServicePage({ params }: Props) {
           "@graph": [
             breadcrumbSchema([
               { name: "Home", path: "/" },
-              { name: "Services", path: "/services" },
-              { name: service.title, path },
+              { name: "Case Types", path: "/case-types" },
+              { name: item.hubLabel, path },
             ]),
-            faqPageSchema(service.faqs),
+            faqPageSchema(item.faqs),
           ],
         }}
       />
       <PageHero
-        title={service.title}
-        subtitle={service.description}
+        title={item.h1}
+        subtitle={item.metaDescription}
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: service.title },
+          { label: "Case Types", href: "/case-types" },
+          { label: item.hubLabel },
         ]}
       />
 
       <Section>
-        <ServiceContent blocks={service.blocks} />
+        <Prose>
+          {item.paragraphs.map((p) => (
+            <p key={p.slice(0, 40)}>{p}</p>
+          ))}
+        </Prose>
       </Section>
 
       <Section alt>
         <h2 className="font-serif text-2xl font-semibold text-navy md:text-3xl">
           Frequently asked questions
         </h2>
-        <p className="mt-2 max-w-2xl text-body">
-          Common questions about {service.title.toLowerCase()} from{" "}
-          {SITE_NAME}.
-        </p>
         <div className="mt-8">
-          <FAQAccordion faqs={service.faqs} />
+          <FAQAccordion faqs={item.faqs} />
         </div>
       </Section>
 

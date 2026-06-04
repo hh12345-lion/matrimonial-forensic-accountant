@@ -54,4 +54,4 @@ export function buildMetadata({
 
 /** Homepage title per SEO-ARCHITECTURE.md Appendix A */
 export const HOME_TITLE =
-  "Lawson Forensic | Forensic Accounting & Expert Witness UK";
+  "Matrimonial Forensic Accountant | Expert Witness & Family Forensic Accounting UK";

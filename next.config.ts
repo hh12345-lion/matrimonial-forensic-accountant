@@ -19,10 +19,9 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/investigations",
-        destination: "/services/fraud-investigation",
+        destination: "/services/hidden-assets",
         permanent: true,
       },
-      { source: "/fees", destination: "/contact", permanent: true },
     ];
   },
 };

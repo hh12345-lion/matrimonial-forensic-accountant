@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -8,18 +7,6 @@ import { CookieBanner } from "@/components/cookies/CookieBanner";
 import { CookiePreferencesModal } from "@/components/cookies/CookiePreferencesModal";
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { HOME_TITLE } from "@/lib/metadata";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -51,7 +38,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en-GB">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="flex min-h-screen min-h-[100dvh] flex-col">
         <script
           dangerouslySetInnerHTML={{

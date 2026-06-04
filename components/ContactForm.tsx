@@ -2,26 +2,28 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { SITE_EMAIL } from "@/lib/site";
+import { SITE_EMAIL, SITE_NAME } from "@/lib/site";
 
 const instructionTypes = [
-  "Expert Witness (Civil)",
-  "Expert Witness (Family)",
-  "Expert Witness (Criminal)",
-  "Financial Investigation",
+  "Expert Witness Report (FPR Part 25)",
+  "Business Valuation",
+  "Form E / Financial Disclosure Review",
+  "Hidden Assets Investigation",
+  "Income / Lifestyle Analysis",
+  "Add-backs / Financial Reconstruction",
+  "Single Joint Expert (SJE) Appointment",
   "Preliminary Assessment",
   "Advisory / Litigation Support",
-  "SJE Appointment",
   "Other",
 ];
 
 const practiceAreas = [
-  "Commercial Dispute",
-  "Fraud & Financial Crime",
-  "Family Proceedings",
-  "Personal Injury / Clinical Negligence",
-  "Insolvency",
-  "Regulatory",
+  "Financial Remedy / Divorce",
+  "Schedule 1 (Children Act)",
+  "TOLATA / Cohabitation",
+  "High Net Worth Matrimonial",
+  "Self-Employed Income",
+  "Overseas Assets / Trusts",
   "Other",
 ];
 
@@ -74,7 +76,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-card border border-border px-4 py-3 text-body focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 min-h-touch";
+    "w-full rounded-card border border-line px-4 py-3 text-body focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 min-h-touch";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
@@ -93,7 +95,10 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="organisation" className="mb-1 block text-sm font-medium text-navy">
+          <label
+            htmlFor="organisation"
+            className="mb-1 block text-sm font-medium text-navy"
+          >
             Law Firm / Organisation <span className="text-gold">*</span>
           </label>
           <input
@@ -102,6 +107,7 @@ export function ContactForm() {
             type="text"
             required
             className={inputClass}
+            autoComplete="organization"
           />
         </div>
       </div>
@@ -136,7 +142,10 @@ export function ContactForm() {
 
       <div className="grid gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="instruction_type" className="mb-1 block text-sm font-medium text-navy">
+          <label
+            htmlFor="instruction_type"
+            className="mb-1 block text-sm font-medium text-navy"
+          >
             Nature of Instruction
           </label>
           <select id="instruction_type" name="instruction_type" className={inputClass}>
@@ -148,7 +157,10 @@ export function ContactForm() {
           </select>
         </div>
         <div>
-          <label htmlFor="practice_area" className="mb-1 block text-sm font-medium text-navy">
+          <label
+            htmlFor="practice_area"
+            className="mb-1 block text-sm font-medium text-navy"
+          >
             Practice Area
           </label>
           <select id="practice_area" name="practice_area" className={inputClass}>
@@ -183,7 +195,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="referral" className="mb-1 block text-sm font-medium text-navy">
-          How did you hear about Lawson Forensic?
+          How did you hear about {SITE_NAME}?
         </label>
         <select id="referral" name="referral" className={inputClass}>
           {referralSources.map((s) => (
@@ -207,7 +219,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="min-h-touch w-full rounded-card border-2 border-gold bg-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-charcoal focus:outline-none focus-visible:ring-2 focus-visible:ring-gold disabled:opacity-60 md:w-auto"
+        className="min-h-touch w-full rounded-card border-2 border-gold bg-gold px-6 py-3 text-sm font-semibold text-navy transition hover:border-gold-light hover:bg-gold-light focus:outline-none focus-visible:ring-2 focus-visible:ring-gold disabled:opacity-60 md:w-auto"
       >
         {status === "submitting" ? "Sending..." : "Send Enquiry"}
       </button>

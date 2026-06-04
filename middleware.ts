@@ -5,8 +5,8 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
   const url = request.nextUrl.clone();
 
-  if (host === "lawsonforensic.com") {
-    url.host = "www.lawsonforensic.com";
+  if (host === "matrimonialforensicaccountant.com") {
+    url.host = "www.matrimonialforensicaccountant.com";
     url.protocol = "https:";
     return NextResponse.redirect(url, 301);
   }

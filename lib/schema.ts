@@ -1,7 +1,6 @@
 import { SITE_URL, SITE_NAME, SITE_EMAIL } from "./site";
 import { getOrganizationSameAs } from "./seo/sameAs";
-import { services as siteServices, getService } from "./data/services";
-import { servicePath } from "./data/services";
+import { services as siteServices, servicePath } from "./data/services";
 import type { FAQ } from "./data/faq";
 
 export function jsonLdScript(data: object) {
@@ -43,6 +42,21 @@ const schemaServices = siteServices.map((s) => ({
   url: `${SITE_URL}${servicePath(s.id)}`,
 }));
 
+export function servicePageSchema(serviceId: string) {
+  const service = siteServices.find((s) => s.id === serviceId);
+  if (!service) return null;
+  const url = `${SITE_URL}${servicePath(serviceId)}`;
+  return {
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: service.title,
+    description: service.description,
+    url,
+    provider: { "@id": `${SITE_URL}/#organization` },
+    areaServed: "United Kingdom",
+  };
+}
+
 export function homepageSchema() {
   return {
     "@context": "https://schema.org",
@@ -53,7 +67,7 @@ export function homepageSchema() {
         url: SITE_URL,
         name: SITE_NAME,
         description:
-          "UK boutique forensic accounting practice providing expert witness reports, financial investigations, and dispute support.",
+          "UK specialist matrimonial forensic accounting practice providing FPR Part 25 expert witness reports, business valuations, and financial investigations for family proceedings.",
         inLanguage: "en-GB",
         publisher: { "@id": `${SITE_URL}/#organization` },
         potentialAction: {
@@ -80,7 +94,7 @@ export function homepageSchema() {
           name: "United Kingdom",
         },
         description:
-          "UK boutique forensic accounting practice providing expert witness reports, financial investigations, and dispute support.",
+          "UK specialist matrimonial forensic accounting practice providing FPR Part 25 expert witness reports, business valuations, and financial investigations for family proceedings.",
         sameAs: getOrganizationSameAs(),
       },
       {
@@ -88,7 +102,7 @@ export function homepageSchema() {
         "@id": `${SITE_URL}/#professional-service`,
         name: SITE_NAME,
         url: SITE_URL,
-        serviceType: "Forensic Accounting",
+        serviceType: "Matrimonial Forensic Accounting",
         provider: { "@id": `${SITE_URL}/#organization` },
         areaServed: "United Kingdom",
         hasOfferCatalog: {
@@ -128,21 +142,6 @@ export function servicesPageSchema() {
       },
       areaServed: "United Kingdom",
     })),
-  };
-}
-
-export function servicePageSchema(serviceId: string) {
-  const service = getService(serviceId);
-  if (!service) return null;
-  const url = `${SITE_URL}${servicePath(serviceId)}`;
-  return {
-    "@type": "Service",
-    "@id": `${url}#service`,
-    name: service.title,
-    description: service.description,
-    url,
-    provider: { "@id": `${SITE_URL}/#organization` },
-    areaServed: "United Kingdom",
   };
 }
 

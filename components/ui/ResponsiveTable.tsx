@@ -25,7 +25,7 @@ export function ResponsiveTable({
         {rows.map((row, rowIndex) => (
           <article
             key={`${row[0]}-${rowIndex}`}
-            className="rounded-card border border-border bg-white p-4 shadow-card"
+            className="rounded-card border border-line bg-white p-4 shadow-card"
           >
             <dl className="space-y-3">
               {columns.map((col, colIndex) => (
@@ -47,7 +47,7 @@ export function ResponsiveTable({
         ))}
       </div>
       <div
-        className={`hidden overflow-x-auto rounded-card border border-border shadow-card md:block ${
+        className={`hidden overflow-x-auto rounded-card border border-line shadow-card md:block ${
           heading ? "mt-6" : ""
         }`}
       >
@@ -61,7 +61,7 @@ export function ResponsiveTable({
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-border bg-white">
+          <tbody className="divide-y divide-line bg-white">
             {rows.map((row, rowIndex) => (
               <tr key={`${row[0]}-${rowIndex}`}>
                 {row.map((cell, ci) => (

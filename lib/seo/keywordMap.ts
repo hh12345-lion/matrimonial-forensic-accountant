@@ -1,6 +1,5 @@
 /**
- * Keyword-to-URL mapping from docs/SEO-ARCHITECTURE.md §1
- * Used for internal linking hints and content planning (not meta keywords stuffing).
+ * Keyword-to-URL mapping for internal linking and content planning.
  */
 
 export type KeywordTier = "branded" | "transactional" | "informational" | "practice-area";
@@ -16,10 +15,9 @@ export const KEYWORD_MAPPINGS: KeywordMapping[] = [
   {
     tier: "branded",
     keywords: [
-      "Lawson Forensic",
-      "Lawson Forensic expert witness",
-      "Lawson Forensic forensic accountant",
-      "lawsonforensic.com",
+      "Matrimonial Forensic Accountant",
+      "matrimonial forensic accountant UK",
+      "matrimonialforensicaccountant.com",
     ],
     primaryUrls: ["/"],
     secondaryUrls: ["/about", "/services", "/contact"],
@@ -27,10 +25,9 @@ export const KEYWORD_MAPPINGS: KeywordMapping[] = [
   {
     tier: "transactional",
     keywords: [
-      "forensic accountant expert witness UK",
-      "forensic accounting expert witness UK",
-      "boutique forensic accounting UK",
-      "forensic accountant SJE UK",
+      "matrimonial forensic accountant expert witness UK",
+      "forensic accountant divorce UK",
+      "family court forensic accountant UK",
     ],
     primaryUrls: ["/services/expert-witness", "/services"],
     secondaryUrls: ["/practice-areas", "/contact"],
@@ -38,35 +35,15 @@ export const KEYWORD_MAPPINGS: KeywordMapping[] = [
   {
     tier: "informational",
     keywords: [
-      "how to instruct forensic accountant expert witness",
-      "forensic accountant CPR Part 35 UK",
-      "single joint expert forensic accountant UK",
+      "business valuation divorce expert",
+      "hidden assets divorce forensic accountant",
     ],
     primaryUrls: [
-      "/insights/instructing-forensic-accountant-guide",
-      "/insights/choosing-single-joint-expert",
+      "/insights/instructing-matrimonial-forensic-accountant",
+      "/insights/business-valuation-divorce-guide",
       "/faq",
-      "/how-we-work",
     ],
     secondaryUrls: ["/services/expert-witness"],
-  },
-  {
-    tier: "practice-area",
-    keywords: ["forensic accountant commercial dispute UK"],
-    primaryUrls: ["/practice-areas/commercial-disputes"],
-    secondaryUrls: ["/services/loss-quantification", "/case-studies"],
-  },
-  {
-    tier: "practice-area",
-    keywords: ["forensic accountant divorce valuation UK"],
-    primaryUrls: ["/practice-areas/family-proceedings"],
-    secondaryUrls: ["/insights/business-valuation-divorce-guide"],
-  },
-  {
-    tier: "practice-area",
-    keywords: ["POCA expert witness forensic accountant UK"],
-    primaryUrls: ["/practice-areas/fraud-financial-crime"],
-    secondaryUrls: ["/insights/poca-benefit-calculation-guide"],
   },
 ];
 
@@ -75,40 +52,40 @@ export function getUrlsForPracticeAreaSlug(slug: string): {
   services: string[];
   insights: string[];
 } {
-  const map: Record<
-    string,
-    { services: string[]; insights: string[] }
-  > = {
-    "commercial-disputes": {
-      services: ["loss-quantification", "business-valuation"],
-      insights: ["choosing-single-joint-expert"],
-    },
-    "fraud-financial-crime": {
-      services: ["fraud-investigation", "asset-tracing"],
-      insights: ["poca-benefit-calculation-guide"],
-    },
-    "family-proceedings": {
-      services: ["family-matrimonial", "expert-witness"],
+  const map: Record<string, { services: string[]; insights: string[] }> = {
+    "financial-remedy-divorce": {
+      services: ["/services/expert-witness", "/services/business-valuation"],
       insights: ["business-valuation-divorce-guide"],
     },
-    "personal-injury-clinical-negligence": {
-      services: ["expert-witness", "loss-quantification"],
+    "business-valuation-matrimonial": {
+      services: ["/services/business-valuation", "/services/expert-witness"],
+      insights: ["business-valuation-divorce-guide"],
+    },
+    "hidden-assets-undisclosed-income": {
+      services: ["/services/hidden-assets", "/services/income-lifestyle"],
+      insights: ["hidden-assets-divorce-guide"],
+    },
+    "schedule-1-children-act": {
+      services: ["/services/expert-witness"],
+      insights: ["instructing-matrimonial-forensic-accountant"],
+    },
+    "tolata-cohabitation": {
+      services: ["/services/expert-witness"],
       insights: [],
     },
-    "insolvency-administration": {
-      services: ["expert-witness", "business-valuation"],
-      insights: [],
-    },
-    "regulatory-proceedings": {
-      services: ["fraud-investigation", "expert-witness"],
-      insights: [],
+    "high-net-worth-complex-matrimonial": {
+      services: ["/services/expert-witness", "/services/hidden-assets"],
+      insights: ["business-valuation-divorce-guide"],
     },
   };
 
-  const entry = map[slug] ?? { services: ["expert-witness"], insights: [] };
+  const entry = map[slug] ?? {
+    services: ["/services/expert-witness"],
+    insights: [],
+  };
   return {
     primary: `/practice-areas/${slug}`,
-    services: entry.services.map((id) => `/services/${id}`),
+    services: entry.services,
     insights: entry.insights.map((s) => `/insights/${s}`),
   };
 }

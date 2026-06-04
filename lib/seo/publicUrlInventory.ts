@@ -1,5 +1,6 @@
 import { SITE_URL } from "../site";
 import { services, servicePath } from "../data/services";
+import { caseTypes, caseTypePath } from "../data/case-types";
 import { practiceAreas } from "../data/practice-areas";
 import { insights } from "../data/insights";
 
@@ -9,6 +10,8 @@ export const APP_STATIC_PATHS = [
   "/about",
   "/services",
   ...services.map((s) => servicePath(s.id)),
+  "/case-types",
+  ...caseTypes.map((c) => caseTypePath(c.slug)),
   "/practice-areas",
   ...practiceAreas.map((p) => `/practice-areas/${p.slug}`),
   "/case-studies",
@@ -17,7 +20,6 @@ export const APP_STATIC_PATHS = [
   "/faq",
   "/insights",
   ...insights.map((i) => `/insights/${i.slug}`),
-  "/contact",
 ] as const;
 
 /** Valid routes excluded from sitemap (noindex or utility) */
@@ -26,6 +28,8 @@ export const NON_INDEX_PATHS = [
   "/privacy",
   "/terms",
   "/cookies",
+  "/contact",
+  "/fees",
 ] as const;
 
 export type PublicUrlInventory = {
@@ -49,6 +53,7 @@ export function getSitemapPriority(path: string): number {
     path.startsWith("/services/")
   )
     return 0.9;
+  if (path === "/case-types" || path.startsWith("/case-types/")) return 0.88;
   if (path === "/practice-areas" || path.startsWith("/practice-areas/"))
     return path === "/practice-areas" ? 0.88 : 0.85;
   if (
@@ -61,7 +66,6 @@ export function getSitemapPriority(path: string): number {
   if (path.startsWith("/insights/")) return 0.8;
   if (path === "/cookies" || path === "/privacy" || path === "/terms")
     return 0.3;
-  if (path === "/contact") return 0.5;
   return 0.7;
 }
 

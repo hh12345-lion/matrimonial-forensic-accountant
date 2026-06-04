@@ -5,8 +5,8 @@ import { Section, Prose } from "@/components/Section";
 import { SITE_EMAIL, SITE_NAME } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Privacy Policy | Lawson Forensic",
-  description: "Privacy policy for Lawson Forensic website visitors and clients. UK GDPR compliant.",
+  title: "Privacy Policy | Matrimonial Forensic Accountant",
+  description: "Privacy policy for Matrimonial Forensic Accountant website visitors and clients. UK GDPR compliant.",
   path: "/privacy",
   noindex: true,
 });

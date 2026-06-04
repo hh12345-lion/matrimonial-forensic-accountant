@@ -86,7 +86,7 @@ export function CookiePreferencesModal() {
         aria-modal="true"
         className="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-t-card border-2 border-gold bg-white shadow-card animate-fade-in sm:rounded-card"
       >
-        <div className="border-b border-border p-6">
+        <div className="border-b border-line p-6">
           <h2
             id="cookie-modal-title"
             className="font-serif text-xl font-semibold text-navy"
@@ -103,7 +103,7 @@ export function CookiePreferencesModal() {
           </p>
         </div>
 
-        <ul className="divide-y divide-border p-6">
+        <ul className="divide-y divide-line p-6">
           {categories.map((cat) => (
             <li key={cat.key} className="flex gap-4 py-4 first:pt-0 last:pb-0">
               <div className="flex-1">
@@ -135,7 +135,7 @@ export function CookiePreferencesModal() {
           ))}
         </ul>
 
-        <div className="flex flex-col gap-3 border-t border-border p-6 sm:flex-row">
+        <div className="flex flex-col gap-3 border-t border-line p-6 sm:flex-row">
           <button
             ref={firstFocusRef}
             type="button"

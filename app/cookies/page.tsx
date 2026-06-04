@@ -5,8 +5,8 @@ import { Section, Prose } from "@/components/Section";
 import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 
 export const metadata = buildMetadata({
-  title: "Cookie Policy | Lawson Forensic",
-  description: "How Lawson Forensic uses cookies and how to manage your preferences.",
+  title: "Cookie Policy | Matrimonial Forensic Accountant",
+  description: "How Matrimonial Forensic Accountant uses cookies and how to manage your preferences.",
   path: "/cookies",
 });
 

@@ -7,15 +7,15 @@ import { ContactForm } from "@/components/ContactForm";
 import { SITE_EMAIL } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Contact Lawson Forensic | UK Forensic Accounting & Expert Witness",
+  title: "Contact Matrimonial Forensic Accountant | UK Forensic Accounting & Expert Witness",
   description:
-    "Contact Lawson Forensic to discuss a forensic accounting instruction. Solicitors, businesses, and insurers welcome. Response within one business day.",
+    "Contact Matrimonial Forensic Accountant to discuss a matrimonial forensic accounting instruction. Family law solicitors welcome. Response within one business day.",
   path: "/contact",
 });
 
 const trustPoints = [
   "Senior-led engagements",
-  "CPR Part 35 | FPR Part 25 | CrPR Part 33",
+  "FPR Part 25 compliant expert reports",
   "SJE appointments available",
   "Legal Aid accepted where appropriate",
 ];
@@ -30,8 +30,8 @@ export default function ContactPage() {
         ])}
       />
       <PageHero
-        title="Contact Lawson Forensic"
-        subtitle="We respond to all enquiries within one business day. Please provide as much detail as possible about the matter so we can assess whether we are able to assist and confirm there is no conflict of interest."
+        title="Contact Matrimonial Forensic Accountant"
+        subtitle="We respond to all enquiries within one business day. Tell us about your firm, the instruction, and the matter so we can assess how we can help."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Contact" },
@@ -39,11 +39,11 @@ export default function ContactPage() {
       />
 
       <Section>
-        <div className="grid min-w-0 gap-8 lg:grid-cols-3 lg:gap-12">
+        <div className="grid min-w-0 gap-8 md:gap-10 lg:grid-cols-3 lg:gap-12">
           <div className="min-w-0 lg:order-1 lg:col-span-2">
             <ContactForm />
           </div>
-          <aside className="min-w-0 rounded-card border border-border bg-section-alt p-5 shadow-card sm:p-6 lg:order-2">
+          <aside className="min-w-0 rounded-card border border-line bg-section-alt p-4 shadow-card xs:p-5 sm:p-6 lg:order-2">
             <h2 className="font-serif text-lg font-semibold text-navy">
               Contact details
             </h2>
@@ -60,7 +60,7 @@ export default function ContactPage() {
               Response within one business day
             </p>
             <h3 className="mt-8 font-serif text-base font-semibold text-navy">
-              Why instruct Lawson Forensic
+              Why instruct Matrimonial Forensic Accountant
             </h3>
             <ul className="mt-4 space-y-3">
               {trustPoints.map((point) => (

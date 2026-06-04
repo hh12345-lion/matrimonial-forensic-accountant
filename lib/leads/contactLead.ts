@@ -1,4 +1,5 @@
 import { appendRow, isGoogleSheetsConfigured } from "@/lib/google-sheets";
+import { SITE_NAME } from "@/lib/site";
 
 export type ContactLeadPayload = {
   fullName: string;
@@ -12,12 +13,15 @@ export type ContactLeadPayload = {
   referral?: string;
 };
 
-const BRAND_NAME = "Lawson Forensic";
-
 function sanitize(str: string): string {
   return str.replace(/<[^>]*>/g, "").trim();
 }
 
+/**
+ * Row order (columns A–K) should match row 1 headers in your Google Sheet tab:
+ * Timestamp | Full Name | Organisation | Email | Phone | Instruction Type |
+ * Practice Area | Deadline | Message | Referral | Brand name
+ */
 export async function appendContactLeadToSheet(
   payload: ContactLeadPayload
 ): Promise<void> {
@@ -38,7 +42,7 @@ export async function appendContactLeadToSheet(
     payload.deadline || "",
     sanitize(payload.message || ""),
     sanitize(payload.referral || ""),
-    BRAND_NAME,
+    SITE_NAME,
   ]);
 }
 
@@ -55,9 +59,15 @@ export async function notifyLeadWebhook(
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       "Full Name": payload.fullName,
+      Organisation: payload.organisation || "",
       Email: payload.email,
       "Phone Number": payload.phone || "",
-      "Brand name": BRAND_NAME,
+      "Instruction Type": payload.instructionType || "",
+      "Practice Area": payload.practiceArea || "",
+      Deadline: payload.deadline || "",
+      Message: payload.message || "",
+      Referral: payload.referral || "",
+      "Brand name": SITE_NAME,
     }),
   });
 

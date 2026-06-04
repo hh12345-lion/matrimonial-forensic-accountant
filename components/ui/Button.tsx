@@ -5,11 +5,11 @@ type Variant = "primary" | "secondary" | "outline";
 
 const variants: Record<Variant, string> = {
   primary:
-    "border-2 border-gold bg-navy text-white hover:bg-charcoal focus-visible:ring-gold",
+    "border-2 border-gold bg-gold text-navy shadow-sm hover:border-gold-light hover:bg-gold-light focus-visible:ring-gold",
   secondary:
-    "border-2 border-white/30 bg-transparent text-white hover:border-gold hover:text-gold focus-visible:ring-gold",
+    "border-2 border-white/35 bg-white/5 text-white backdrop-blur-sm hover:border-gold-light hover:bg-white/10 hover:text-gold-light focus-visible:ring-gold-light",
   outline:
-    "border-2 border-gold bg-transparent text-navy hover:bg-gold hover:text-navy focus-visible:ring-gold",
+    "border-2 border-gold bg-transparent text-navy hover:bg-gold-muted focus-visible:ring-gold",
 };
 
 type ButtonProps = {

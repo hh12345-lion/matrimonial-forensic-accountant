@@ -65,7 +65,7 @@ export function NavDropdown({
       {open && (
         <ul
           role="menu"
-          className={`absolute top-full z-50 mt-1 max-h-[min(70vh,24rem)] min-w-[min(100vw-2rem,16rem)] overflow-y-auto rounded-card border border-border bg-white py-2 shadow-card sm:min-w-[240px] ${menuPosition}`}
+          className={`absolute top-full z-50 mt-1 max-h-[min(70vh,24rem)] min-w-[min(100vw-2rem,16rem)] overflow-y-auto rounded-card border border-line bg-white py-2 shadow-card sm:min-w-[240px] ${menuPosition}`}
           onMouseLeave={() => setOpen(false)}
         >
           <li role="none">

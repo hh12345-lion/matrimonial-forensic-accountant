@@ -12,7 +12,7 @@ export function InternalLinksSection({
   if (!links.length) return null;
 
   return (
-    <aside className="mt-10 rounded-card border border-border bg-section-alt p-4 sm:mt-12 sm:p-6">
+    <aside className="mt-10 rounded-card border border-line bg-section-alt p-4 sm:mt-12 sm:p-6">
       <h2 className="font-serif text-lg font-semibold text-navy sm:text-xl">
         {title}
       </h2>

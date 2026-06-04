@@ -6,9 +6,9 @@ import { Section } from "@/components/Section";
 import { CTASection } from "@/components/CTASection";
 
 export const metadata = buildMetadata({
-  title: "How We Work | The Lawson Forensic Approach",
+  title: "How We Work | The Matrimonial Forensic Accountant Approach",
   description:
-    "How Lawson Forensic approaches each engagement, from initial instruction through to expert report and oral testimony. Senior-led, clear, and defensible.",
+    "How Matrimonial Forensic Accountant approaches each engagement, from initial instruction through to expert report and oral testimony. Senior-led, clear, and defensible.",
   path: "/how-we-work",
 });
 
@@ -70,7 +70,7 @@ export default function HowWeWorkPage() {
           {principles.map((p) => (
             <article
               key={p.title}
-              className="rounded-card border border-border border-t-4 border-t-gold bg-white p-6 shadow-card"
+              className="rounded-card border border-line border-t-4 border-t-gold bg-white p-6 shadow-card"
             >
               <h3 className="font-serif text-lg font-semibold text-navy">
                 {p.title}
@@ -89,7 +89,7 @@ export default function HowWeWorkPage() {
           {steps.map((s) => (
             <li
               key={s.step}
-              className="flex gap-4 rounded-card border border-border bg-white p-6 shadow-card"
+              className="flex gap-4 rounded-card border border-line bg-white p-6 shadow-card"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-card border-2 border-gold font-serif text-lg font-semibold text-navy">
                 {s.step}

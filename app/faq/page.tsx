@@ -10,9 +10,9 @@ import { InternalLinksSection } from "@/components/seo/InternalLinksSection";
 import { siteFaqs } from "@/lib/data/faq";
 
 export const metadata = buildMetadata({
-  title: "FAQ | Lawson Forensic Forensic Accounting UK",
+  title: "FAQ | Matrimonial Forensic Accountant Forensic Accounting UK",
   description:
-    "Frequently asked questions about Lawson Forensic's forensic accounting and expert witness services: how to instruct us, what to expect, and our approach.",
+    "Frequently asked questions about Matrimonial Forensic Accountant's forensic accounting and expert witness services: how to instruct us, what to expect, and our approach.",
   path: "/faq",
 });
 

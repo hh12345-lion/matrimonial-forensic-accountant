@@ -6,9 +6,9 @@ import { Section, Prose } from "@/components/Section";
 import { CTASection } from "@/components/CTASection";
 
 export const metadata = buildMetadata({
-  title: "Qualifications & Accreditations | Lawson Forensic UK",
+  title: "Qualifications & Accreditations | Matrimonial Forensic Accountant UK",
   description:
-    "Lawson Forensic's professional credentials: ICAEW, CFE, ICAEW Forensic Accreditation, Academy of Experts, and CPR Part 35 expert witness qualifications.",
+    "Matrimonial Forensic Accountant's professional credentials: ICAEW, CFE, ICAEW Forensic Accreditation, Academy of Experts, and CPR Part 35 expert witness qualifications.",
   path: "/qualifications-accreditations",
 });
 
@@ -90,7 +90,7 @@ export default function QualificationsPage() {
 
           <h2>Continuing Professional Development</h2>
           <p>
-            Lawson Forensic maintains active professional development, staying current with
+            Matrimonial Forensic Accountant maintains active professional development, staying current with
             accounting standards, procedural rules, relevant case law, and forensic
             methodology developments.
           </p>

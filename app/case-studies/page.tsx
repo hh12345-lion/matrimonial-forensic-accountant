@@ -7,9 +7,9 @@ import { CTASection } from "@/components/CTASection";
 import { caseStudies } from "@/lib/data/case-studies";
 
 export const metadata = buildMetadata({
-  title: "Case Studies | Lawson Forensic Forensic Accounting UK",
+  title: "Case Studies | Matrimonial Forensic Accountant Forensic Accounting UK",
   description:
-    "Anonymised case studies from Lawson Forensic's forensic accounting practice, demonstrating expertise across commercial disputes, fraud investigations, and family proceedings.",
+    "Anonymised case studies from Matrimonial Forensic Accountant's forensic accounting practice, demonstrating expertise across commercial disputes, fraud investigations, and family proceedings.",
   path: "/case-studies",
 });
 
@@ -33,7 +33,7 @@ export default function CaseStudiesPage() {
 
       <Section>
         <p className="max-w-3xl text-lg leading-relaxed text-body">
-          The following case studies are drawn from Lawson Forensic&apos;s practice.
+          The following case studies are drawn from Matrimonial Forensic Accountant&apos;s practice.
           All identifying details have been changed or removed to protect client and
           party confidentiality. They are illustrative of the types of matters we
           handle and the approach we bring to each engagement.
@@ -43,7 +43,7 @@ export default function CaseStudiesPage() {
           {caseStudies.map((study) => (
             <article
               key={study.title}
-              className="rounded-card border border-border border-l-4 border-l-gold bg-white p-8 shadow-card"
+              className="rounded-card border border-line border-l-4 border-l-gold bg-white p-8 shadow-card"
             >
               <h2 className="font-serif text-xl font-semibold text-navy md:text-2xl">
                 {study.title}

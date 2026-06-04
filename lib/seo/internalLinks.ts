@@ -34,14 +34,13 @@ export function getPracticeAreaRelatedLinks(slug: string): {
   const urls = getUrlsForPracticeAreaSlug(slug);
   return {
     services: urls.services.map((href) => {
-      const id = href.split("/").pop()!;
-      const s = services.find((x) => x.id === id);
-      return { href, label: s?.title ?? href };
+      const match = services.find((s) => servicePath(s.id) === href);
+      return { href, label: match?.title ?? "Related service" };
     }),
     insights: urls.insights.map((href) => {
       const slugPart = href.split("/").pop()!;
-      const a = insights.find((x) => x.slug === slugPart);
-      return { href, label: a?.title ?? href };
+      const article = insights.find((x) => x.slug === slugPart);
+      return { href, label: article?.title ?? "Related insight" };
     }),
     other: [
       { href: "/case-studies", label: "Case studies" },
@@ -53,22 +52,31 @@ export function getPracticeAreaRelatedLinks(slug: string): {
 
 export function getInsightRelatedLinks(articleSlug: string): InternalLink[] {
   const map: Record<string, InternalLink[]> = {
-    "instructing-forensic-accountant-guide": [
+    "instructing-matrimonial-forensic-accountant": [
       { href: "/services/expert-witness", label: "Expert witness reports" },
       { href: "/how-we-work", label: "How we work" },
-      { href: "/practice-areas/commercial-disputes", label: "Commercial disputes" },
+      { href: "/practice-areas/financial-remedy-divorce", label: "Financial remedy" },
     ],
     "business-valuation-divorce-guide": [
-      { href: "/practice-areas/family-proceedings", label: "Family proceedings" },
-      { href: "/services/family-matrimonial", label: "Family & matrimonial accounting" },
+      {
+        href: "/practice-areas/business-valuation-matrimonial",
+        label: "Business valuation",
+      },
+      { href: "/services/business-valuation", label: "Business valuation service" },
     ],
-    "poca-benefit-calculation-guide": [
-      { href: "/practice-areas/fraud-financial-crime", label: "Fraud & financial crime" },
-      { href: "/services/fraud-investigation", label: "Fraud investigation" },
+    "hidden-assets-divorce-guide": [
+      {
+        href: "/practice-areas/hidden-assets-undisclosed-income",
+        label: "Hidden assets",
+      },
+      { href: "/services/hidden-assets", label: "Hidden asset investigation" },
     ],
-    "choosing-single-joint-expert": [
+    "choosing-single-joint-expert-family": [
       { href: "/services/expert-witness", label: "Expert witness reports" },
-      { href: "/practice-areas/commercial-disputes", label: "Commercial disputes" },
+      {
+        href: "/practice-areas/financial-remedy-divorce",
+        label: "Financial remedy",
+      },
     ],
   };
   return (

@@ -3,11 +3,14 @@
  * Inbound body: { fullName, email, phone }
  * Outbound JSON keys: Full Name, Email, Phone Number, Brand name
  */
-const BRAND_NAME = "Lawson Forensic";
+const BRAND_NAME = "Matrimonial Forensic Accountant";
 
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
-    return { statusCode: 405, body: JSON.stringify({ error: "Method not allowed" }) };
+    return {
+      statusCode: 405,
+      body: JSON.stringify({ error: "Method not allowed" }),
+    };
   }
 
   const webhookUrl =

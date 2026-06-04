@@ -4,8 +4,8 @@ import { Section, Prose } from "@/components/Section";
 import { SITE_NAME } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Terms of Use | Lawson Forensic",
-  description: "Website terms of use for Lawson Forensic.",
+  title: "Terms of Use | Matrimonial Forensic Accountant",
+  description: "Website terms of use for Matrimonial Forensic Accountant.",
   path: "/terms",
   noindex: true,
 });

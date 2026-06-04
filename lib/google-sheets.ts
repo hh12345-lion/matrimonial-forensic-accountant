@@ -60,3 +60,24 @@ export function isGoogleSheetsConfigured(): boolean {
       process.env.GOOGLE_SHEET_ID
   );
 }
+
+export async function getSpreadsheetInfo(spreadsheetId?: string) {
+  const sheets = getSheetsClient();
+  const id = spreadsheetId || process.env.GOOGLE_SHEET_ID;
+
+  if (!id) {
+    throw new Error("Missing GOOGLE_SHEET_ID");
+  }
+
+  const response = await sheets.spreadsheets.get({ spreadsheetId: id });
+
+  return {
+    title: response.data.properties?.title,
+    sheets: response.data.sheets?.map((s) => ({
+      name: s.properties?.title,
+      sheetId: s.properties?.sheetId,
+      rowCount: s.properties?.gridProperties?.rowCount,
+      columnCount: s.properties?.gridProperties?.columnCount,
+    })),
+  };
+}

@@ -18,7 +18,7 @@ export type ConsentState = {
 };
 
 export const CONSENT_VERSION = 1;
-export const CONSENT_STORAGE_KEY = "lawson_forensic_cookie_consent";
+export const CONSENT_STORAGE_KEY = "mfa_cookie_consent";
 export const CONSENT_MAX_AGE_DAYS = 365;
 
 export const DEFAULT_PREFERENCES: ConsentPreferences = {

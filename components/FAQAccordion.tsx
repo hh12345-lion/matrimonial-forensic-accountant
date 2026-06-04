@@ -7,7 +7,7 @@ export function FAQAccordion({ faqs }: { faqs: FAQ[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-border rounded-card border border-border bg-white shadow-card">
+    <div className="divide-y divide-line rounded-card border border-line bg-white shadow-card">
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         const id = `faq-${index}`;
