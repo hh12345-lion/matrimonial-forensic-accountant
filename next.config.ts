@@ -22,6 +22,11 @@ const nextConfig: NextConfig = {
         destination: "/services/hidden-assets",
         permanent: true,
       },
+      {
+        source: "/faq",
+        destination: "/how-we-work",
+        permanent: true,
+      },
     ];
   },
 };

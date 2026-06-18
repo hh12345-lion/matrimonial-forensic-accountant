@@ -10,7 +10,6 @@ const firmLinks = [
   { href: "/case-studies", label: "Case Studies" },
   { href: "/how-we-work", label: "How We Work" },
   { href: "/insights", label: "Insights" },
-  { href: "/faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -22,7 +21,8 @@ export function Footer() {
           <div>
             <p className="font-serif text-lg font-semibold">{SITE_NAME}</p>
             <p className="mt-2 text-sm text-white/70">
-              Matrimonial Expert Witness &amp; Forensic Accounting
+              UK matrimonial expert witness &amp; forensic accounting for England
+              and Wales family proceedings
             </p>
             <a
               href={`mailto:${SITE_EMAIL}`}
@@ -112,8 +112,10 @@ export function Footer() {
             <CookieSettingsButton className="text-white/70 hover:text-gold" />
           </div>
           <p className="mt-4 max-w-3xl text-sm text-white/60">
-            {SITE_NAME} is an independent forensic accounting practice. We are
-            not a law firm and do not provide legal advice.
+            {SITE_NAME} is an independent UK forensic accounting practice
+            instructed in England and Wales family proceedings. We do not accept
+            instructions outside the United Kingdom. We are not a law firm and do
+            not provide legal advice.
           </p>
           <p className="mt-2 text-sm text-white/50">
             &copy; {new Date().getFullYear()} {SITE_NAME}. England and Wales.

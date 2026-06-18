@@ -4,7 +4,11 @@ export const SITE_URL =
 
 export const SITE_NAME = "Matrimonial Forensic Accountant";
 
-export const SITE_EMAIL = "info@matrimonialforensicaccountant.com";
+export const SITE_EMAIL = "contact@matrimonialforensicaccountant.com";
+
+/** Shown in copy and schema: practice is UK-only (England & Wales family courts). */
+export const SITE_REGION =
+  "United Kingdom (England and Wales family proceedings)";
 
 export const LINKEDIN_URL =
   process.env.NEXT_PUBLIC_LINKEDIN_URL ??

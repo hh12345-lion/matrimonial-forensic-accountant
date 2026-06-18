@@ -56,6 +56,7 @@ export default function HowWeWorkPage() {
       />
       <PageHero
         title="How We Work"
+        subtitle="Our process for England and Wales family proceedings, from initial instruction through FPR Part 25 expert report and oral testimony."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "How We Work" },

@@ -64,7 +64,6 @@ const mobileGroups = [
     label: "Resources",
     links: [
       { href: "/insights", label: "Insights" },
-      { href: "/faq", label: "FAQ" },
     ],
   },
 ];

@@ -86,12 +86,3 @@ export function getInsightRelatedLinks(articleSlug: string): InternalLink[] {
     ]
   );
 }
-
-export function getFaqRelatedLinks(): InternalLink[] {
-  return [
-    { href: "/how-we-work", label: "How we work" },
-    { href: "/practice-areas", label: "Practice areas" },
-    { href: "/services/expert-witness", label: "Expert witness services" },
-    { href: "/qualifications-accreditations", label: "Qualifications" },
-  ];
-}

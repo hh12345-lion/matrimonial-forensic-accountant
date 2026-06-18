@@ -41,7 +41,7 @@ export default function HomePage() {
       <JsonLd data={homepageSchema()} />
       <PageHero
         title={SITE_NAME}
-        subtitle="A UK specialist matrimonial forensic accounting practice providing independent FPR Part 25 expert witness reports, business valuations, and financial investigations, with senior forensic accountant involvement from instruction to testimony."
+        subtitle="A UK specialist matrimonial forensic accounting practice for England and Wales family proceedings. Independent FPR Part 25 expert witness reports, business valuations, and financial investigations, with senior forensic accountant involvement from instruction to testimony."
       >
         <h2 className="sr-only">
           Matrimonial Expert Witness &amp; Forensic Accounting Services
@@ -60,11 +60,14 @@ export default function HomePage() {
           Who We Are
         </h2>
         <p className="mt-4 max-w-3xl text-base leading-relaxed text-body sm:text-lg">
-          {SITE_NAME} is an independent forensic accounting practice specialising
-          in family and matrimonial proceedings. We provide expert witness
-          reports and financial investigation services to family law solicitors
-          and barristers across the UK. Every engagement is led by a senior
-          forensic accountant, not handed to a junior team after the first call.
+          {SITE_NAME} is an independent UK forensic accounting practice
+          specialising exclusively in family and matrimonial proceedings in
+          England and Wales. We provide expert witness reports and financial
+          investigation services to family law solicitors and barristers
+          practising in the English and Welsh courts. We do not accept
+          instructions for proceedings outside the United Kingdom. Every
+          engagement is led by a senior forensic accountant, not handed to a
+          junior team after the first call.
         </p>
       </Section>
 
@@ -73,12 +76,12 @@ export default function HomePage() {
           What We Do
         </h2>
         <p className="mt-4 max-w-3xl text-base leading-relaxed text-body sm:text-lg">
-          We work across financial remedy and divorce, matrimonial business
-          valuation, hidden assets and undisclosed income, Schedule 1 claims,
-          TOLATA and cohabitation disputes, and high net worth complex
-          matrimonial matters. Whether you need an FPR Part 25 business
-          valuation for the Family Court, a Form E forensic review, or an
-          urgent preliminary assessment before FDR, we respond quickly and
+          We work across financial remedy and divorce in the Family Court of
+          England and Wales, matrimonial business valuation, hidden assets and
+          undisclosed income, Schedule 1 claims, TOLATA and cohabitation
+          disputes, and high net worth complex matrimonial matters. Whether you
+          need an FPR Part 25 business valuation, a Form E forensic review, or
+          an urgent preliminary assessment before FDR, we respond quickly and
           advise clearly.
         </p>
       </Section>

@@ -25,6 +25,7 @@ export default function AboutPage() {
       />
       <PageHero
         title="About Matrimonial Forensic Accountant"
+        subtitle="An independent UK forensic accounting practice for England and Wales family proceedings. We instruct only in matrimonial and family financial disputes before the English and Welsh courts."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "About" },
@@ -41,10 +42,22 @@ export default function AboutPage() {
             partner who passes work to a junior team.
           </p>
           <p>
-            We work with family law solicitors and barristers across the UK on
-            expert witness instructions in financial remedy, Schedule 1, and
-            TOLATA proceedings. We focus exclusively on matrimonial and family
-            financial disputes, not general commercial litigation.
+            We work with family law solicitors and barristers in England and
+            Wales on expert witness instructions in financial remedy, Schedule
+            1, and TOLATA proceedings. We focus exclusively on UK matrimonial
+            and family financial disputes under English law, not general
+            commercial litigation or proceedings in other jurisdictions.
+          </p>
+
+          <h2>Geographic Scope</h2>
+          <p>
+            Matrimonial Forensic Accountant accepts instructions for proceedings
+            in England and Wales only. Our expert reports are prepared for the
+            Family Court and comply with the Family Procedure Rules (FPR Part
+            25). We analyse overseas assets and structures where they form part
+            of English financial remedy proceedings, but we do not accept
+            standalone instructions for family or matrimonial disputes outside
+            the United Kingdom.
           </p>
 
           <h2>Our Approach</h2>

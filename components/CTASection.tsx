@@ -10,7 +10,7 @@ type CTASectionProps = {
 
 export function CTASection({
   title = "Discuss your instruction",
-  description = "Contact Matrimonial Forensic Accountant to discuss expert witness or forensic accounting support. We respond within one business day.",
+  description = "Contact Matrimonial Forensic Accountant to discuss expert witness or forensic accounting support in England and Wales family proceedings. We respond within one business day.",
   buttonText = CTA_LABEL,
   buttonHref = "/contact",
 }: CTASectionProps) {

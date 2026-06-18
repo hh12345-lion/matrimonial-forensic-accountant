@@ -55,12 +55,12 @@ export default function ThankYouPage() {
               How we work
             </Link>
             {" · "}
-            <Link href="/faq" className="text-gold hover:underline">
-              FAQ
-            </Link>
-            {" · "}
             <Link href="/case-types" className="text-gold hover:underline">
               Case types
+            </Link>
+            {" · "}
+            <Link href="/about" className="text-gold hover:underline">
+              About us
             </Link>
           </p>
         </div>

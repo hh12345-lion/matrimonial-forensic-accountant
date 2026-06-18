@@ -67,7 +67,7 @@ export function homepageSchema() {
         url: SITE_URL,
         name: SITE_NAME,
         description:
-          "UK specialist matrimonial forensic accounting practice providing FPR Part 25 expert witness reports, business valuations, and financial investigations for family proceedings.",
+          "UK specialist matrimonial forensic accounting practice for England and Wales family proceedings. FPR Part 25 expert witness reports, business valuations, and financial investigations.",
         inLanguage: "en-GB",
         publisher: { "@id": `${SITE_URL}/#organization` },
         potentialAction: {
@@ -94,7 +94,7 @@ export function homepageSchema() {
           name: "United Kingdom",
         },
         description:
-          "UK specialist matrimonial forensic accounting practice providing FPR Part 25 expert witness reports, business valuations, and financial investigations for family proceedings.",
+          "UK specialist matrimonial forensic accounting practice for England and Wales family proceedings. FPR Part 25 expert witness reports, business valuations, and financial investigations.",
         sameAs: getOrganizationSameAs(),
       },
       {

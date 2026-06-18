@@ -17,7 +17,6 @@ export const APP_STATIC_PATHS = [
   "/case-studies",
   "/qualifications-accreditations",
   "/how-we-work",
-  "/faq",
   "/insights",
   ...insights.map((i) => `/insights/${i.slug}`),
 ] as const;
@@ -62,7 +61,7 @@ export function getSitemapPriority(path: string): number {
     path === "/qualifications-accreditations"
   )
     return 0.87;
-  if (path === "/faq" || path === "/insights") return 0.85;
+  if (path === "/insights") return 0.85;
   if (path.startsWith("/insights/")) return 0.8;
   if (path === "/cookies" || path === "/privacy" || path === "/terms")
     return 0.3;

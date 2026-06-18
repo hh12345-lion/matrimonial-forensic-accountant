@@ -41,7 +41,7 @@ export const KEYWORD_MAPPINGS: KeywordMapping[] = [
     primaryUrls: [
       "/insights/instructing-matrimonial-forensic-accountant",
       "/insights/business-valuation-divorce-guide",
-      "/faq",
+      "/how-we-work",
     ],
     secondaryUrls: ["/services/expert-witness"],
   },
