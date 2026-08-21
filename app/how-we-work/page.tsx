@@ -27,7 +27,7 @@ const principles = [
   },
   {
     title: "Responsive to proceedings",
-    text: "Litigation has timetables. We agree realistic timelines at the outset and communicate proactively if anything changes. Urgent preliminary assessments are available where proceedings require it.",
+    text: "Proceedings have timetables. We agree realistic timelines at the outset and communicate proactively if anything changes. Urgent preliminary assessments are available where proceedings require it.",
   },
   {
     title: "Proportionate to the case",

@@ -3,19 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --font-cormorant: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-source-sans: "Source Sans 3", system-ui, -apple-system, sans-serif;
-  --color-cream: #fdfcfa;
-  --color-navy: #2a2235;
-  --color-navy-mid: #3d3250;
-  --color-gold: #b8865b;
-  --color-gold-light: #d4a574;
-  --color-gold-muted: #e8d4c4;
-  --color-charcoal: #5c5568;
-  --color-section-alt: #f8f6f9;
-  --color-line: #e8e4ec;
-  --color-heading: #2a2235;
-  --color-body: #4a4455;
+  --font-fraunces: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-public-sans: "Public Sans", system-ui, -apple-system, sans-serif;
+  --color-parchment: #f9f7f2;
+  --color-brand: #1c3044;
+  --color-brand-mid: #2a4158;
+  --color-accent: #7a4050;
+  --color-accent-light: #9e5a6a;
+  --color-accent-muted: #ede4e6;
+  --color-sage: #5a7d6a;
+  --color-sage-light: #e4ece7;
+  --color-charcoal: #5a6570;
+  --color-mist: #eef1f4;
+  --color-line: #d8dee4;
+  --color-heading: #1c3044;
+  --color-body: #3d4a56;
 }
 
 @layer base {
@@ -24,12 +26,18 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     min-width: 0;
     overflow-x: hidden;
-    background-color: var(--color-cream);
+    background-color: var(--color-parchment);
     color: var(--color-body);
-    font-family: var(--font-source-sans), system-ui, sans-serif;
+    font-family: var(--font-public-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -43,13 +51,13 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-cormorant), Georgia, serif;
+    font-family: var(--font-fraunces), Georgia, serif;
     color: var(--color-heading);
   }
 
   ::selection {
-    background-color: rgba(184, 134, 91, 0.25);
-    color: var(--color-navy);
+    background-color: rgba(122, 64, 80, 0.18);
+    color: var(--color-brand);
   }
 
   img,
@@ -62,7 +70,7 @@
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-6xl px-3 xs:px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-[72rem] px-4 sm:px-6 lg:px-10;
   }
 
   .hero-cta-group {
@@ -79,12 +87,8 @@
     overflow: hidden;
     padding-top: 3rem;
     padding-bottom: 3rem;
-    background: linear-gradient(
-      135deg,
-      var(--color-navy) 0%,
-      var(--color-navy-mid) 48%,
-      var(--color-navy) 100%
-    );
+    background-color: var(--color-brand);
+    border-bottom: 4px solid var(--color-accent);
   }
 
   @media (min-width: 640px) {
@@ -96,8 +100,8 @@
 
   @media (min-width: 768px) {
     .page-hero {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
+      padding-top: 5rem;
+      padding-bottom: 5rem;
     }
   }
 
@@ -105,11 +109,27 @@
     content: "";
     pointer-events: none;
     position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(
+      180deg,
+      var(--color-accent) 0%,
+      var(--color-sage) 100%
+    );
+  }
+
+  .page-hero::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
     inset: 0;
-    background: radial-gradient(
-      ellipse 80% 60% at 100% 0%,
-      rgba(184, 134, 91, 0.18) 0%,
-      transparent 55%
+    background: linear-gradient(
+      115deg,
+      transparent 55%,
+      rgba(90, 125, 106, 0.12) 55%,
+      rgba(90, 125, 106, 0.06) 100%
     );
   }
 
@@ -119,34 +139,54 @@
   }
 
   .bg-page {
-    background-color: var(--color-cream);
+    background-color: var(--color-parchment);
   }
 
   .card-elevated {
-    border-radius: 8px;
+    border-radius: 2px;
     border-width: 1px;
     border-style: solid;
     border-color: var(--color-line);
+    border-left-width: 3px;
+    border-left-color: var(--color-accent);
     background-color: #fff;
-    box-shadow:
-      0 2px 14px rgba(42, 34, 53, 0.07),
-      0 1px 4px rgba(42, 34, 53, 0.04);
+    box-shadow: 0 1px 8px rgba(28, 48, 68, 0.06);
     transition-duration: 200ms;
-    transition-property: border-color, box-shadow;
+    transition-property: border-color, box-shadow, transform;
   }
 
   .card-elevated:hover {
-    border-color: rgba(184, 134, 91, 0.4);
-    box-shadow:
-      0 8px 24px rgba(42, 34, 53, 0.1),
-      0 2px 8px rgba(184, 134, 91, 0.08);
+    border-left-color: var(--color-sage);
+    box-shadow: 0 4px 18px rgba(28, 48, 68, 0.1);
+    transform: translateY(-1px);
   }
 
   .accent-rule {
-    height: 0.25rem;
-    width: 3rem;
-    border-radius: 9999px;
-    background-color: var(--color-gold);
+    height: 2px;
+    width: 2.5rem;
+    background-color: var(--color-accent);
+  }
+
+  .nav-link {
+    @apply relative inline-flex min-h-touch items-center px-1 py-2 text-sm font-medium text-body transition-colors hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-accent;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link:focus-visible::after {
+    transform: scaleX(1);
   }
 }
 

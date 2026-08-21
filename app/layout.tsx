@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Fraunces, Public_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -8,10 +9,25 @@ import { CookiePreferencesModal } from "@/components/cookies/CookiePreferencesMo
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { HOME_TITLE } from "@/lib/metadata";
 
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const publicSans = Public_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-public-sans",
+  display: "swap",
+});
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#1C3044",
 };
 
 export const metadata: Metadata = {
@@ -38,19 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="en-GB" className={`${fraunces.variable} ${publicSans.variable}`}>
       <body className="flex min-h-screen min-h-[100dvh] flex-col">
         <script
           dangerouslySetInnerHTML={{
@@ -58,8 +62,16 @@ export default function RootLayout({
           }}
         />
         <CookieConsentProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-card focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-parchment focus:outline-none focus:ring-2 focus:ring-accent"
+          >
+            Skip to main content
+          </a>
           <Header />
-          <main className="min-w-0 flex-1">{children}</main>
+          <main id="main-content" className="min-w-0 flex-1">
+            {children}
+          </main>
           <Footer />
           <CookieBanner />
           <CookiePreferencesModal />

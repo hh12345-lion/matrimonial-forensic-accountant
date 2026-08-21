@@ -9,7 +9,7 @@ import { SITE_EMAIL } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Contact Matrimonial Forensic Accountant | UK Forensic Accounting & Expert Witness",
   description:
-    "Contact Matrimonial Forensic Accountant to discuss a UK matrimonial forensic accounting instruction in England and Wales family proceedings. Response within one business day.",
+    "Contact Matrimonial Forensic Accountant to discuss a UK matrimonial forensic accounting instruction in England and Wales family proceedings. Response within one working day.",
   path: "/contact",
 });
 
@@ -32,7 +32,7 @@ export default function ContactPage() {
       />
       <PageHero
         title="Contact Matrimonial Forensic Accountant"
-        subtitle="We respond to all UK enquiries within one business day. We accept instructions for England and Wales family proceedings only. Tell us about your firm, the instruction, and the matter so we can assess how we can help."
+        subtitle="We respond to all UK enquiries within one working day. We accept instructions for England and Wales family proceedings only. Tell us about your firm, the instruction, and the matter so we can assess how we can help."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Contact" },
@@ -58,7 +58,7 @@ export default function ContactPage() {
               </a>
             </p>
             <p className="mt-2 text-sm text-body">
-              Response within one business day. UK (England and Wales) matters
+              Response within one working day. UK (England and Wales) matters
               only.
             </p>
             <h3 className="mt-8 font-serif text-base font-semibold text-navy">

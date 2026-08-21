@@ -25,7 +25,7 @@ export default function NotFound() {
               Return to Homepage
             </Button>
             <Button href="/contact" variant="secondary" className="w-full max-w-sm sm:w-auto">
-              Contact Us
+              Enquire
             </Button>
           </div>
         </div>

@@ -13,7 +13,7 @@ const instructionTypes = [
   "Add-backs / Financial Reconstruction",
   "Single Joint Expert (SJE) Appointment",
   "Preliminary Assessment",
-  "Advisory / Litigation Support",
+  "Advisory / Dispute Support",
   "Other",
 ];
 
@@ -76,14 +76,14 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-card border border-line px-4 py-3 text-body focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30 min-h-touch";
+    "w-full rounded-card border border-line px-4 py-3 text-body focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 min-h-touch";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-1 block text-sm font-medium text-navy">
-            Full Name <span className="text-gold">*</span>
+          <label htmlFor="name" className="mb-1 block text-sm font-medium text-brand">
+            Full Name <span className="text-accent">*</span>
           </label>
           <input
             id="name"
@@ -97,9 +97,9 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="organisation"
-            className="mb-1 block text-sm font-medium text-navy"
+            className="mb-1 block text-sm font-medium text-brand"
           >
-            Law Firm / Organisation <span className="text-gold">*</span>
+            Law Firm / Organisation <span className="text-accent">*</span>
           </label>
           <input
             id="organisation"
@@ -114,8 +114,8 @@ export function ContactForm() {
 
       <div className="grid gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="email" className="mb-1 block text-sm font-medium text-navy">
-            Email <span className="text-gold">*</span>
+          <label htmlFor="email" className="mb-1 block text-sm font-medium text-brand">
+            Email <span className="text-accent">*</span>
           </label>
           <input
             id="email"
@@ -127,7 +127,7 @@ export function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="phone" className="mb-1 block text-sm font-medium text-navy">
+          <label htmlFor="phone" className="mb-1 block text-sm font-medium text-brand">
             Phone
           </label>
           <input
@@ -144,7 +144,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="instruction_type"
-            className="mb-1 block text-sm font-medium text-navy"
+            className="mb-1 block text-sm font-medium text-brand"
           >
             Nature of Instruction
           </label>
@@ -159,7 +159,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="practice_area"
-            className="mb-1 block text-sm font-medium text-navy"
+            className="mb-1 block text-sm font-medium text-brand"
           >
             Practice Area
           </label>
@@ -174,15 +174,15 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="deadline" className="mb-1 block text-sm font-medium text-navy">
+        <label htmlFor="deadline" className="mb-1 block text-sm font-medium text-brand">
           Hearing / deadline date
         </label>
         <input id="deadline" name="deadline" type="date" className={inputClass} />
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-1 block text-sm font-medium text-navy">
-          Brief description of the matter <span className="text-gold">*</span>
+        <label htmlFor="message" className="mb-1 block text-sm font-medium text-brand">
+          Brief description of the matter <span className="text-accent">*</span>
         </label>
         <textarea
           id="message"
@@ -194,7 +194,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="referral" className="mb-1 block text-sm font-medium text-navy">
+        <label htmlFor="referral" className="mb-1 block text-sm font-medium text-brand">
           How did you hear about {SITE_NAME}?
         </label>
         <select id="referral" name="referral" className={inputClass}>
@@ -209,7 +209,7 @@ export function ContactForm() {
       {status === "error" && (
         <p className="text-sm text-red-700" role="alert">
           Unable to send your enquiry. Please email{" "}
-          <a href={`mailto:${SITE_EMAIL}`} className="break-all text-gold underline">
+          <a href={`mailto:${SITE_EMAIL}`} className="break-all text-accent underline">
             {SITE_EMAIL}
           </a>{" "}
           directly.
@@ -219,7 +219,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="min-h-touch w-full rounded-card border-2 border-gold bg-gold px-6 py-3 text-sm font-semibold text-navy transition hover:border-gold-light hover:bg-gold-light focus:outline-none focus-visible:ring-2 focus-visible:ring-gold disabled:opacity-60 md:w-auto"
+        className="min-h-touch w-full border border-accent bg-accent px-6 py-3 text-sm font-semibold text-parchment transition hover:border-accent-light hover:bg-accent-light focus:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:opacity-60 md:w-auto"
       >
         {status === "submitting" ? "Sending..." : "Send Enquiry"}
       </button>

@@ -17,7 +17,7 @@ export const LINKEDIN_URL =
 export const GA_MEASUREMENT_ID =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 
-export const CTA_LABEL = "Contact Us";
+export const CTA_LABEL = "Enquire";
 
 export const caseTypeSlugs = [
   "business-valuation-divorce",

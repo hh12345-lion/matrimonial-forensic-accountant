@@ -29,7 +29,7 @@ const pillars = [
   },
   {
     title: "Responsive",
-    text: "We understand that family proceedings have deadlines. We respond within one business day and can provide urgent preliminary assessments where proceedings require it.",
+    text: "We understand that family proceedings have deadlines. We respond within one working day and can provide urgent preliminary assessments where proceedings require it.",
   },
 ];
 
@@ -48,13 +48,13 @@ export default function HomePage() {
         </h2>
         <Button href="/contact">{CTA_LABEL}</Button>
         <Button href="/services" variant="secondary">
-          Our Services
+          View services
         </Button>
       </PageHero>
 
       <Section>
-        <p className="font-serif text-sm font-semibold uppercase tracking-wide text-gold">
-          Matrimonial Expert Witness &amp; Forensic Accounting
+        <p className="font-serif text-sm font-semibold uppercase tracking-wide text-accent">
+          Matrimonial expert witness &amp; forensic accounting
         </p>
         <h2 className="mt-2 break-words font-serif text-xl font-semibold text-navy sm:text-2xl md:text-3xl">
           Who We Are
@@ -94,7 +94,7 @@ export default function HomePage() {
           {pillars.map((pillar) => (
             <article
               key={pillar.title}
-              className="card-elevated border-t-4 border-t-gold p-6"
+              className="card-elevated p-6"
             >
               <h3 className="break-words font-serif text-lg font-semibold text-navy sm:text-xl">
                 {pillar.title}
@@ -175,7 +175,7 @@ export default function HomePage() {
       </Section>
 
       <Section className="!py-16">
-        <blockquote className="mx-auto max-w-3xl border-l-4 border-gold pl-4 sm:pl-6">
+        <blockquote className="mx-auto max-w-3xl border-l-2 border-accent pl-4 sm:pl-6">
           <p className="break-words font-serif text-lg italic leading-relaxed text-navy sm:text-xl md:text-2xl">
             Matrimonial forensic accounting is as much about communication as
             calculation. The best expert report means nothing if it cannot be

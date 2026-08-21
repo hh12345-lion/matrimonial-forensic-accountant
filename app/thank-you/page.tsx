@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata = buildMetadata({
   title: "Thank You | Matrimonial Forensic Accountant",
   description:
-    "Your enquiry has been received. Matrimonial Forensic Accountant will respond within one business day.",
+    "Your enquiry has been received. Matrimonial Forensic Accountant will respond within one working day.",
   path: "/thank-you",
   noindex: true,
   nofollow: true,
@@ -25,7 +25,7 @@ export default function ThankYouPage() {
             Thank you
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-            We have received your message and aim to respond within one business
+            We have received your message and aim to respond within one working
             day. If your matter is urgent, please email us directly.
           </p>
         </div>

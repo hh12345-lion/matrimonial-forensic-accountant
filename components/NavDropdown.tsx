@@ -50,14 +50,14 @@ export function NavDropdown({
     >
       <button
         type="button"
-        className="inline-flex min-h-touch max-w-[11rem] items-center gap-1 rounded px-2 py-2 text-sm text-body transition hover:text-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-gold xl:max-w-none"
+        className="nav-link max-w-[11rem] gap-1 xl:max-w-none"
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen(!open)}
       >
         <Link
           href={href}
-          className="truncate hover:text-navy"
+          className="truncate"
           onClick={(e) => e.stopPropagation()}
         >
           {label}
@@ -69,13 +69,13 @@ export function NavDropdown({
       {open && (
         <ul
           role="menu"
-          className={`absolute top-full z-50 max-h-[min(70vh,24rem)] min-w-[min(100vw-2rem,16rem)] overflow-y-auto rounded-card border border-line bg-white py-2 shadow-card before:absolute before:-top-2 before:left-0 before:right-0 before:h-2 before:content-[''] sm:min-w-[240px] ${menuPosition}`}
+          className={`absolute top-full z-50 max-h-[min(70vh,24rem)] min-w-[min(100vw-2rem,16rem)] overflow-y-auto border border-line border-t-2 border-t-accent bg-parchment py-2 shadow-card before:absolute before:-top-2 before:left-0 before:right-0 before:h-2 before:content-[''] sm:min-w-[240px] ${menuPosition}`}
         >
           <li role="none">
             <Link
               href={href}
               role="menuitem"
-              className="block px-4 py-2.5 text-sm font-semibold text-navy hover:bg-section-alt"
+              className="block px-4 py-2.5 text-sm font-semibold text-brand hover:bg-mist"
               onClick={() => setOpen(false)}
             >
               All {label}
@@ -86,7 +86,7 @@ export function NavDropdown({
               <Link
                 href={item.href}
                 role="menuitem"
-                className="block break-words px-4 py-2.5 text-sm text-body hover:bg-section-alt hover:text-navy"
+                className="block break-words border-l-2 border-transparent px-4 py-2.5 text-sm text-body hover:border-accent hover:bg-mist hover:text-brand"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
