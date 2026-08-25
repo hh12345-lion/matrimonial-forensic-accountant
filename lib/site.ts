@@ -6,6 +6,15 @@ export const SITE_NAME = "Matrimonial Forensic Accountant";
 
 export const SITE_EMAIL = "contact@matrimonialforensicaccountant.com";
 
+/** Hostname for lead webhooks (e.g. matrimonialforensicaccountant.com). */
+export function getSiteDomain(): string {
+  try {
+    return new URL(SITE_URL).hostname.replace(/^www\./, "");
+  } catch {
+    return "matrimonialforensicaccountant.com";
+  }
+}
+
 /** Shown in copy and schema: practice is UK-only (England & Wales family courts). */
 export const SITE_REGION =
   "United Kingdom (England and Wales family proceedings)";

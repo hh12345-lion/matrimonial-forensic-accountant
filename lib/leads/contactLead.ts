@@ -45,31 +45,3 @@ export async function appendContactLeadToSheet(
     SITE_NAME,
   ]);
 }
-
-export async function notifyLeadWebhook(
-  payload: ContactLeadPayload
-): Promise<boolean> {
-  const webhookUrl =
-    process.env.Lead_notification_url || process.env.LEAD_NOTIFICATION_URL;
-
-  if (!webhookUrl) return false;
-
-  const res = await fetch(webhookUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      "Full Name": payload.fullName,
-      Organisation: payload.organisation || "",
-      Email: payload.email,
-      "Phone Number": payload.phone || "",
-      "Instruction Type": payload.instructionType || "",
-      "Practice Area": payload.practiceArea || "",
-      Deadline: payload.deadline || "",
-      Message: payload.message || "",
-      Referral: payload.referral || "",
-      "Brand name": SITE_NAME,
-    }),
-  });
-
-  return res.ok;
-}

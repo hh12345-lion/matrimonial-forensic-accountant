@@ -10,6 +10,7 @@ type NavDropdownProps = {
   href: string;
   items: NavDropdownItem[];
   align?: "left" | "right";
+  variant?: "docket" | "default";
 };
 
 export function NavDropdown({
@@ -17,9 +18,11 @@ export function NavDropdown({
   href,
   items,
   align = "left",
+  variant = "default",
 }: NavDropdownProps) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const isDocket = variant === "docket";
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -41,16 +44,20 @@ export function NavDropdown({
   const menuPosition =
     align === "right" ? "right-0 left-auto" : "left-0 right-auto";
 
+  const triggerClass = isDocket
+    ? "docket-link max-w-[11rem] gap-1 xl:max-w-none"
+    : "relative inline-flex min-h-touch max-w-[11rem] items-center gap-1 px-1 py-2 text-sm font-medium text-body transition-colors hover:text-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-accent xl:max-w-none";
+
   return (
     <div
       ref={ref}
-      className="relative"
+      className="relative flex items-stretch"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
       <button
         type="button"
-        className="nav-link max-w-[11rem] gap-1 xl:max-w-none"
+        className={triggerClass}
         aria-expanded={open}
         aria-haspopup="true"
         onClick={() => setOpen(!open)}
@@ -62,7 +69,10 @@ export function NavDropdown({
         >
           {label}
         </Link>
-        <span className="shrink-0 text-xs text-charcoal" aria-hidden="true">
+        <span
+          className={`shrink-0 text-[10px] ${isDocket ? "text-parchment/50" : "text-charcoal"}`}
+          aria-hidden="true"
+        >
           ▾
         </span>
       </button>

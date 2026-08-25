@@ -59,13 +59,24 @@ export function ContactForm() {
     };
 
     try {
-      const res = await fetch("/api/submit-lead", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
       if (res.ok) {
+        void fetch("/api/submit-lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            fullName: payload.fullName,
+            email: payload.email,
+            phone: payload.phone || "",
+            formType: "contact",
+          }),
+        });
+
         router.push("/thank-you");
       } else {
         setStatus("error");

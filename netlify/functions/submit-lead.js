@@ -1,26 +1,32 @@
-/**
- * POST lead notification to Lead_notification_url (n8n or other webhook).
- * Inbound body: { fullName, email, phone }
- * Outbound JSON keys: Full Name, Email, Phone Number, Brand name
- */
+/** @type {string} Per-brand label sent to the lead webhook */
 const BRAND_NAME = "Matrimonial Forensic Accountant";
 
+function getSiteDomain() {
+  const raw =
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    "https://www.matrimonialforensicaccountant.com";
+  try {
+    return new URL(raw).hostname.replace(/^www\./, "");
+  } catch {
+    return "matrimonialforensicaccountant.com";
+  }
+}
+
+function getLeadNotificationUrl() {
+  return (
+    process.env.Lead_notification_url || process.env.LEAD_NOTIFICATION_URL
+  );
+}
+
+/**
+ * @param {import("@netlify/functions").HandlerEvent} event
+ */
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ error: "Method not allowed" }),
-    };
-  }
-
-  const webhookUrl =
-    process.env.Lead_notification_url || process.env.LEAD_NOTIFICATION_URL;
-
-  if (!webhookUrl) {
-    console.error("Lead_notification_url is not configured");
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: "Lead notification is not configured" }),
     };
   }
 
@@ -28,52 +34,67 @@ exports.handler = async (event) => {
   try {
     body = JSON.parse(event.body || "{}");
   } catch {
-    return { statusCode: 400, body: JSON.stringify({ error: "Invalid JSON" }) };
+    return {
+      statusCode: 400,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ error: "Invalid JSON" }),
+    };
   }
 
-  const fullName = String(body.fullName || "").trim();
-  const email = String(body.email || "").trim();
-  const phone = String(body.phone || "").trim();
+  const fullName =
+    typeof body.fullName === "string" ? body.fullName.trim() : "";
+  const email = typeof body.email === "string" ? body.email.trim() : "";
+  const phone = typeof body.phone === "string" ? body.phone.trim() : "";
 
   if (!fullName || !email) {
     return {
       statusCode: 400,
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ error: "fullName and email are required" }),
     };
   }
 
-  const payload = {
-    "Full Name": fullName,
-    Email: email,
-    "Phone Number": phone,
-    "Brand name": BRAND_NAME,
-  };
+  const webhookUrl = getLeadNotificationUrl();
+  let webhookOk = false;
 
-  try {
-    const res = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    if (!res.ok) {
-      const text = await res.text();
-      console.error("Webhook failed", res.status, text);
-      return {
-        statusCode: 502,
-        body: JSON.stringify({ error: "Failed to deliver lead" }),
-      };
-    }
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ ok: true }),
+  if (webhookUrl) {
+    const outbound = {
+      "Full Name": fullName,
+      Email: email,
+      "Phone Number": phone,
+      "Brand name": BRAND_NAME,
+      domain: getSiteDomain(),
     };
-  } catch (err) {
-    console.error("Webhook error", err);
+
+    try {
+      const res = await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(outbound),
+      });
+      webhookOk = res.ok;
+      if (!res.ok) {
+        console.error("Lead webhook failed:", res.status, await res.text());
+      }
+    } catch (err) {
+      console.error("Lead webhook error:", err);
+    }
+  }
+
+  if (!webhookOk) {
+    const error = webhookUrl
+      ? "Lead notification failed"
+      : "Lead notification not configured";
     return {
-      statusCode: 502,
-      body: JSON.stringify({ error: "Failed to deliver lead" }),
+      statusCode: webhookUrl ? 502 : 503,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ error }),
     };
   }
+
+  return {
+    statusCode: 200,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ok: true }),
+  };
 };
