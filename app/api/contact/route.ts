@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import {
-  appendContactLeadToSheet,
+  writeContactLeadSafely,
   type ContactLeadPayload,
 } from "@/lib/leads/contactLead";
-import { isGoogleSheetsConfigured } from "@/lib/google-sheets";
 
 function parseContactBody(
   body: Record<string, unknown>
@@ -27,6 +26,7 @@ function parseContactBody(
     deadline: String(body.deadline || "").trim(),
     message,
     referral: String(body.referral || "").trim(),
+    formType: "contact",
   };
 }
 
@@ -48,28 +48,8 @@ export async function POST(request: Request) {
     );
   }
 
-  if (!isGoogleSheetsConfigured()) {
-    console.error("Google Sheets env vars are not configured");
-    return NextResponse.json(
-      { error: "Contact form is not configured" },
-      { status: 500 }
-    );
-  }
-
-  try {
-    await appendContactLeadToSheet(payload);
-  } catch (error: unknown) {
-    const err = error as { message?: string; code?: number };
-    console.error("Google Sheets write failed:", {
-      message: err?.message,
-      code: err?.code,
-      timestamp: new Date().toISOString(),
-    });
-    return NextResponse.json(
-      { error: "Submission failed. Please try again or email us directly." },
-      { status: 500 }
-    );
-  }
+  // Sheets are soft-fail; webhook via /api/submit-lead is the primary lead path.
+  await writeContactLeadSafely(payload);
 
   return NextResponse.json({ ok: true });
 }

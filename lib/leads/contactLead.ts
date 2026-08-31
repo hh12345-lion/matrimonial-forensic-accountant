@@ -11,28 +11,47 @@ export type ContactLeadPayload = {
   deadline?: string;
   message?: string;
   referral?: string;
+  /** Distinguishes Contact vs Instruct on the shared sheet tab. */
+  formType?: "contact" | "instruct" | string;
 };
 
 function sanitize(str: string): string {
   return str.replace(/<[^>]*>/g, "").trim();
 }
 
+export const CONTACT_SHEET_HEADERS = [
+  "Timestamp",
+  "Brand",
+  "Form Type",
+  "Full Name",
+  "Organisation",
+  "Email",
+  "Phone",
+  "Instruction Type",
+  "Practice Area",
+  "Deadline",
+  "Message",
+  "Referral Source",
+] as const;
+
 /**
- * Row order (columns A–K) should match row 1 headers in your Google Sheet tab:
- * Timestamp | Full Name | Organisation | Email | Phone | Instruction Type |
- * Practice Area | Deadline | Message | Referral | Brand name
+ * Row order should match row 1 headers on GOOGLE_SHEET_TAB_NAME (one shared tab).
+ * Form Type distinguishes Contact vs Instruct if dual forms are added later.
  */
 export async function appendContactLeadToSheet(
   payload: ContactLeadPayload
 ): Promise<void> {
   if (!isGoogleSheetsConfigured()) {
-    throw new Error("Google Sheets is not configured");
+    return;
   }
 
-  const timestamp = new Date().toISOString();
+  const formType =
+    payload.formType === "instruct" ? "Instruct" : "Contact";
 
   await appendRow([
-    timestamp,
+    new Date().toISOString(),
+    SITE_NAME,
+    formType,
     sanitize(payload.fullName),
     sanitize(payload.organisation || ""),
     payload.email.toLowerCase().trim(),
@@ -42,6 +61,26 @@ export async function appendContactLeadToSheet(
     payload.deadline || "",
     sanitize(payload.message || ""),
     sanitize(payload.referral || ""),
-    SITE_NAME,
   ]);
+}
+
+/** Soft-fail Sheets write — never throws to the contact API caller. */
+export async function writeContactLeadSafely(
+  payload: ContactLeadPayload
+): Promise<void> {
+  if (!isGoogleSheetsConfigured()) {
+    console.warn("Google Sheets not configured — contact lead not persisted.");
+    return;
+  }
+
+  try {
+    await appendContactLeadToSheet(payload);
+  } catch (error: unknown) {
+    const err = error as { message?: string; code?: number };
+    console.error("Google Sheets write failed:", {
+      message: err?.message,
+      code: err?.code,
+      timestamp: new Date().toISOString(),
+    });
+  }
 }

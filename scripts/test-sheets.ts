@@ -23,6 +23,8 @@ async function test() {
   try {
     const result = await appendRow([
       new Date().toISOString(),
+      SITE_NAME,
+      "Contact",
       "Test Entry",
       "Test Firm LLP",
       "test@example.com",
@@ -32,7 +34,6 @@ async function test() {
       "",
       "Test message from scripts/test-sheets.ts",
       "Other",
-      SITE_NAME,
     ]);
     console.log("Row written:", result.updatedRange);
     console.log("\nAll tests passed.");

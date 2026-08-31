@@ -49,7 +49,7 @@ SEO files: `npm run seo:generate` writes `public/sitemap.xml` and `public/robots
 1. Share the spreadsheet with `GOOGLE_SERVICE_ACCOUNT_EMAIL` as **Editor**.
 2. Set row 1 headers on tab `GOOGLE_SHEET_TAB_NAME`:
 
-   `Timestamp | Full Name | Organisation | Email | Phone | Instruction Type | Practice Area | Deadline | Message | Referral Source | Brand`
+   `Timestamp | Brand | Form Type | Full Name | Organisation | Email | Phone | Instruction Type | Practice Area | Deadline | Message | Referral Source`
 
 3. Copy `.env.example` to `.env.local` and set `GOOGLE_*` variables.
 4. Test: `npm run test:sheets`
