@@ -15,10 +15,6 @@ export type ContactLeadPayload = {
   formType?: "contact" | "instruct" | string;
 };
 
-function sanitize(str: string): string {
-  return str.replace(/<[^>]*>/g, "").trim();
-}
-
 export const CONTACT_SHEET_HEADERS = [
   "Timestamp",
   "Brand",
@@ -34,8 +30,12 @@ export const CONTACT_SHEET_HEADERS = [
   "Referral Source",
 ] as const;
 
+function sanitize(str: string): string {
+  return str.replace(/<[^>]*>/g, "").trim();
+}
+
 /**
- * Row order should match row 1 headers on GOOGLE_SHEET_TAB_NAME (one shared tab).
+ * Row order should match row 1 headers in GOOGLE_SHEET_TAB_NAME (one shared tab).
  * Form Type distinguishes Contact vs Instruct if dual forms are added later.
  */
 export async function appendContactLeadToSheet(
@@ -45,13 +45,13 @@ export async function appendContactLeadToSheet(
     return;
   }
 
-  const formType =
-    payload.formType === "instruct" ? "Instruct" : "Contact";
+  const formTypeLabel =
+    payload.formType?.toLowerCase() === "instruct" ? "Instruct" : "Contact";
 
   await appendRow([
     new Date().toISOString(),
     SITE_NAME,
-    formType,
+    formTypeLabel,
     sanitize(payload.fullName),
     sanitize(payload.organisation || ""),
     payload.email.toLowerCase().trim(),
@@ -64,17 +64,18 @@ export async function appendContactLeadToSheet(
   ]);
 }
 
-/** Soft-fail Sheets write — never throws to the contact API caller. */
+/** Soft-fail Sheets write — never throws to the API caller. */
 export async function writeContactLeadSafely(
   payload: ContactLeadPayload
-): Promise<void> {
+): Promise<boolean> {
   if (!isGoogleSheetsConfigured()) {
     console.warn("Google Sheets not configured — contact lead not persisted.");
-    return;
+    return false;
   }
 
   try {
     await appendContactLeadToSheet(payload);
+    return true;
   } catch (error: unknown) {
     const err = error as { message?: string; code?: number };
     console.error("Google Sheets write failed:", {
@@ -82,5 +83,6 @@ export async function writeContactLeadSafely(
       code: err?.code,
       timestamp: new Date().toISOString(),
     });
+    return false;
   }
 }

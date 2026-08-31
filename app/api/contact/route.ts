@@ -48,7 +48,7 @@ export async function POST(request: Request) {
     );
   }
 
-  // Sheets are soft-fail; webhook via /api/submit-lead is the primary lead path.
+  // Soft-fail Sheets — webhook via /api/submit-lead is the primary lead path.
   await writeContactLeadSafely(payload);
 
   return NextResponse.json({ ok: true });
