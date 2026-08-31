@@ -30,6 +30,10 @@ function parseContactBody(
   };
 }
 
+/**
+ * Soft-fail Sheets always. Never return "Contact form is not configured" —
+ * that blocked thank-you when Sheets env detection failed even if vars were set.
+ */
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
   try {
@@ -48,8 +52,10 @@ export async function POST(request: Request) {
     );
   }
 
-  // Soft-fail Sheets — webhook via /api/submit-lead is the primary lead path.
-  await writeContactLeadSafely(payload);
+  const skipSheet = body.skipSheet === true;
+  const writtenToSheet = skipSheet
+    ? false
+    : await writeContactLeadSafely(payload);
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, success: true, writtenToSheet });
 }

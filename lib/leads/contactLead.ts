@@ -69,7 +69,9 @@ export async function writeContactLeadSafely(
   payload: ContactLeadPayload
 ): Promise<boolean> {
   if (!isGoogleSheetsConfigured()) {
-    console.warn("Google Sheets not configured — contact lead not persisted.");
+    console.warn(
+      "[sheets] not configured — skip contact lead (need GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SHEET_ID)"
+    );
     return false;
   }
 
@@ -81,6 +83,10 @@ export async function writeContactLeadSafely(
     console.error("Google Sheets write failed:", {
       message: err?.message,
       code: err?.code,
+      spreadsheetId: process.env.GOOGLE_SHEET_ID
+        ? `${process.env.GOOGLE_SHEET_ID.slice(0, 8)}...`
+        : "missing",
+      tab: (process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1").trim(),
       timestamp: new Date().toISOString(),
     });
     return false;

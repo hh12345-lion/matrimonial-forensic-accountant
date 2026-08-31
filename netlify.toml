@@ -5,11 +5,13 @@
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-[[redirects]]
-  from = "/api/submit-lead"
-  to = "/.netlify/functions/submit-lead"
-  status = 200
-  force = true
+# submit-lead handled by app/api/submit-lead/route.ts (soft webhook + Sheets).
+# Force-redirect skipped Sheets and hard-failed when Lead_notification_url was missing.
+# [[redirects]]
+#   from = "/api/submit-lead"
+#   to = "/.netlify/functions/submit-lead"
+#   status = 200
+#   force = true
 
 [[headers]]
   for = "/sitemap.xml"

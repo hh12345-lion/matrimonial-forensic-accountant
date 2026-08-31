@@ -1,7 +1,13 @@
 import { NextResponse } from "next/server";
 import { notifyLeadWebhook } from "@/lib/leadNotification";
+import { writeContactLeadSafely } from "@/lib/leads/contactLead";
+import { isGoogleSheetsConfigured } from "@/lib/google-sheets";
 import { parseSubmitLeadBody } from "@/lib/submitLeadSchema";
 
+/**
+ * Soft-fail webhook + soft-fail Sheets.
+ * Form submit must not hard-fail when only Sheets or only webhook is available.
+ */
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
   try {
@@ -18,21 +24,56 @@ export async function POST(request: Request) {
     );
   }
 
+  const skipSheet = body.skipSheet === true;
+
   const webhook = await notifyLeadWebhook({
     fullName: payload.fullName,
     email: payload.email,
     phone: payload.phone,
   });
 
-  if (!webhook.ok) {
-    const error = webhook.configured
-      ? "Lead notification failed"
-      : "Lead notification not configured";
+  if (!webhook.configured) {
+    console.warn(
+      "[submit-lead] Lead_notification_url missing — continuing with Sheets fallback"
+    );
+  } else if (!webhook.ok) {
+    console.error("[submit-lead] webhook failed — continuing with Sheets fallback");
+  }
+
+  const writtenToSheet = skipSheet
+    ? false
+    : await writeContactLeadSafely({
+        fullName: payload.fullName,
+        email: payload.email,
+        phone: payload.phone,
+        organisation: String(body.organisation || "").trim(),
+        instructionType: String(body.instructionType || "").trim(),
+        practiceArea: String(body.practiceArea || "").trim(),
+        deadline: String(body.deadline || "").trim(),
+        message: String(body.message || "").trim(),
+        referral: String(body.referral || "").trim(),
+        formType: payload.formType || "contact",
+      });
+
+  if (!webhook.ok && !writtenToSheet) {
+    const sheetsHint = isGoogleSheetsConfigured()
+      ? "Sheets write failed"
+      : "Google Sheets env vars not detected";
     return NextResponse.json(
-      { error },
-      { status: webhook.configured ? 502 : 503 }
+      {
+        error: "Lead storage failed",
+        message: webhook.configured
+          ? `Webhook failed and ${sheetsHint}.`
+          : `Lead_notification_url missing and ${sheetsHint}.`,
+      },
+      { status: 503 }
     );
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({
+    ok: true,
+    success: true,
+    forwarded: webhook.ok,
+    writtenToSheet,
+  });
 }

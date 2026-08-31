@@ -13,7 +13,7 @@ const instructionTypes = [
   "Add-backs / Financial Reconstruction",
   "Single Joint Expert (SJE) Appointment",
   "Preliminary Assessment",
-  "Advisory / Dispute Support",
+  "Advisory / Litigation Support",
   "Other",
 ];
 
@@ -56,31 +56,38 @@ export function ContactForm() {
       deadline: String(fd.get("deadline") || "").trim(),
       message: String(fd.get("message") || "").trim(),
       referral: String(fd.get("referral") || "").trim(),
+      formType: "contact" as const,
     };
 
     try {
-      const res = await fetch("/api/contact", {
+      // Primary: webhook + Sheets (must not hard-fail on missing webhook alone).
+      const leadRes = await fetch("/api/submit-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+      const leadResult = (await leadRes.json().catch(() => ({}))) as {
+        ok?: boolean;
+        success?: boolean;
+      };
 
-      if (res.ok) {
-        void fetch("/api/submit-lead", {
+      try {
+        await fetch("/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            fullName: payload.fullName,
-            email: payload.email,
-            phone: payload.phone || "",
-            formType: "contact",
-          }),
+          body: JSON.stringify({ ...payload, skipSheet: true }),
+          keepalive: true,
         });
-
-        router.push("/thank-you");
-      } else {
-        setStatus("error");
+      } catch {
+        /* submit-lead already handled storage */
       }
+
+      if (!leadRes.ok || !(leadResult.ok || leadResult.success)) {
+        setStatus("error");
+        return;
+      }
+
+      router.push("/thank-you");
     } catch {
       setStatus("error");
     }

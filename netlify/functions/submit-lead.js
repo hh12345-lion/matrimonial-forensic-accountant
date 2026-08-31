@@ -1,4 +1,9 @@
-/** @type {string} Per-brand label sent to the lead webhook */
+/**
+ * Netlify backup for /api/submit-lead — soft webhook + soft Sheets.
+ */
+
+const { google } = require("googleapis");
+
 const BRAND_NAME = "Matrimonial Forensic Accountant";
 
 function getSiteDomain() {
@@ -18,9 +23,78 @@ function getLeadNotificationUrl() {
   );
 }
 
-/**
- * @param {import("@netlify/functions").HandlerEvent} event
- */
+function normalizePrivateKey(raw) {
+  if (!raw) return undefined;
+  let key = String(raw).trim();
+  if (
+    (key.startsWith('"') && key.endsWith('"')) ||
+    (key.startsWith("'") && key.endsWith("'"))
+  ) {
+    key = key.slice(1, -1);
+  }
+  return key.replace(/\\n/g, "\n");
+}
+
+function isGoogleSheetsConfigured() {
+  return Boolean(
+    process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
+      process.env.GOOGLE_PRIVATE_KEY &&
+      process.env.GOOGLE_SHEET_ID
+  );
+}
+
+function sanitize(str) {
+  return String(str || "")
+    .replace(/<[^>]*>/g, "")
+    .trim();
+}
+
+async function appendLeadToSheet(body) {
+  if (!isGoogleSheetsConfigured()) {
+    console.warn("[submit-lead fn] Sheets not configured — skip");
+    return false;
+  }
+
+  const auth = new google.auth.GoogleAuth({
+    credentials: {
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: normalizePrivateKey(process.env.GOOGLE_PRIVATE_KEY),
+    },
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+  });
+
+  const sheets = google.sheets({ version: "v4", auth });
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const sheetName = (process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1").trim();
+
+  await sheets.spreadsheets.values.append({
+    spreadsheetId,
+    range: `${sheetName}!A:L`,
+    valueInputOption: "USER_ENTERED",
+    insertDataOption: "INSERT_ROWS",
+    requestBody: {
+      values: [
+        [
+          new Date().toISOString(),
+          BRAND_NAME,
+          body.formType === "instruct" ? "Instruct" : "Contact",
+          sanitize(body.fullName),
+          sanitize(body.organisation),
+          String(body.email || "").toLowerCase().trim(),
+          sanitize(body.phone),
+          sanitize(body.instructionType),
+          sanitize(body.practiceArea),
+          sanitize(body.deadline),
+          sanitize(body.message),
+          sanitize(body.referral),
+        ],
+      ],
+    },
+  });
+
+  return true;
+}
+
 exports.handler = async (event) => {
   if (event.httpMethod !== "POST") {
     return {
@@ -54,23 +128,21 @@ exports.handler = async (event) => {
     };
   }
 
-  const webhookUrl = getLeadNotificationUrl();
   let webhookOk = false;
+  const webhookUrl = getLeadNotificationUrl();
 
   if (webhookUrl) {
-    const outbound = {
-      "Full Name": fullName,
-      Email: email,
-      "Phone Number": phone,
-      "Brand name": BRAND_NAME,
-      domain: getSiteDomain(),
-    };
-
     try {
       const res = await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(outbound),
+        body: JSON.stringify({
+          "Full Name": fullName,
+          Email: email,
+          "Phone Number": phone,
+          "Brand name": BRAND_NAME,
+          domain: getSiteDomain(),
+        }),
       });
       webhookOk = res.ok;
       if (!res.ok) {
@@ -79,22 +151,45 @@ exports.handler = async (event) => {
     } catch (err) {
       console.error("Lead webhook error:", err);
     }
+  } else {
+    console.warn(
+      "[submit-lead fn] Lead_notification_url missing — continuing with Sheets fallback"
+    );
   }
 
-  if (!webhookOk) {
-    const error = webhookUrl
-      ? "Lead notification failed"
-      : "Lead notification not configured";
+  let writtenToSheet = false;
+  if (!body.skipSheet) {
+    try {
+      writtenToSheet = await appendLeadToSheet(body);
+    } catch (err) {
+      console.error("Google Sheets error (submit-lead fn):", {
+        message: err && err.message,
+        tab: (process.env.GOOGLE_SHEET_TAB_NAME || "Sheet1").trim(),
+      });
+    }
+  }
+
+  if (!webhookOk && !writtenToSheet) {
     return {
-      statusCode: webhookUrl ? 502 : 503,
+      statusCode: 503,
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ error }),
+      body: JSON.stringify({
+        error: "Lead storage failed",
+        message: webhookUrl
+          ? "Webhook failed and Sheets write failed/not configured."
+          : "Lead_notification_url missing and Sheets write failed/not configured.",
+      }),
     };
   }
 
   return {
     statusCode: 200,
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ok: true }),
+    body: JSON.stringify({
+      ok: true,
+      success: true,
+      forwarded: webhookOk,
+      writtenToSheet,
+    }),
   };
 };
