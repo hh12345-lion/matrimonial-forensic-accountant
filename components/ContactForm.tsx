@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { SITE_EMAIL, SITE_NAME } from "@/lib/site";
+import { submitNetlifyForm } from "@/lib/submitNetlifyForm";
 
 const instructionTypes = [
   "Expert Witness Report (FPR Part 25)",
@@ -87,6 +88,22 @@ export function ContactForm() {
         return;
       }
 
+      try {
+        await submitNetlifyForm("contact", {
+          name: payload.fullName,
+          organisation: payload.organisation,
+          email: payload.email,
+          phone: payload.phone,
+          instruction_type: payload.instructionType,
+          practice_area: payload.practiceArea,
+          deadline: payload.deadline,
+          message: payload.message,
+          referral: payload.referral,
+        });
+      } catch {
+        // Lead API already stored the enquiry; don't block the visitor.
+      }
+
       router.push("/thank-you");
     } catch {
       setStatus("error");
@@ -97,7 +114,13 @@ export function ContactForm() {
     "w-full rounded-card border border-line px-4 py-3 text-body focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 min-h-touch";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form name="contact" method="POST" action="/__forms.html" onSubmit={handleSubmit} className="space-y-5">
+      <input type="hidden" name="form-name" value="contact" />
+      <p className="hidden" aria-hidden="true">
+        <label>
+          Do not fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+        </label>
+      </p>
       <div className="grid gap-5 md:grid-cols-2">
         <div>
           <label htmlFor="name" className="mb-1 block text-sm font-medium text-brand">
