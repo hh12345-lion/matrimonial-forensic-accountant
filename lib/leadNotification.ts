@@ -12,6 +12,7 @@ export async function notifyLeadWebhook(payload: {
   fullName: string;
   email: string;
   phone: string;
+  message?: string;
 }): Promise<{ ok: boolean; configured: boolean }> {
   const webhookUrl = getLeadNotificationUrl();
   if (!webhookUrl) {
@@ -24,6 +25,7 @@ export async function notifyLeadWebhook(payload: {
     "Phone Number": payload.phone,
     "Brand name": BRAND_NAME,
     domain: getSiteDomain(),
+    message: payload.message ?? "",
   };
 
   try {
