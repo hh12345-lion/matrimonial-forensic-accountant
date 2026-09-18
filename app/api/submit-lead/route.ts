@@ -25,11 +25,23 @@ export async function POST(request: Request) {
   }
 
   const skipSheet = body.skipSheet === true;
+  const message = String(
+    body.message ??
+      body.Message ??
+      body.description ??
+      body.enquiry ??
+      body.details ??
+      body.summary ??
+      body.notes ??
+      body.matter ??
+      ""
+  ).trim();
 
   const webhook = await notifyLeadWebhook({
     fullName: payload.fullName,
     email: payload.email,
     phone: payload.phone,
+    message,
   });
 
   if (!webhook.configured) {
@@ -50,7 +62,17 @@ export async function POST(request: Request) {
         instructionType: String(body.instructionType || "").trim(),
         practiceArea: String(body.practiceArea || "").trim(),
         deadline: String(body.deadline || "").trim(),
-        message: String(body.message || "").trim(),
+        message: String(
+          body.message ??
+            body.Message ??
+            body.description ??
+            body.enquiry ??
+            body.details ??
+            body.summary ??
+            body.notes ??
+            body.matter ??
+            ""
+        ).trim(),
         referral: String(body.referral || "").trim(),
         formType: payload.formType || "contact",
       });
