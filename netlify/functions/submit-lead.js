@@ -80,7 +80,7 @@ function sanitize(str) {
     .trim();
 }
 
-async function appendLeadToSheet(body) {
+async function appendLeadToSheet(body, resolvedMessage) {
   if (!isGoogleSheetsConfigured()) {
     console.warn("[submit-lead fn] Sheets not configured — skip");
     return false;
@@ -120,7 +120,7 @@ async function appendLeadToSheet(body) {
           sanitize(body.instructionType),
           sanitize(body.practiceArea),
           sanitize(body.deadline),
-          sanitize(body.message),
+          sanitize(resolvedMessage),
           sanitize(body.referral),
         ],
       ],
@@ -128,6 +128,43 @@ async function appendLeadToSheet(body) {
   });
 
   return true;
+}
+
+/** Map site-specific free-text field names to universal `message`. */
+function resolveLeadMessage(body) {
+  if (!body || typeof body !== "object") return "";
+  const keys = [
+    "message",
+    "Message",
+    "description",
+    "enquiry",
+    "details",
+    "summary",
+    "notes",
+    "matter",
+    "caseSummary",
+    "additionalInfo",
+    "additional_info",
+    "caseDetails",
+    "enquiryDetails",
+    "caseBrief",
+    "case_summary",
+    "caseDescription",
+    "case_description",
+    "matterDescription",
+    "additionalNotes",
+    "caseBackground",
+    "specificQuestions",
+    "briefSummary",
+    "conflict_info",
+    "brief",
+  ];
+  for (const key of keys) {
+    if (body[key] != null && String(body[key]).trim()) {
+      return String(body[key]).trim();
+    }
+  }
+  return "";
 }
 
 exports.handler = async (event) => {
@@ -154,24 +191,7 @@ exports.handler = async (event) => {
     typeof body.fullName === "string" ? body.fullName.trim() : "";
   const email = typeof body.email === "string" ? body.email.trim() : "";
   const phone = typeof body.phone === "string" ? body.phone.trim() : "";
-  const message = (() => {
-    const keys = [
-      "message",
-      "Message",
-      "description",
-      "enquiry",
-      "details",
-      "summary",
-      "notes",
-      "matter",
-    ];
-    for (const key of keys) {
-      if (body[key] != null && String(body[key]).trim()) {
-        return String(body[key]).trim();
-      }
-    }
-    return "";
-  })();
+  const message = resolveLeadMessage(body);
 
   if (!fullName || !email) {
     return {
@@ -214,7 +234,7 @@ exports.handler = async (event) => {
   let writtenToSheet = false;
   if (!body.skipSheet) {
     try {
-      writtenToSheet = await appendLeadToSheet(body);
+      writtenToSheet = await appendLeadToSheet(body, message);
     } catch (err) {
       console.error("Google Sheets error (submit-lead fn):", {
         message: err && err.message,

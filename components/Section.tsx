@@ -20,7 +20,7 @@ export function Section({ children, alt = false, className = "", id }: SectionPr
 
 export function Prose({ children }: { children: ReactNode }) {
   return (
-    <div className="prose-mfa min-w-0 max-w-none space-y-4 text-base leading-relaxed text-body [&_h2]:mb-4 [&_h2]:mt-8 [&_h2]:break-words [&_h2]:font-serif [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-navy sm:[&_h2]:mt-10 sm:[&_h2]:text-2xl [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:break-words [&_h3]:font-serif [&_h3]:text-lg [&_h3]:text-charcoal sm:[&_h3]:mt-8 sm:[&_h3]:text-xl [&_p+p]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 sm:[&_ul]:pl-6">
+    <div className="prose-mfa min-w-0 max-w-none space-y-4 text-base leading-relaxed text-body [&_h2]:mb-4 [&_h2]:mt-8 [&_h2]:break-words [&_h2]:font-serif [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:text-navy sm:[&_h2]:mt-10 sm:[&_h2]:text-2xl [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:break-words [&_h3]:font-serif [&_h3]:text-lg [&_h3]:text-charcoal sm:[&_h3]:mt-8 sm:[&_h3]:text-xl [&_p+p]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 sm:[&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:space-y-2 [&_ol]:pl-5 sm:[&_ol]:pl-6 [&_a]:font-semibold [&_a]:text-gold [&_a]:underline [&_a]:underline-offset-2 hover:[&_a]:text-navy [&_strong]:font-semibold [&_strong]:text-navy">
       {children}
     </div>
   );

@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { notifyLeadWebhook } from "@/lib/leadNotification";
 import { writeContactLeadSafely } from "@/lib/leads/contactLead";
 import { isGoogleSheetsConfigured } from "@/lib/google-sheets";
+import { resolveLeadMessage } from "@/lib/resolveLeadMessage";
 import { parseSubmitLeadBody } from "@/lib/submitLeadSchema";
 
 /**
@@ -25,17 +26,7 @@ export async function POST(request: Request) {
   }
 
   const skipSheet = body.skipSheet === true;
-  const message = String(
-    body.message ??
-      body.Message ??
-      body.description ??
-      body.enquiry ??
-      body.details ??
-      body.summary ??
-      body.notes ??
-      body.matter ??
-      ""
-  ).trim();
+  const message = resolveLeadMessage(body);
 
   const webhook = await notifyLeadWebhook({
     fullName: payload.fullName,
@@ -62,17 +53,7 @@ export async function POST(request: Request) {
         instructionType: String(body.instructionType || "").trim(),
         practiceArea: String(body.practiceArea || "").trim(),
         deadline: String(body.deadline || "").trim(),
-        message: String(
-          body.message ??
-            body.Message ??
-            body.description ??
-            body.enquiry ??
-            body.details ??
-            body.summary ??
-            body.notes ??
-            body.matter ??
-            ""
-        ).trim(),
+        message,
         referral: String(body.referral || "").trim(),
         formType: payload.formType || "contact",
       });

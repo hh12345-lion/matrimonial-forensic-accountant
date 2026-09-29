@@ -11,6 +11,7 @@ const firmLinks = [
   { href: "/case-types", label: "Case Types" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/insights", label: "Insights" },
+  { href: "/blog", label: "Blog" },
   { href: "/fees", label: "Fees" },
   { href: "/contact", label: "Enquire" },
 ];

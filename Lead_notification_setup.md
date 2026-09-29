@@ -25,7 +25,8 @@ The handler (**`netlify/functions/submit-lead.js`** or **`app/api/submit-lead/ro
 | **`Email`** | From `email` | Yes |
 | **`Phone Number`** | From `phone` | Yes (may be `""`) |
 | **`Brand name`** | Fixed per site in code (`BRAND_NAME`) | Yes |
-| **`domain`** | Site hostname, no `www` (e.g. `forensicexpertwitness.co.uk`) | Yes |
+| **`domain`** | Site hostname, no `www` (e.g. `matrimonialforensicaccountant.com`) | Yes |
+| **`message`** | Free-text enquiry / case brief (aliases resolved server-side) | Yes (may be `""`) |
 
 Content type: **`application/json`**.
 
@@ -36,11 +37,17 @@ Content type: **`application/json`**.
   "Full Name": "Jane Smith",
   "Email": "jane@example.com",
   "Phone Number": "+44 7700 900123",
-  "Brand name": "Forensic Expert Witness",
-  "domain": "forensicexpertwitness.co.uk"
+  "Brand name": "Matrimonial Forensic Accountant",
+  "domain": "matrimonialforensicaccountant.com",
+  "message": "Form E review for financial remedy — company shareholding dispute."
 }
 ```
 
+### `message` (universal free-text)
+
+- **Key name:** always lowercase **`message`**.
+- Forms should send `message` when possible. The API also maps aliases such as `enquiry`, `details`, `caseBrief`, `enquiryDetails`, `additionalInfo`, and related keys onto `message` before the webhook and Sheets write.
+- Empty string is allowed when the user left the field blank.
 ### `domain` (standard across all projects)
 
 - **Key name:** always lowercase **`domain`** (not `Domain`, not `site`, not `website`).
@@ -73,7 +80,7 @@ Do not commit real URLs in Git; keep **`.env`** gitignored.
 ## Netlify wiring
 
 - **`netlify.toml`**: redirect **`/api/submit-lead`** → **`/.netlify/functions/submit-lead`**.
-- **`netlify/functions/submit-lead.js`**: builds the five keys above and **`fetch` POST**s to **`Lead_notification_url`**.
+- **`netlify/functions/submit-lead.js`**: builds the keys above (including **`message`**) and **`fetch` POST**s to **`Lead_notification_url`**.
 
 For local testing, run **`netlify dev`** and open the URL it prints (often **`http://localhost:8888`**) so **`/api/submit-lead`** resolves to the function.
 
@@ -94,7 +101,7 @@ Contact form should fire the webhook after a successful **`/api/contact`** POST 
 1. Set **`BRAND_NAME`** in **`netlify/functions/submit-lead.js`** and **`lib/leadNotification.ts`** (display name for n8n).
 2. Set **`NEXT_PUBLIC_SITE_URL`** to the live site (e.g. `https://forensicexpertwitness.co.uk`).
 3. Set **`Lead_notification_url`** to the shared n8n webhook URL.
-4. Confirm outbound JSON includes all **five keys**, especially **`domain`** spelled exactly as above.
+4. Confirm outbound JSON includes **`Full Name`**, **`Email`**, **`Phone Number`**, **`Brand name`**, **`domain`**, and **`message`**.
 5. In n8n, map **`domain`** to branch, filter, or store — same field name on every site.
 
 ### Files to copy for another project
