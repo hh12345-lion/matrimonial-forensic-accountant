@@ -12,7 +12,6 @@ const desktopNavLinks = [
   { href: "/about", label: "About" },
   { href: "/case-studies", label: "Case Studies" },
   { href: "/insights", label: "Insights" },
-  { href: "/blog", label: "Blog" },
 ];
 
 const serviceDropdownItems = services.map((s) => ({
