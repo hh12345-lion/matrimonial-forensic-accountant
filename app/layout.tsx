@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Public_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -9,16 +9,17 @@ import { CookiePreferencesModal } from "@/components/cookies/CookiePreferencesMo
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { HOME_TITLE } from "@/lib/metadata";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+// Fonts are served from the repository so the build does not depend on Google Fonts.
+const fraunces = localFont({
+  src: "./fonts/fraunces.woff2",
+  weight: "500 700",
   variable: "--font-fraunces",
   display: "swap",
 });
 
-const publicSans = Public_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const publicSans = localFont({
+  src: "./fonts/public-sans.woff2",
+  weight: "400 700",
   variable: "--font-public-sans",
   display: "swap",
 });
