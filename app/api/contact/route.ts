@@ -31,7 +31,7 @@ function parseContactBody(
 }
 
 /**
- * Soft-fail Sheets always. Never return "Contact form is not configured" —
+ * Soft-fail Sheets always. Never return "Contact form is not configured", 
  * that blocked thank-you when Sheets env detection failed even if vars were set.
  */
 export async function POST(request: Request) {

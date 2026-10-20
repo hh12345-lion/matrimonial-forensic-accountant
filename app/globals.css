@@ -3,21 +3,19 @@
 @tailwind utilities;
 
 :root {
-  --font-fraunces: "Fraunces", Georgia, "Times New Roman", serif;
-  --font-public-sans: "Public Sans", system-ui, -apple-system, sans-serif;
-  --color-parchment: #f9f7f2;
-  --color-brand: #1c3044;
-  --color-brand-mid: #2a4158;
-  --color-accent: #7a4050;
-  --color-accent-light: #9e5a6a;
-  --color-accent-muted: #ede4e6;
-  --color-sage: #5a7d6a;
-  --color-sage-light: #e4ece7;
-  --color-charcoal: #5a6570;
-  --color-mist: #eef1f4;
-  --color-line: #d8dee4;
-  --color-heading: #1c3044;
-  --color-body: #3d4a56;
+  --color-parchment: #f9f7f1;
+  --color-brand: #153146;
+  --color-brand-mid: #21435e;
+  --color-accent: #833c50;
+  --color-accent-light: #9c5167;
+  --color-accent-muted: #f3e6ea;
+  --color-sage: #4c6a7e;
+  --color-sage-light: #e3e9ee;
+  --color-charcoal: #5b6168;
+  --color-mist: #eff1f4;
+  --color-line: #dadde3;
+  --color-heading: #153146;
+  --color-body: #3c3c3c;
 }
 
 @layer base {
@@ -37,7 +35,7 @@
     overflow-x: hidden;
     background-color: var(--color-parchment);
     color: var(--color-body);
-    font-family: var(--font-public-sans), system-ui, sans-serif;
+    font-family: var(--font-body), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -51,12 +49,12 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-fraunces), Georgia, serif;
+    font-family: var(--font-heading), system-ui, sans-serif;
     color: var(--color-heading);
   }
 
   ::selection {
-    background-color: rgba(122, 64, 80, 0.18);
+    background-color: rgba(131, 60, 80, 0.18);
     color: var(--color-brand);
   }
 
@@ -85,57 +83,85 @@
   .page-hero {
     position: relative;
     overflow: hidden;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    background-color: var(--color-brand);
-    border-bottom: 4px solid var(--color-accent);
+    padding-top: 2.75rem;
+    padding-bottom: 3.5rem;
+    background-color: var(--color-parchment);
+    border-bottom: 1px solid var(--color-line);
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 1024px) {
     .page-hero {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .page-hero {
-      padding-top: 5rem;
+      padding-top: 4.5rem;
       padding-bottom: 5rem;
     }
-  }
 
-  .page-hero::before {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 5px;
-    background: linear-gradient(
-      180deg,
-      var(--color-accent) 0%,
-      var(--color-sage) 100%
-    );
-  }
-
-  .page-hero::after {
-    content: "";
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      115deg,
-      transparent 55%,
-      rgba(90, 125, 106, 0.12) 55%,
-      rgba(90, 125, 106, 0.06) 100%
-    );
+    /* A mist panel behind the photo pair */
+    .page-hero::before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 36%;
+      background-color: var(--color-mist);
+    }
   }
 
   .page-hero .container-page {
     position: relative;
     z-index: 10;
+  }
+
+  /* Photo frame shaped like the shoulders of the figures in the monogram */
+  .shoulder {
+    border-radius: 44% 44% 14px 14px / 30% 30% 14px 14px;
+  }
+
+  /* Desktop dropdowns open on hover or keyboard focus, no client state */
+  .nav-item .nav-panel {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  .nav-item:hover .nav-panel,
+  .nav-item:focus-within .nav-panel {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .menu-icon span {
+    display: block;
+    height: 2px;
+    width: 22px;
+    background-color: currentColor;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  #mobile-nav-toggle:checked ~ div .menu-icon span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  #mobile-nav-toggle:checked ~ div .menu-icon span:nth-child(2) {
+    opacity: 0;
+  }
+
+  #mobile-nav-toggle:checked ~ div .menu-icon span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  details.fold > summary {
+    list-style: none;
+  }
+
+  details.fold > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.fold[open] .fold-mark {
+    transform: rotate(45deg);
   }
 
   .bg-page {
@@ -150,14 +176,14 @@
     border-left-width: 3px;
     border-left-color: var(--color-accent);
     background-color: #fff;
-    box-shadow: 0 1px 8px rgba(28, 48, 68, 0.06);
+    box-shadow: 0 1px 8px rgba(21, 49, 70, 0.06);
     transition-duration: 200ms;
     transition-property: border-color, box-shadow, transform;
   }
 
   .card-elevated:hover {
     border-left-color: var(--color-sage);
-    box-shadow: 0 4px 18px rgba(28, 48, 68, 0.1);
+    box-shadow: 0 4px 18px rgba(21, 49, 70, 0.1);
     transform: translateY(-1px);
   }
 

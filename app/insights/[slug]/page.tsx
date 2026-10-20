@@ -12,10 +12,6 @@ import { insights, getInsight } from "@/lib/data/insights";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  return insights.map((i) => ({ slug: i.slug }));
-}
-
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const article = getInsight(slug);

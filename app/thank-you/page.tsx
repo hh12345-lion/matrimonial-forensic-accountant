@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PageHero } from "@/components/PageHero";
 import { buildMetadata } from "@/lib/metadata";
 import { SITE_EMAIL } from "@/lib/site";
 import { Button } from "@/components/ui/Button";
@@ -6,7 +7,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata = buildMetadata({
   title: "Thank You | Matrimonial Forensic Accountant",
   description:
-    "Your enquiry has been received. Matrimonial Forensic Accountant will respond within one working day.",
+    "Your enquiry has been received. Matrimonial Forensic Accountant will reply by email.",
   path: "/thank-you",
   noindex: true,
   nofollow: true,
@@ -15,21 +16,11 @@ export const metadata = buildMetadata({
 export default function ThankYouPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container-page text-center">
-          <p className="font-serif text-sm font-semibold uppercase tracking-wide text-gold-light">
-            Enquiry received
-          </p>
-          <div className="accent-rule mx-auto mb-5 mt-6" aria-hidden="true" />
-          <h1 className="font-serif text-2xl font-semibold text-white xs:text-3xl md:text-4xl">
-            Thank you
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-            We have received your message and aim to respond within one working
-            day. If your matter is urgent, please email us directly.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        title="Thank you"
+        subtitle="We have received your message and will reply by email. If your matter is urgent, please email us directly."
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Enquiry received" }]}
+      />
 
       <section className="py-10 sm:py-14 md:py-20">
         <div className="container-page mx-auto max-w-2xl text-center">

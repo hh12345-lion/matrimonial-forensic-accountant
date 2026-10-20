@@ -9,26 +9,29 @@ import { CookiePreferencesModal } from "@/components/cookies/CookiePreferencesMo
 import { SITE_URL, SITE_NAME } from "@/lib/site";
 import { HOME_TITLE } from "@/lib/metadata";
 
-// Fonts are served from the repository so the build does not depend on Google Fonts.
-const fraunces = localFont({
-  src: "./fonts/fraunces.woff2",
-  weight: "500 700",
-  variable: "--font-fraunces",
+// Brand fonts are served from the repository so the build does not depend on Google Fonts.
+const heading = localFont({
+  src: "./fonts/bricolage-grotesque.woff2",
+  weight: "200 800",
+  variable: "--font-heading",
   display: "swap",
 });
 
-const publicSans = localFont({
-  src: "./fonts/public-sans.woff2",
-  weight: "400 700",
-  variable: "--font-public-sans",
+const body = localFont({
+  src: "./fonts/onest.woff2",
+  weight: "100 900",
+  variable: "--font-body",
   display: "swap",
 });
+
+// Every page is rendered on the server for each request.
+export const dynamic = "force-dynamic";
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#1C3044",
+  themeColor: "#153146",
 };
 
 export const metadata: Metadata = {
@@ -55,7 +58,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className={`${fraunces.variable} ${publicSans.variable}`}>
+    <html lang="en-GB" className={`${heading.variable} ${body.variable}`}>
       <body className="flex min-h-screen min-h-[100dvh] flex-col">
         <script
           dangerouslySetInnerHTML={{

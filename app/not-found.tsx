@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PageHero } from "@/components/PageHero";
 import { Button } from "@/components/ui/Button";
 import { services, servicePath } from "@/lib/data/services";
 import { caseTypes, caseTypePath } from "@/lib/data/case-types";
@@ -7,29 +8,15 @@ import { SITE_NAME } from "@/lib/site";
 export default function NotFound() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container-page text-center">
-          <p className="font-serif text-5xl font-semibold text-gold-light xs:text-6xl md:text-8xl">
-            404
-          </p>
-          <div className="accent-rule mx-auto mb-5 mt-6" aria-hidden="true" />
-          <h1 className="font-serif text-xl font-semibold text-white xs:text-2xl md:text-3xl">
-            Page not found
-          </h1>
-          <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
-            The page you are looking for does not exist on {SITE_NAME}. It may
-            have moved or the address may be incorrect.
-          </p>
-          <div className="hero-cta-group mt-8 justify-center">
-            <Button href="/" variant="primary" className="w-full max-w-sm sm:w-auto">
-              Return to Homepage
-            </Button>
-            <Button href="/contact" variant="secondary" className="w-full max-w-sm sm:w-auto">
-              Enquire
-            </Button>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Page not found"
+        subtitle={`The page you are looking for does not exist on ${SITE_NAME}. It may have moved or the address may be incorrect.`}
+      >
+        <Button href="/">Return to homepage</Button>
+        <Button href="/contact" variant="secondary">
+          Enquire
+        </Button>
+      </PageHero>
 
       <section className="bg-section-alt py-10 sm:py-14">
         <div className="container-page">

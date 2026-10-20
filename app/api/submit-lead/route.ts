@@ -37,10 +37,10 @@ export async function POST(request: Request) {
 
   if (!webhook.configured) {
     console.warn(
-      "[submit-lead] Lead_notification_url missing — continuing with Sheets fallback"
+      "[submit-lead] Lead_notification_url missing, continuing with Sheets fallback"
     );
   } else if (!webhook.ok) {
-    console.error("[submit-lead] webhook failed — continuing with Sheets fallback");
+    console.error("[submit-lead] webhook failed, continuing with Sheets fallback");
   }
 
   const writtenToSheet = skipSheet

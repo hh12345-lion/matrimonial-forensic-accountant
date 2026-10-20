@@ -1,272 +1,201 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { SITE_NAME, SITE_EMAIL, CTA_LABEL } from "@/lib/site";
-import { NavDropdown } from "./NavDropdown";
+import { usePathname } from "next/navigation";
+import { SITE_NAME, CTA_LABEL } from "@/lib/site";
 import { services, servicePath } from "@/lib/data/services";
 import { practiceAreas } from "@/lib/data/practice-areas";
 import { caseTypes, caseTypePath } from "@/lib/data/case-types";
 
-const desktopNavLinks = [
-  { href: "/about", label: "About" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/insights", label: "Insights" },
-];
+type NavLink = { href: string; label: string };
+type NavGroup = { label: string; href: string; items: NavLink[] };
 
-const serviceDropdownItems = services.map((s) => ({
-  href: servicePath(s.id),
-  label: s.title,
-}));
-
-const practiceAreaDropdownItems = practiceAreas.map((p) => ({
-  href: `/practice-areas/${p.slug}`,
-  label: p.title,
-}));
-
-const caseTypeDropdownItems = [
-  { href: "/case-types", label: "All Case Types" },
-  ...caseTypes.map((c) => ({
-    href: caseTypePath(c.slug),
-    label: c.hubLabel,
-  })),
-];
-
-const mobileGroups = [
+const groups: NavGroup[] = [
   {
-    index: "I",
-    label: "About the practice",
-    links: [
+    label: "Services",
+    href: "/services",
+    items: services.map((s) => ({ href: servicePath(s.id), label: s.title })),
+  },
+  {
+    label: "Case Types",
+    href: "/case-types",
+    items: caseTypes.map((c) => ({ href: caseTypePath(c.slug), label: c.hubLabel })),
+  },
+  {
+    label: "Practice Areas",
+    href: "/practice-areas",
+    items: [
+      ...practiceAreas.map((p) => ({ href: `/practice-areas/${p.slug}`, label: p.title })),
+      { href: "/case-studies", label: "Case Studies" },
+    ],
+  },
+  {
+    label: "The Practice",
+    href: "/about",
+    items: [
       { href: "/about", label: "About" },
       { href: "/how-we-work", label: "How We Work" },
       { href: "/qualifications-accreditations", label: "Qualifications" },
       { href: "/fees", label: "Fees" },
     ],
   },
-  {
-    index: "II",
-    label: "Services",
-    links: [
-      { href: "/services", label: "All Services" },
-      ...serviceDropdownItems,
-    ],
-  },
-  {
-    index: "III",
-    label: "Case Types",
-    links: caseTypeDropdownItems,
-  },
-  {
-    index: "IV",
-    label: "Experience",
-    links: [
-      { href: "/practice-areas", label: "All Practice Areas" },
-      ...practiceAreaDropdownItems,
-      { href: "/case-studies", label: "Case Studies" },
-    ],
-  },
-  {
-    index: "V",
-    label: "Resources",
-    links: [
-      { href: "/insights", label: "Insights" },
-      { href: "/blog", label: "Blog" },
-    ],
-  },
 ];
 
-function DocketDivider() {
+const links: NavLink[] = [
+  { href: "/insights", label: "Insights" },
+  { href: "/blog", label: "Blog" },
+];
+
+/** The curved arms of the monogram, drawn under the current section. */
+function Arc() {
   return (
-    <span
-      className="hidden h-5 w-px shrink-0 self-center bg-parchment/20 nav:block"
-      aria-hidden="true"
-    />
+    <svg viewBox="0 0 120 24" className="absolute -bottom-2 left-1/2 h-2.5 w-[70%] -translate-x-1/2 text-accent" aria-hidden="true" preserveAspectRatio="none">
+      <path d="M4 4c10 18 34 18 56 18s46 0 56-18" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+    </svg>
   );
 }
 
+/** Client only to read the current path; the header is rendered on the server first. */
 export function Header() {
-  const [open, setOpen] = useState(false);
+  const pathname = usePathname() || "/";
+  const isOn = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const groupOn = (g: NavGroup) => isOn(g.href) || g.items.some((i) => isOn(i.href));
 
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+  const top =
+    "relative inline-flex min-h-touch items-center gap-1.5 whitespace-nowrap px-1 text-[0.92rem] font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent";
 
   return (
-    <header className="pt-safe">
-      {/* Court stationery letterhead — scrolls away */}
-      <div className="site-letterhead">
-        <div className="container-page py-2">
-          <div className="flex flex-col gap-1 text-[11px] font-medium tracking-wide text-charcoal sm:flex-row sm:items-center sm:justify-between">
-            <p>FPR Part 25 · England &amp; Wales family proceedings</p>
-            <a
-              href={`mailto:${SITE_EMAIL}`}
-              className="truncate hover:text-accent focus:outline-none focus-visible:underline"
-            >
-              {SITE_EMAIL}
-            </a>
-          </div>
-        </div>
+    <header className="relative z-40 border-b border-line bg-white">
+      <input key={pathname} id="mobile-nav-toggle" type="checkbox" className="peer sr-only" aria-hidden="true" tabIndex={-1} />
+      <div className="container-page flex items-center justify-between gap-6 py-3.5">
+        <Link href="/" aria-label={`${SITE_NAME} home`} className="shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/logo.svg" alt={SITE_NAME} width={816} height={251} className="h-12 w-auto sm:h-[54px]" />
+        </Link>
 
-        <div className="container-page pb-6 pt-5 sm:pb-8 sm:pt-6">
-          <Link
-            href="/"
-            className="group inline-block max-w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-parchment"
-          >
-            <span className="block font-serif text-2xl font-semibold leading-none tracking-tight text-brand xs:text-3xl sm:text-4xl lg:text-[2.65rem]">
-              Matrimonial Forensic
-              <span className="block text-accent">Accountant</span>
-            </span>
-            <span
-              className="mt-4 block h-px w-20 bg-sage transition-all duration-300 group-hover:w-32"
-              aria-hidden="true"
-            />
-            <span className="mt-3 block max-w-xl text-sm leading-relaxed text-body">
-              Expert witness and forensic accounting for financial remedy,
-              business valuation, and disclosure disputes before the Family Court.
-            </span>
-          </Link>
-        </div>
-      </div>
-
-      {/* Sticky docket navigation rail */}
-      <div className="site-docket sticky top-0 z-50 shadow-header">
-        <div className="container-page flex items-stretch justify-between gap-3">
-          <Link
-            href="/"
-            className="flex shrink-0 items-center gap-2 border-r border-parchment/15 py-2 pr-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-accent-light nav:pr-4"
-            aria-label={`${SITE_NAME} home`}
-          >
-            <span
-              className="flex h-9 w-9 shrink-0 rotate-45 items-center justify-center border border-accent-light/60 bg-accent/30"
-              aria-hidden="true"
-            >
-              <span className="-rotate-45 font-serif text-[11px] font-bold leading-none text-parchment">
-                MFA
-              </span>
-            </span>
-            <span className="hidden font-serif text-sm font-semibold leading-tight text-parchment lg:block">
-              {SITE_NAME}
-            </span>
-          </Link>
-
-          <nav
-            className="hidden min-w-0 flex-1 items-stretch justify-center nav:flex"
-            aria-label="Main navigation"
-          >
-            <div className="flex items-stretch">
-              <Link href="/about" className="docket-link">
-                About
-              </Link>
-              <DocketDivider />
-              <NavDropdown
-                label="Services"
-                href="/services"
-                items={serviceDropdownItems}
-                align="left"
-                variant="docket"
-              />
-              <DocketDivider />
-              <NavDropdown
-                label="Case Types"
-                href="/case-types"
-                items={caseTypeDropdownItems}
-                align="left"
-                variant="docket"
-              />
-              <DocketDivider />
-              <NavDropdown
-                label="Practice Areas"
-                href="/practice-areas"
-                items={practiceAreaDropdownItems}
-                align="right"
-                variant="docket"
-              />
-              {desktopNavLinks.slice(1).map((link) => (
-                <span key={link.href} className="flex items-stretch">
-                  <DocketDivider />
-                  <Link href={link.href} className="docket-link">
-                    {link.label}
-                  </Link>
-                </span>
-              ))}
-            </div>
-          </nav>
-
-          <div className="flex shrink-0 items-stretch gap-2">
-            <Link
-              href="/contact"
-              className="hidden items-center bg-accent px-5 text-xs font-bold uppercase tracking-[0.16em] text-parchment transition hover:bg-accent-light focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-parchment sm:inline-flex"
-            >
-              {CTA_LABEL}
-            </Link>
-
-            <button
-              type="button"
-              className="inline-flex min-h-touch min-w-touch flex-col items-center justify-center gap-1.5 px-3 nav:hidden"
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen(!open)}
-            >
-              <span
-                className={`block h-0.5 w-5 bg-parchment transition ${open ? "translate-y-1.5 rotate-45" : ""}`}
-              />
-              <span
-                className={`block h-0.5 w-5 bg-parchment transition ${open ? "opacity-0" : ""}`}
-              />
-              <span
-                className={`block h-0.5 w-5 bg-parchment transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`}
-              />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {open && (
-        <nav
-          id="mobile-menu"
-          className="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-brand pt-[4.5rem] nav:hidden"
-          aria-label="Mobile navigation"
-        >
-          <div className="container-page space-y-8 py-8 pb-safe">
-            {mobileGroups.map((group) => (
-              <div key={group.label}>
-                <p className="flex items-baseline gap-3">
-                  <span className="font-serif text-3xl font-semibold text-parchment/20">
-                    {group.index}
-                  </span>
-                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-sage-light">
-                    {group.label}
-                  </span>
-                </p>
-                <ul className="mt-4 space-y-1 border-l border-parchment/15 pl-4">
-                  {group.links.map((link) => (
-                    <li key={link.href + link.label}>
-                      <Link
-                        href={link.href}
-                        className="flex min-h-touch items-center break-words text-base text-parchment/85 transition hover:text-parchment"
-                        onClick={() => setOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+        <nav aria-label="Main navigation" className="hidden items-center gap-6 nav:flex">
+          {groups.map((g) => {
+            const on = groupOn(g);
+            return (
+              <div key={g.label} className="nav-item relative">
+                <Link
+                  href={g.href}
+                  aria-current={pathname === g.href ? "page" : undefined}
+                  className={`${top} ${on ? "text-accent" : "text-brand hover:text-accent"}`}
+                >
+                  {g.label}
+                  <svg viewBox="0 0 12 12" className="h-2.5 w-2.5 opacity-60" aria-hidden="true">
+                    <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" />
+                  </svg>
+                  {on && <Arc />}
+                </Link>
+                <div className="nav-panel absolute left-1/2 top-full z-50 w-[19rem] -translate-x-1/2 pt-4 transition duration-150">
+                  <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-card-hover">
+                    <ul className="max-h-[70vh] overflow-y-auto p-2">
+                      {g.items.map((i) => (
+                        <li key={i.href}>
+                          <Link
+                            href={i.href}
+                            aria-current={pathname === i.href ? "page" : undefined}
+                            className={`block rounded-xl px-4 py-2.5 text-sm transition-colors hover:bg-accent-muted focus:outline-none focus-visible:bg-accent-muted ${
+                              pathname === i.href ? "bg-accent-muted font-semibold text-accent" : "text-brand"
+                            }`}
+                          >
+                            {i.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <Link href={g.href} className="block border-t border-line bg-mist px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-accent hover:text-brand">
+                      All {g.label.toLowerCase()}
+                    </Link>
+                  </div>
+                </div>
               </div>
-            ))}
+            );
+          })}
+          {links.map((l) => (
             <Link
-              href="/contact"
-              className="flex min-h-touch w-full items-center justify-center bg-accent text-sm font-bold uppercase tracking-[0.14em] text-parchment"
-              onClick={() => setOpen(false)}
+              key={l.href}
+              href={l.href}
+              aria-current={pathname === l.href ? "page" : undefined}
+              className={`${top} ${isOn(l.href) ? "text-accent" : "text-brand hover:text-accent"}`}
             >
-              {CTA_LABEL}
+              {l.label}
+              {isOn(l.href) && <Arc />}
             </Link>
-          </div>
+          ))}
         </nav>
-      )}
+
+        <div className="flex items-center gap-3">
+          <Link
+            href="/contact"
+            aria-current={pathname === "/contact" ? "page" : undefined}
+            className={`hidden min-h-touch items-center rounded-full px-6 text-sm font-semibold transition sm:inline-flex ${
+              pathname === "/contact" ? "bg-brand text-white" : "bg-accent text-white hover:bg-accent-light"
+            }`}
+          >
+            {CTA_LABEL}
+          </Link>
+          <label
+            htmlFor="mobile-nav-toggle"
+            className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-line text-brand nav:hidden"
+            aria-label="Open or close the menu"
+          >
+            <span className="menu-icon flex flex-col gap-[5px]">
+              <span />
+              <span />
+              <span />
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div className="hidden max-h-[calc(100dvh-76px)] overflow-y-auto border-t border-line bg-white peer-checked:block nav:!hidden">
+        <nav aria-label="Mobile navigation" className="container-page pb-8 pt-2">
+          {groups.map((g) => (
+            <details key={g.label} className="fold border-b border-line" open={groupOn(g)}>
+              <summary className={`flex min-h-[52px] cursor-pointer items-center justify-between font-serif text-lg font-semibold ${groupOn(g) ? "text-accent" : "text-brand"}`}>
+                {g.label}
+                <span className="fold-mark text-2xl font-light leading-none text-accent transition-transform" aria-hidden="true">
+                  +
+                </span>
+              </summary>
+              <ul className="pb-4">
+                <li>
+                  <Link href={g.href} aria-current={pathname === g.href ? "page" : undefined} className="block py-2 text-sm font-semibold uppercase tracking-[0.12em] text-accent">
+                    All {g.label.toLowerCase()}
+                  </Link>
+                </li>
+                {g.items.map((i) => (
+                  <li key={i.href}>
+                    <Link
+                      href={i.href}
+                      aria-current={pathname === i.href ? "page" : undefined}
+                      className={`block py-2 ${pathname === i.href ? "font-semibold text-accent" : "text-body"}`}
+                    >
+                      {i.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+          {links.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              aria-current={pathname === l.href ? "page" : undefined}
+              className={`flex min-h-[52px] items-center border-b border-line font-serif text-lg font-semibold ${isOn(l.href) ? "text-accent" : "text-brand"}`}
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link href="/contact" className="mt-6 flex min-h-touch items-center justify-center rounded-full bg-accent px-6 text-sm font-semibold text-white">
+            {CTA_LABEL}
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

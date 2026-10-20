@@ -5,17 +5,14 @@ import { notFound } from "next/navigation";
 import { CTASection } from "@/components/CTASection";
 import { JsonLd } from "@/components/JsonLd";
 import { Section, Prose } from "@/components/Section";
-import { getBlogBySlug, getBlogSlugs } from "@/lib/blog";
+import { getBlogBySlug } from "@/lib/blog";
+import { PageHero } from "@/components/PageHero";
 import { markdownToHtml } from "@/lib/markdown";
 import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbSchema } from "@/lib/schema";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
-
-export function generateStaticParams() {
-  return getBlogSlugs().map((slug) => ({ slug }));
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -89,34 +86,15 @@ export default async function BlogPostPage({ params }: Props) {
         }}
       />
 
-      {post.image ? (
-        <div className="relative mx-auto h-[min(28rem,55vw)] w-full max-w-7xl border-b border-line">
-          <Image
-            src={post.image}
-            alt={post.imageAlt || post.title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
-      ) : null}
+      <PageHero
+        title={post.title}
+        subtitle={post.description}
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Blog", href: "/blog" }, { label: "Article" }]}
+      />
 
       <Section>
         <article className="mx-auto max-w-3xl">
-          <nav aria-label="Breadcrumb" className="mb-6 text-sm text-charcoal/70">
-            <Link href="/" className="hover:text-gold">
-              Home
-            </Link>
-            {" / "}
-            <Link href="/blog" className="hover:text-gold">
-              Blog
-            </Link>
-            {" / "}
-            <span className="text-navy">{post.title}</span>
-          </nav>
-
-          <p className="text-xs font-semibold uppercase tracking-wide text-gold">
+          <p className="text-xs font-semibold uppercase tracking-wide text-accent">
             <time dateTime={post.updated || post.date}>
               {new Date(post.updated || post.date).toLocaleDateString("en-GB", {
                 day: "numeric",
@@ -129,10 +107,11 @@ export default async function BlogPostPage({ params }: Props) {
               {post.readingTime}
             </span>
           </p>
-          <h1 className="mt-3 font-serif text-3xl font-semibold leading-tight text-navy sm:text-4xl">
-            {post.title}
-          </h1>
-          <p className="mt-4 text-lg text-body">{post.description}</p>
+          {post.image ? (
+            <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-3xl">
+              <Image src={post.image} alt={post.imageAlt || post.title} fill priority sizes="(max-width: 768px) 100vw, 768px" className="object-cover" />
+            </div>
+          ) : null}
 
           <Prose>
             <div className="mt-8" dangerouslySetInnerHTML={{ __html: html }} />

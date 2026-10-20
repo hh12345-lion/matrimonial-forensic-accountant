@@ -10,12 +10,12 @@ type CTASectionProps = {
 
 export function CTASection({
   title = "Discuss your instruction",
-  description = "Contact Matrimonial Forensic Accountant to discuss expert witness or forensic accounting support in England and Wales family proceedings. We respond within one working day.",
+  description = "Contact Matrimonial Forensic Accountant to discuss expert witness or forensic accounting support in England and Wales family proceedings.",
   buttonText = CTA_LABEL,
   buttonHref = "/contact",
 }: CTASectionProps) {
   return (
-    <section className="border-y-2 border-accent bg-mist py-12 sm:py-16 md:py-20">
+    <section className="bg-mist py-12 sm:py-16 md:py-20">
       <div className="container-page">
         <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center md:gap-12">
           <div>
@@ -30,7 +30,7 @@ export function CTASection({
           <div className="shrink-0">
             <Button
               href={buttonHref}
-              variant="outline"
+              variant="primary"
               className="w-full md:w-auto"
             >
               {buttonText}

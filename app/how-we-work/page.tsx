@@ -37,8 +37,8 @@ const principles = [
 
 const steps = [
   { step: "1", title: "Initial contact", text: "Discuss the matter, confirm scope and availability, check conflicts. Same day response." },
-  { step: "2", title: "Conflicts check", text: "Full conflicts check against existing clients and instructions. Completed within 24 hours." },
-  { step: "3", title: "Letter of instruction", text: "Review the instruction letter, raise queries if scope needs clarification. Confirm acceptance within 2 working days." },
+  { step: "2", title: "Conflicts check", text: "Full conflicts check against existing clients and instructions." },
+  { step: "3", title: "Letter of instruction", text: "Review the instruction letter, raise queries if scope needs clarification. Confirm acceptance once scope is settled." },
   { step: "4", title: "Document review", text: "Receive and review all relevant financial documents. Request additional materials if needed." },
   { step: "5", title: "Analysis", text: "Conduct the forensic analysis, applying appropriate methodology, testing assumptions, identifying any matters outside our expertise." },
   { step: "6", title: "Expert report", text: "Draft, review, and finalise the CPR/FPR/CrPR compliant expert report. Provide preliminary advice note if requested before formal report." },

@@ -10,10 +10,6 @@ import { caseTypes, getCaseType, caseTypePath } from "@/lib/data/case-types";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  return caseTypes.map((c) => ({ slug: c.slug }));
-}
-
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const item = getCaseType(slug);

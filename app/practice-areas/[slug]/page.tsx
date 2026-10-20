@@ -15,10 +15,6 @@ import {
 
 type Props = { params: Promise<{ slug: string }> };
 
-export async function generateStaticParams() {
-  return practiceAreas.map((p) => ({ slug: p.slug }));
-}
-
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const area = getPracticeArea(slug);

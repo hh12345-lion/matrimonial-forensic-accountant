@@ -22,6 +22,7 @@ export const APP_STATIC_PATHS = [
   ...insights.map((i) => `/insights/${i.slug}`),
   "/blog",
   ...getBlogSlugs().map((slug) => `/blog/${slug}`),
+  "/image-credits",
 ] as const;
 
 /** Valid routes excluded from sitemap (noindex or utility) */

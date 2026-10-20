@@ -7,7 +7,7 @@ const variants: Record<Variant, string> = {
   primary:
     "border border-accent bg-accent text-parchment shadow-sm hover:border-accent-light hover:bg-accent-light focus-visible:ring-accent",
   secondary:
-    "border border-parchment/35 bg-transparent text-parchment hover:border-parchment hover:bg-parchment/10 focus-visible:ring-parchment",
+    "border border-brand/25 bg-white text-brand hover:border-brand hover:bg-mist focus-visible:ring-brand",
   outline:
     "border border-accent bg-transparent text-accent hover:bg-accent-muted focus-visible:ring-accent",
 };
@@ -30,7 +30,7 @@ export function Button({
   type = "button",
 }: ButtonProps) {
   const base =
-    "inline-flex min-h-touch min-w-touch items-center justify-center px-5 py-3 text-center text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 sm:px-6";
+    "inline-flex min-h-touch min-w-touch items-center justify-center rounded-full px-6 py-3 text-center text-sm font-semibold transition focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2";
 
   const classes = `${base} ${variants[variant]} ${className}`;
 

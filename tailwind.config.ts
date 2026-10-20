@@ -5,6 +5,7 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     screens: {
@@ -19,33 +20,33 @@ const config: Config = {
     extend: {
       colors: {
         /** Deep slate: primary brand, heroes, legal strip */
-        brand: "#1C3044",
-        "brand-mid": "#2A4158",
+        brand: "#153146",
+        "brand-mid": "#21435E",
         /** Burgundy: accents, CTAs, highlights */
-        accent: "#7A4050",
-        "accent-light": "#9E5A6A",
-        "accent-muted": "#EDE4E6",
-        /** Sage: secondary accent, editorial details */
-        sage: "#5A7D6A",
-        "sage-light": "#E4ECE7",
-        charcoal: "#5A6570",
-        mist: "#EEF1F4",
-        line: "#D8DEE4",
-        heading: "#1C3044",
-        body: "#3D4A56",
-        parchment: "#F9F7F2",
-        /** Legacy aliases — mapped to new palette for gradual migration */
-        navy: "#1C3044",
-        gold: "#7A4050",
-        "gold-light": "#9E5A6A",
-        "gold-muted": "#EDE4E6",
-        cream: "#F9F7F2",
-        "section-alt": "#EEF1F4",
+        accent: "#833C50",
+        "accent-light": "#9C5167",
+        "accent-muted": "#F3E6EA",
+        /** Slate: secondary accent drawn from the navy */
+        sage: "#4C6A7E",
+        "sage-light": "#E3E9EE",
+        charcoal: "#5B6168",
+        mist: "#EFF1F4",
+        line: "#DADDE3",
+        heading: "#153146",
+        body: "#3C3C3C",
+        parchment: "#F9F7F1",
+        /** Legacy aliases mapped to the brand palette */
+        navy: "#153146",
+        gold: "#833C50",
+        "gold-light": "#9C5167",
+        "gold-muted": "#F3E6EA",
+        cream: "#F9F7F1",
+        "section-alt": "#EFF1F4",
       },
       fontFamily: {
-        serif: ["var(--font-fraunces)"],
-        sans: ["var(--font-public-sans)"],
-        display: ["var(--font-fraunces)"],
+        serif: ["var(--font-heading)", "system-ui", "sans-serif"],
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        display: ["var(--font-heading)", "system-ui", "sans-serif"],
       },
       borderRadius: {
         card: "2px",
@@ -56,7 +57,7 @@ const config: Config = {
         header: "0 1px 0 rgba(28, 48, 68, 0.08)",
       },
       backgroundImage: {
-        "hero-gradient": "linear-gradient(135deg, #1C3044 0%, #2A4158 100%)",
+        "hero-gradient": "linear-gradient(135deg, #153146 0%, #21435E 100%)",
         "hero-diagonal":
           "linear-gradient(115deg, transparent 55%, rgba(90, 125, 106, 0.12) 55%, rgba(90, 125, 106, 0.06) 100%)",
       },

@@ -68,13 +68,13 @@ export async function appendContactLeadToSheet(
   ]);
 }
 
-/** Soft-fail Sheets write — never throws to the API caller. */
+/** Soft-fail Sheets write: never throws to the API caller. */
 export async function writeContactLeadSafely(
   payload: ContactLeadPayload
 ): Promise<boolean> {
   if (!isGoogleSheetsConfigured()) {
     console.warn(
-      "[sheets] not configured — skip contact lead (need GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SHEET_ID)"
+      "[sheets] not configured, skip contact lead (need GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SHEET_ID)"
     );
     return false;
   }
