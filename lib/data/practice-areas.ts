@@ -89,58 +89,6 @@ export const practiceAreas: PracticeArea[] = [
     ],
   },
   {
-    slug: "schedule-1-children-act",
-    title: "Schedule 1 (Children Act)",
-    shortDescription:
-      "Financial analysis and expert evidence for Schedule 1 claims for financial provision for children.",
-    h1: "Schedule 1 (Children Act 1989)",
-    paragraphs: [
-      "Schedule 1 proceedings require forensic accounting analysis of a parent's financial resources, income, and capital, often involving business interests and complex income structures. Matrimonial Forensic Accountant provides expert evidence on the paying parent's ability to meet housing and maintenance claims, including analysis of income, capital, and trust structures.",
-      "We address the same forensic issues that arise in financial remedy proceedings but in the context of claims for financial provision for children, including periodical payments, lump sums for housing, and trust arrangements.",
-      "Typical instructions include income analysis for high earners with complex remuneration, business valuation where the paying parent controls trading entities, and lifestyle analysis where declared resources are inconsistent with expenditure.",
-    ],
-    faqs: [
-      {
-        question:
-          "Do you provide expert evidence in Schedule 1 proceedings?",
-        answer:
-          "Yes. We produce FPR Part 25 compliant expert reports for Schedule 1 proceedings, addressing income, capital, and business valuation issues. We accept both party-appointed and single joint expert instructions where the court directs joint evidence.",
-      },
-      {
-        question:
-          "Can you analyse trust structures in Schedule 1 cases?",
-        answer:
-          "We analyse trust and corporate structures where accounting expertise is required to establish the financial resources available to the paying parent, including distributions, loans, and beneficial interests. We work alongside family law counsel on the legal characterisation of structures.",
-      },
-    ],
-  },
-  {
-    slug: "tolata-cohabitation",
-    title: "TOLATA & Cohabitation",
-    shortDescription:
-      "Forensic accounting for beneficial interest and property disputes between cohabitees.",
-    h1: "TOLATA & Cohabitation Disputes",
-    paragraphs: [
-      "Trusts of Land and Appointment of Trustees Act (TOLATA) claims and cohabitation property disputes often require forensic analysis of financial contributions, mortgage payments, and property-related expenditure over the course of a relationship. Matrimonial Forensic Accountant reconstructs financial contributions and analyses business income where property was funded from trading entities.",
-      "We provide clear, evidence-based analysis suitable for County Court proceedings, explaining how identified contributions relate to the financial records available.",
-      "Instructions include reconstruction of contributions to purchase and improvement costs, analysis of rental income and mortgage payments, and business income analysis where property acquisition was funded through owner-managed companies.",
-    ],
-    faqs: [
-      {
-        question:
-          "What is your role in TOLATA proceedings?",
-        answer:
-          "We provide forensic accounting analysis of financial contributions and related income, producing expert reports where accounting expertise is required to establish the financial history relevant to beneficial interest claims. We do not provide legal advice on beneficial interest law.",
-      },
-      {
-        question:
-          "Can you work on cohabitation disputes without marriage?",
-        answer:
-          "Yes. Our expertise in family-related financial analysis extends to cohabitation property disputes, TOLATA claims, and other proceedings where forensic accounting evidence is required to establish financial contributions and resources.",
-      },
-    ],
-  },
-  {
     slug: "high-net-worth-complex-matrimonial",
     title: "High Net Worth & Complex Matrimonial",
     shortDescription:

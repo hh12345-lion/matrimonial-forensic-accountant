@@ -46,7 +46,7 @@ const audiences = [
   {
     photo: photos.lincolnsInnFields,
     title: "For family law solicitors",
-    text: "FPR Part 25 expert witness and forensic accounting support in financial remedy, Schedule 1, and TOLATA proceedings. Senior-led delivery with clear, judge-focused reporting.",
+    text: "FPR Part 25 expert witness and forensic accounting support in financial remedy proceedings. Senior-led delivery with clear, judge-focused reporting.",
   },
   {
     photo: photos.graysInn,
@@ -104,7 +104,7 @@ export default function HomePage() {
             <h2 className="font-serif text-3xl font-bold !text-white md:text-4xl">What we do</h2>
             <p className="text-base leading-relaxed text-white/75 sm:text-lg">
               We work across financial remedy and divorce in the Family Court of England and Wales, matrimonial business
-              valuation, hidden assets and undisclosed income, Schedule 1 claims, TOLATA and cohabitation disputes, and high
+              valuation, hidden assets and undisclosed income, and high
               net worth complex matrimonial matters.
             </p>
           </div>

@@ -10,7 +10,7 @@ import { practiceAreas } from "@/lib/data/practice-areas";
 export const metadata = buildMetadata({
   title: "Practice Areas | Matrimonial Forensic Accountant UK",
   description:
-    "Matrimonial Forensic Accountant practice areas: financial remedy, business valuation, hidden assets, Schedule 1, TOLATA, and high net worth matrimonial proceedings.",
+    "Matrimonial Forensic Accountant practice areas: financial remedy, business valuation, hidden assets, and high net worth matrimonial proceedings.",
   path: "/practice-areas",
 });
 

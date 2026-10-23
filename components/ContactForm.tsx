@@ -20,8 +20,6 @@ const instructionTypes = [
 
 const practiceAreas = [
   "Financial Remedy / Divorce",
-  "Schedule 1 (Children Act)",
-  "TOLATA / Cohabitation",
   "High Net Worth Matrimonial",
   "Self-Employed Income",
   "Overseas Assets / Trusts",

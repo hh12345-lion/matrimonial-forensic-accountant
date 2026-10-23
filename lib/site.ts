@@ -35,8 +35,6 @@ export const caseTypeSlugs = [
   "form-e-financial-disclosure",
   "add-backs-financial-reconstruction",
   "self-employed-income-assessment",
-  "schedule-1-children-act",
-  "tolata-cohabitation",
   "overseas-assets-trusts",
   "high-net-worth-divorce",
 ] as const;

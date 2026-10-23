@@ -34,7 +34,7 @@ export const insights: InsightArticle[] = [
         heading: "Choosing the right expert",
         paragraphs: [
           "Look for a chartered accountant with specific family forensic experience, not general audit practice. ICAEW Forensic Accreditation, membership of the Academy of Experts, and a track record in FPR Part 25 proceedings are useful indicators.",
-          "Confirm the expert has experience in your specific issues: matrimonial business valuation, hidden asset investigation, or Schedule 1 income analysis require different expertise. Ask whether a senior practitioner will lead the engagement and whether SJE appointments are accepted.",
+          "Confirm the expert has experience in your specific issues: matrimonial business valuation and hidden asset investigation require different expertise. Ask whether a senior practitioner will lead the engagement and whether SJE appointments are accepted.",
         ],
       },
       {

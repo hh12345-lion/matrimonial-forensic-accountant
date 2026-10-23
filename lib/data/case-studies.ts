@@ -42,15 +42,4 @@ export const caseStudies: CaseStudy[] = [
     outcome:
       "The investigation supported an application for further disclosure. Following specific issue directions, the respondent's revised disclosure led to a revised open offer and settlement at FDR.",
   },
-  {
-    title: "Schedule 1: Income Analysis for High Earner with Complex Remuneration",
-    background:
-      "Schedule 1 proceedings where the paying parent was a senior executive with equity incentives, deferred bonuses, and trust distributions.",
-    instruction:
-      "Expert report on the paying parent's maintainable income and capital resources for housing and maintenance claims.",
-    approach:
-      "Reconstructed maintainable income from employment contracts, bonus history, and trust distributions; analysed the liquidity of equity holdings; addressed the treatment of deferred remuneration in periodical payments calculations.",
-    outcome:
-      "The court accepted the expert's income analysis for the purposes of the interim maintenance order. The final Schedule 1 order reflected the capital and income conclusions in the report.",
-  },
 ];

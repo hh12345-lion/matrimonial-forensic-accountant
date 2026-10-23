@@ -43,8 +43,8 @@ export default function AboutPage() {
           </p>
           <p>
             We work with family law solicitors and barristers in England and
-            Wales on expert witness instructions in financial remedy, Schedule
-            1, and TOLATA proceedings. We focus exclusively on UK matrimonial
+            Wales on expert witness instructions in financial remedy
+            proceedings. We focus exclusively on UK matrimonial
             and family financial disputes under English law, not general
             commercial litigation or proceedings in other jurisdictions.
           </p>
@@ -93,8 +93,6 @@ export default function AboutPage() {
           <p>We accept instructions across:</p>
           <ul>
             <li>Financial remedy and divorce (FPR Part 25)</li>
-            <li>Schedule 1 (Children Act 1989) financial provision</li>
-            <li>TOLATA and cohabitation property disputes</li>
             <li>Pre-FDR forensic investigations under privilege</li>
             <li>High net worth and complex matrimonial proceedings</li>
             <li>Nuptial agreement financial analysis</li>

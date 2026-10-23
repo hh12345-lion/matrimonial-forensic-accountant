@@ -61,7 +61,7 @@ export function Footer() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/logo-stacked-light.svg" alt={SITE_NAME} width={520} height={430} className="h-auto w-40" />
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/70">
-            Independent forensic accounting for financial remedy, Schedule 1 and TOLATA proceedings in England and Wales.
+            Independent forensic accounting for financial remedy.
           </p>
         </div>
         <div>

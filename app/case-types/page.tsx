@@ -10,7 +10,7 @@ import { caseTypes, caseTypePath } from "@/lib/data/case-types";
 export const metadata = buildMetadata({
   title: "Case Types | Matrimonial Forensic Accountant UK",
   description:
-    "Forensic accounting case types in UK family proceedings: business valuation, hidden assets, Form E, Schedule 1, TOLATA, and high net worth matrimonial matters.",
+    "Forensic accounting case types in UK family proceedings: business valuation, hidden assets, Form E, and high net worth matrimonial matters.",
   path: "/case-types",
 });
 

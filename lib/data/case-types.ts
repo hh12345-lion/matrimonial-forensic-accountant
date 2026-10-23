@@ -68,7 +68,7 @@ export const caseTypes: CaseType[] = [
     title: "Lifestyle Analysis and Income Assessment",
     metaTitle: "Lifestyle Analysis Divorce UK | Matrimonial Forensic Accountant",
     metaDescription:
-      "Lifestyle analysis and income assessment in UK financial remedy and Schedule 1 proceedings.",
+      "Lifestyle analysis and income assessment in UK financial remedy proceedings.",
     h1: "Lifestyle Analysis & Income",
     paragraphs: [
       "Lifestyle analysis compares evidenced expenditure to declared income. A material gap supports arguments that undisclosed income or capital has funded living costs.",
@@ -159,56 +159,6 @@ export const caseTypes: CaseType[] = [
         question: "Do you analyse company and personal accounts together?",
         answer:
           "Yes. We review business and personal records to understand how income and benefits flow to the spouse.",
-      },
-    ],
-  },
-  {
-    slug: "schedule-1-children-act",
-    hubLabel: "Schedule 1 (Children Act)",
-    title: "Schedule 1 Financial Provision",
-    metaTitle: "Schedule 1 Forensic Accounting UK | Matrimonial Forensic Accountant",
-    metaDescription:
-      "Forensic accounting for Schedule 1 claims: income, capital, and housing provision for children.",
-    h1: "Schedule 1 (Children Act)",
-    paragraphs: [
-      "Schedule 1 proceedings require analysis of the paying parent's income, capital, and ability to meet housing and maintenance claims for children.",
-      "We address complex remuneration, trusts, and business interests where accounting expertise is required.",
-    ],
-    faqs: [
-      {
-        question: "What does a forensic accountant do in Schedule 1 cases?",
-        answer:
-          "We analyse income and capital resources, produce expert reports where required, and support counsel on the financial evidence underpinning housing and periodical payment claims.",
-      },
-      {
-        question: "Is the analysis different from financial remedy?",
-        answer:
-          "The forensic techniques overlap, but the issues focus on provision for children rather than matrimonial asset division.",
-      },
-    ],
-  },
-  {
-    slug: "tolata-cohabitation",
-    hubLabel: "TOLATA & Cohabitation",
-    title: "TOLATA and Cohabitation Disputes",
-    metaTitle: "TOLATA Forensic Accounting UK | Matrimonial Forensic Accountant",
-    metaDescription:
-      "Financial analysis for TOLATA and cohabitation property disputes: contributions and funding history.",
-    h1: "TOLATA & Cohabitation",
-    paragraphs: [
-      "TOLATA and cohabitation disputes often require reconstruction of financial contributions to property acquisition, mortgage payments, and improvements.",
-      "We provide evidence-quality analysis of the financial history relevant to beneficial interest claims.",
-    ],
-    faqs: [
-      {
-        question: "What financial evidence is needed for TOLATA?",
-        answer:
-          "Contribution schedules, bank evidence, and business income analysis where property was funded through trading entities.",
-      },
-      {
-        question: "Do you provide legal advice on beneficial interest?",
-        answer:
-          "No. We provide forensic accounting analysis only; legal characterisation is for counsel.",
       },
     ],
   },

@@ -27,6 +27,16 @@ const nextConfig: NextConfig = {
         destination: "/how-we-work",
         permanent: true,
       },
+      {
+        source: "/practice-areas/:slug(schedule-1-children-act|tolata-cohabitation)",
+        destination: "/practice-areas",
+        permanent: true,
+      },
+      {
+        source: "/case-types/:slug(schedule-1-children-act|tolata-cohabitation)",
+        destination: "/case-types",
+        permanent: true,
+      },
     ];
   },
 };

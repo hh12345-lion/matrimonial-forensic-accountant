@@ -25,7 +25,7 @@ export const services: Service[] = [
     id: "expert-witness",
     title: "Expert Witness Reports",
     description:
-      "FPR Part 25 compliant expert reports for financial remedy, Schedule 1, and TOLATA proceedings.",
+      "FPR Part 25 compliant expert reports for financial remedy proceedings.",
     metaTitle: "Expert Witness Reports | Matrimonial Forensic Accountant UK",
     metaDescription:
       "FPR Part 25 compliant expert witness reports for financial remedy and family proceedings. Single joint expert appointments available.",
@@ -52,8 +52,6 @@ export const services: Service[] = [
           "Form E review and financial disclosure analysis",
           "Income analysis, add-backs, and lifestyle benchmarking",
           "Hidden asset and undisclosed income findings",
-          "Schedule 1 income and capital assessments",
-          "TOLATA contribution and financial history analysis",
         ],
       },
       {

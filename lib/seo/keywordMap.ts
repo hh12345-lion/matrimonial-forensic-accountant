@@ -65,14 +65,6 @@ export function getUrlsForPracticeAreaSlug(slug: string): {
       services: ["/services/hidden-assets", "/services/income-lifestyle"],
       insights: ["hidden-assets-divorce-guide"],
     },
-    "schedule-1-children-act": {
-      services: ["/services/expert-witness"],
-      insights: ["instructing-matrimonial-forensic-accountant"],
-    },
-    "tolata-cohabitation": {
-      services: ["/services/expert-witness"],
-      insights: [],
-    },
     "high-net-worth-complex-matrimonial": {
       services: ["/services/expert-witness", "/services/hidden-assets"],
       insights: ["business-valuation-divorce-guide"],
