@@ -58,7 +58,7 @@ export const services: Service[] = [
         type: "prose",
         heading: "Our Duty to the Court",
         paragraphs: [
-          "Our duty is to the court, not to the party instructing us. We advise instructing solicitors promptly if our preliminary view may be adverse, because early advice is more useful than a late surprise.",
+          "Our duty is to the court, not to the spouse who instructs us. If our early view goes against your client, you hear it from us straight away, while there is still time to act on it.",
         ],
       },
     ],

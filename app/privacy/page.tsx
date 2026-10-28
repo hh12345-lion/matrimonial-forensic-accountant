@@ -20,14 +20,14 @@ export default function PrivacyPage() {
           <p className="text-sm text-charcoal">Last updated: June 2025</p>
           <h2>Who we are</h2>
           <p>
-            {SITE_NAME} ({SITE_EMAIL}) is the data controller for personal data collected
-            through this website and in connection with forensic accounting instructions.
+            {SITE_NAME} ({SITE_EMAIL}) decides how personal data is used, both for this website
+            and for the financial remedy cases we are instructed on.
           </p>
           <h2>What data we collect</h2>
           <p>
-            We may collect: name, organisation, email, phone, and matter details submitted
-            via our contact form; technical data such as IP address and browser type when
-            you use our website; and cookie data as described in our{" "}
+            When you contact us we receive your name, firm, email, phone number and a summary of
+            the case. Our website also records technical details such as your IP address and
+            browser, plus the cookie data explained in our{" "}
             <Link href="/cookies" className="text-gold hover:underline">
               Cookie Policy
             </Link>
@@ -35,15 +35,15 @@ export default function PrivacyPage() {
           </p>
           <h2>Lawful basis and purposes</h2>
           <p>
-            We process personal data to respond to enquiries (legitimate interests /
-            pre-contract), to perform professional services you instruct (contract), and to
-            comply with legal obligations. We do not sell personal data.
+            We use enquiry details to reply to you (legitimate interests, or steps before a
+            contract), case material to carry out work you instruct us on (contract), and
+            some records to meet our legal duties. We never sell personal data.
           </p>
           <h2>Retention</h2>
           <p>
-            Enquiry data is retained only as long as needed to assess and respond to your
-            enquiry, and in line with professional record-keeping requirements where an
-            instruction proceeds.
+            We keep an enquiry only for as long as it takes to deal with it. Where we are
+            instructed, the file is kept for as long as our professional record-keeping
+            rules require.
           </p>
           <h2>Your rights</h2>
           <p>

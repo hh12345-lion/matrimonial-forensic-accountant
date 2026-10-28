@@ -43,9 +43,9 @@ export default function QualificationsPage() {
           </p>
           <h3>CFE (Certified Fraud Examiner)</h3>
           <p>
-            Awarded by the Association of Certified Fraud Examiners (ACFE), the
-            primary global credential for fraud investigation and forensic accounting
-            specialists.
+            The Association of Certified Fraud Examiners (ACFE) credential for
+            specialists in fraud investigation, useful where a spouse may have
+            hidden income or assets.
           </p>
           <h3>ICAEW Forensic &amp; Expert Witness Accreditation</h3>
           <p>

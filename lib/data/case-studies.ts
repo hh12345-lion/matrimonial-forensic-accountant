@@ -17,7 +17,7 @@ export const caseStudies: CaseStudy[] = [
     approach:
       "Reviewed four years of business accounts, management information, and bank statements; conducted lifestyle analysis benchmarking declared income against identified expenditure; identified multiple add-backs and adjusted the income figure.",
     outcome:
-      "The adjusted income figure was substantially higher than the declared position. The valuation and income analysis formed the basis for the consent order reached at the FDR hearing.",
+      "Once adjusted, the income came out well above what had been declared. The valuation and income analysis formed the basis for the consent order reached at the FDR hearing.",
   },
   {
     title:

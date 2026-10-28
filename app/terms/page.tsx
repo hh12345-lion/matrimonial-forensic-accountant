@@ -19,30 +19,28 @@ export default function TermsPage() {
           <p className="text-sm text-charcoal">Last updated: June 2025</p>
           <h2>Website use</h2>
           <p>
-            This website is operated by {SITE_NAME}. By using this site you agree to these
-            terms. Content is for general information only and does not constitute legal or
-            professional advice.
+            {SITE_NAME} runs this website, and using it means you accept these terms. Nothing
+            here is legal or professional advice on your own separation or divorce.
           </p>
           <h2>Not a law firm</h2>
           <p>
-            {SITE_NAME} is an independent forensic accounting practice. We are not a law firm
-            and do not provide legal advice. You should obtain legal advice from a qualified
-            solicitor for legal matters.
+            {SITE_NAME} is a firm of forensic accountants, not solicitors. For advice on your
+            financial settlement or court case, speak to a family law solicitor.
           </p>
           <h2>Professional services</h2>
           <p>
-            Forensic accounting and expert witness services are provided under separate terms
-            of engagement agreed in writing before work commences.
+            When we are instructed on a case, a written engagement letter is agreed first and
+            governs that work.
           </p>
           <h2>Intellectual property</h2>
           <p>
-            Website content is owned by {SITE_NAME} unless otherwise stated. You may not
-            reproduce content without permission except for personal, non-commercial reference.
+            Unless stated otherwise, {SITE_NAME} owns the content on this site. Please ask before
+            copying it anywhere, other than for your own non-commercial use.
           </p>
           <h2>Liability</h2>
           <p>
-            We do not exclude liability where prohibited by law. We are not liable for loss
-            arising from reliance on website content alone.
+            We accept no liability for decisions made only on the basis of this website, but
+            nothing here limits liability that the law does not allow us to limit.
           </p>
           <h2>Governing law</h2>
           <p>

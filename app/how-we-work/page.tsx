@@ -14,35 +14,35 @@ export const metadata = buildMetadata({
 
 const principles = [
   {
-    title: "Senior involvement throughout",
-    text: "Instructions are accepted by a senior forensic accountant and remain under their direct responsibility throughout, from initial review to expert report and oral testimony. Work is not delegated to a junior team.",
+    title: "One senior accountant on your file",
+    text: "The senior forensic accountant who accepts the instruction is the one who reads the disclosure, writes the report and gives evidence at the FDR or final hearing. Your file is not passed down to junior staff part way through.",
   },
   {
-    title: "Independence above all else",
-    text: "Our expert opinions reflect our honest view of the financial issues. We will advise solicitors promptly if our preliminary view is adverse to the instructing party, because early advice is always more useful than a late surprise.",
+    title: "Independent of both spouses",
+    text: "Our duty under FPR Part 25 is to the court, not to the party paying the fee. If the figures point against your client, we tell you early, while there is still time to adjust your negotiating position.",
   },
   {
-    title: "Clarity in every report",
-    text: "We write for the judge who will read the report, not for the accountant who drafted it. Complex financial analysis must be made understandable: that is as much part of our job as the analysis itself.",
+    title: "Reports a district judge can follow",
+    text: "Business valuations, income and pension figures are explained in plain terms, with the key numbers set out so the court and both sets of solicitors can test them without needing an accountant beside them.",
   },
   {
-    title: "Responsive to proceedings",
-    text: "Proceedings have timetables. We agree realistic timelines at the outset and communicate proactively if anything changes. Urgent preliminary assessments are available where proceedings require it.",
+    title: "Working to the court timetable",
+    text: "Family cases run to directions and hearing dates. We fix a delivery date with you when we accept the instruction, warn you straight away if disclosure delays it, and can turn round an urgent preliminary view before an FDR.",
   },
   {
-    title: "Proportionate to the case",
-    text: "Not every matter needs a comprehensive expert report. We advise on the scope of work genuinely required and produce reports proportionate to the complexity and value of the case.",
+    title: "Scoped to what the assets justify",
+    text: "A modest business or a single income question may only need a short report. We recommend the narrowest scope that answers the questions the court has asked, so costs stay in line with what is at stake in the marriage.",
   },
 ];
 
 const steps = [
-  { step: "1", title: "Initial contact", text: "Discuss the matter, confirm scope and availability, check conflicts. Same day response." },
-  { step: "2", title: "Conflicts check", text: "Full conflicts check against existing clients and instructions." },
-  { step: "3", title: "Letter of instruction", text: "Review the instruction letter, raise queries if scope needs clarification. Confirm acceptance once scope is settled." },
-  { step: "4", title: "Document review", text: "Receive and review all relevant financial documents. Request additional materials if needed." },
-  { step: "5", title: "Analysis", text: "Conduct the forensic analysis, applying appropriate methodology, testing assumptions, identifying any matters outside our expertise." },
-  { step: "6", title: "Expert report", text: "Draft, review, and finalise the CPR/FPR/CrPR compliant expert report. Provide preliminary advice note if requested before formal report." },
-  { step: "7", title: "Written questions and oral evidence", text: "Respond to written questions; attend joint expert meetings; give oral evidence at hearing if required." },
+  { step: "1", title: "First conversation", text: "Tell us about the parties, the assets and the hearing dates. We confirm whether we can help and when, and reply the same day." },
+  { step: "2", title: "Conflicts check", text: "We check both spouses and any businesses involved against our existing clients and instructions." },
+  { step: "3", title: "Letter of instruction", text: "We review the single joint or sole letter of instruction and raise any unclear questions before we accept." },
+  { step: "4", title: "Disclosure review", text: "We work through Form E disclosure, company accounts, bank statements and tax returns, and list anything further we need." },
+  { step: "5", title: "Analysis", text: "We value the business, assess income and test the assumptions on both sides, and flag any issue that falls outside our expertise." },
+  { step: "6", title: "Expert report", text: "We prepare the FPR Part 25 report. If you need an early view first, we can provide a short preliminary note." },
+  { step: "7", title: "Questions and hearing", text: "We answer Part 25 written questions, join experts' meetings and attend the FDR or final hearing to give oral evidence where needed." },
 ];
 
 export default function HowWeWorkPage() {

@@ -41,7 +41,7 @@ export const insights: InsightArticle[] = [
         heading: "The letter of instruction",
         paragraphs: [
           "A clear letter of instruction should set out the proceedings, the issues for the expert, documents provided, the FPR Part 25 framework, and the timetable. Avoid framing questions to elicit a particular conclusion. The expert's duty is to the court.",
-          "For joint instructions, both parties should agree the letter before substantive work begins. Disputes over scope at the draft report stage are costly and avoidable.",
+          "With a single joint expert, agree the letter with the other side first. Arguing about what the expert was asked to do once a draft is out wastes time and fees.",
         ],
       },
       {
@@ -55,7 +55,7 @@ export const insights: InsightArticle[] = [
         heading: "Working effectively with your expert",
         paragraphs: [
           "Provide complete financial documentation early, including Form E, business accounts, and bank statements. If non-disclosure is suspected, ask whether a preliminary investigation under privilege is appropriate before formal expert appointment.",
-          "If the expert's preliminary view may be adverse, you need to know promptly. Reputable experts will advise at an early stage.",
+          "If the numbers are likely to go against your client, ask the expert to say so early, before positions harden ahead of the FDR.",
         ],
       },
     ],
@@ -177,7 +177,7 @@ export const insights: InsightArticle[] = [
       {
         heading: "Joint letter of instruction",
         paragraphs: [
-          "The joint letter should define the issues, list documents, set timetables, and address costs sharing. Both parties should sign off before substantive work begins.",
+          "The joint letter should define the issues, list documents, set timetables, and address costs sharing. Get both solicitors to approve it before the expert starts work.",
         ],
       },
       {

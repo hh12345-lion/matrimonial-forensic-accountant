@@ -62,7 +62,7 @@ export default function AboutPage() {
 
           <h2>Our Approach</h2>
           <p>
-            We do not take instructions we cannot serve well. Before accepting
+            If a case is outside what we do well, we decline it. Before accepting
             any engagement, we assess whether we have the specific matrimonial
             forensic expertise the case requires, and if not, we say so.
           </p>

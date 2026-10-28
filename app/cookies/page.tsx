@@ -22,48 +22,44 @@ export default function CookiesPage() {
           <p className="text-sm text-charcoal">Last updated: June 2025</p>
           <h2>What are cookies?</h2>
           <p>
-            Cookies are small text files stored on your device when you visit a website.
-            They help the site function, remember preferences, and (with your consent) help us
-            understand how visitors use the site.
+            A cookie is a small file a website saves in your browser. Ours keep the site working,
+            remember your settings and, only if you agree, show us which pages people read.
           </p>
           <h2>How we use cookies</h2>
           <h3>Necessary cookies</h3>
           <p>
-            Always active. Required for core functionality, security, and remembering your
-            cookie consent choice. These cannot be disabled.
+            These are always on, because the site cannot run safely without them. One of them
+            records the cookie choice you made.
           </p>
           <h3>Analytics cookies</h3>
           <p>
-            With your consent, we may use tools such as Google Analytics to understand how
-            visitors use our website. IP anonymisation is enabled where supported.
+            Only if you allow them. Tools such as Google Analytics count visits and page views,
+            with IP addresses anonymised where the tool supports it.
           </p>
           <h3>Marketing cookies</h3>
           <p>
-            With your consent, we may use advertising and remarketing technologies (e.g.
-            Google Tag Manager, Meta Pixel, LinkedIn Insight Tag) to measure campaign
-            effectiveness.
+            Only if you allow them. Google Tag Manager, the Meta Pixel and the LinkedIn Insight
+            Tag tell us whether our adverts are reaching the right people.
           </p>
           <h3>Preferences cookies</h3>
           <p>
-            With your consent, these remember settings to improve your experience on return
-            visits.
+            Only if you allow them. They save your settings for the next time you visit.
           </p>
           <h2>Manage your preferences</h2>
           <p>
-            You can change your choices at any time using{" "}
-            <CookieSettingsButton className="font-semibold text-gold" /> below or
-            the link in the site footer. On first visit,
-            our banner lets you Accept All, Reject Non-Essential, or Customise Preferences.
+            Use{" "}
+            <CookieSettingsButton className="font-semibold text-gold" /> or the footer link
+            to change your mind whenever you like. The banner on your first visit offers
+            Accept All, Reject Non-Essential or Customise Preferences.
           </p>
           <h2>Google Consent Mode</h2>
           <p>
-            Where Google services are used, we implement Google Consent Mode so tags respect
-            your choices before and after you update preferences.
+            Any Google tags on the site run through Google Consent Mode, which makes them follow
+            whatever you have chosen, including when you change it.
           </p>
           <h2>Retention</h2>
           <p>
-            Consent preferences are stored locally for up to 365 days, after which you will be
-            asked again.
+            Your choice is saved in your browser for a year. After that the banner asks again.
           </p>
           <h2>More information</h2>
           <p>
